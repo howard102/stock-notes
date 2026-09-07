@@ -350,17 +350,27 @@ footer code{background:var(--surface-2);padding:1px 5px;border-radius:2px;font-s
 </section>
 
 <section>
-  <div class="eyebrow"><span class="id">F5</span><span class="layer">事實層 · 實務限制</span></div>
+  <div class="eyebrow"><span class="id">F5</span><span class="layer">事實層 · 已更正</span></div>
   <div class="col">
-    <h2>放空的三道實體門檻</h2>
-    <p>證交所公告原文（解析 26 筆新制上市公告）：一般處置<strong>不停信用交易</strong>，但須收足融券保證金；第二次處置則是所有委託不論數量都要預收全額款券。26 筆裡<strong>沒有任何一筆</strong>寫「停止融資融券」或「停止當日沖銷」。</p>
-    <p>但券源是真的門檻。以下為 2026-09-06 當日快照（歷史券源查不到，這一層仍是近似）：</p>
-    <ul style="color:var(--ink-2);margin-top:14px">
-      <li><strong>19 個高價股放空事件裡，至少 2 檔完全放不了空</strong>——7610 聯友金屬-創與 7795 長廣，券源 0、停資停券。</li>
-      <li><strong>大立光只有 51 張券源</strong>，而它是該組報酬第二高的標的（+7.57%）。容量在實務上很快就搶完。</li>
-      <li><strong>融券保證金成數 90-100%</strong>（大立光 90%、金居 100%）。放空 100 萬名目要另壓 90-100 萬保證金，加上賣出價金本來就被圈存——<strong>+3.57% 是對名目算的，對實際佔用資金約打對折</strong>。</li>
-    </ul>
+    <h2>放空的實務限制：兩個先前的判斷是錯的</h2>
+    <p class="lede">2026-09-07 用交易所 OpenAPI 查清楚後，先前兩個結論要收回。</p>
+    <p><strong>一、券源不是門檻。</strong>放空有兩套互不相干的機制，先前只查了融券：<strong>融券</strong>是券商自有配額（Shioaji 查的是這個），<strong>借券賣出</strong>是出借人資金池（TWSE <code>/SBL/TWT96U</code>）。大立光融券只有 51 張，但借券可用 <strong>802,768 股（802 張）</strong>；先前寫「7610／7795 完全放不了空」是錯的——它們不能融券（創新板不得信用交易），但借券分別有 148,180 與 387,654 股。<strong>52 檔處置股中 44 檔有借券額度。</strong></p>
+    <p><strong>二、處置股確實不能當沖，但機制不在公告文字裡。</strong>26 筆公告沒有一筆寫「停止當日沖銷」，先前因此推論「可能可以當沖」——也錯了。實際是<strong>被移出當沖標的清單</strong>：TWSE <code>/exchangeReport/TWTB4U</code> 列出 1,002 檔當沖標的，台積電、鴻海、聯發科、台泥都在，<strong>處置中的 7 檔一檔都不在</strong>。要判斷能不能當沖，查清單的有無，不要讀公告文字。</p>
+    <p>本研究的放空是跨日（公告日進場、第 3-4 日回補），不受此限制影響；但任何當沖變體都不可行。</p>
   </div>
+  <figure>
+    <div class="fig-head"><span class="fig-title">兩套放空機制的實際額度（2026-09-07 當日快照）</span></div>
+    <div class="scroll"><table>
+      <thead><tr><th>代號</th><th>名稱</th><th>融券券源（張）</th><th>借券可用（股）</th><th>股票期貨</th></tr></thead>
+      <tbody>
+        <tr><td>3008</td><td>大立光</td><td class="n">51</td><td class="n">802,768</td><td>有</td></tr>
+        <tr><td>8358</td><td>金居</td><td class="n">1,017</td><td class="n">6,078,800</td><td>有</td></tr>
+        <tr><td>7610</td><td>聯友金屬-創</td><td class="n neg">0</td><td class="n">148,180</td><td>無</td></tr>
+        <tr><td>7795</td><td>長廣</td><td class="n neg">0</td><td class="n">387,654</td><td>無</td></tr>
+      </tbody>
+    </table></div>
+    <figcaption>融券券源取自 Shioaji <code>short_stock_sources</code>、借券取自 TWSE <code>/SBL/TWT96U</code>、股票期貨取自 TAIFEX <code>/SSFLists</code>（270 檔標的，處置股只有 19% 有）。<b>公告原文</b>（解析 26 筆新制上市公告）：一般處置<b>不停信用交易</b>但須收足融券保證金；第二次處置則所有委託不論數量都要預收全額。融券保證金成數 90-100%（大立光 90%、金居 100%），加上賣出價金本來就被圈存，<b>報酬對實際佔用資金約打對折</b>。上櫃方面，TPEX <code>/tpex_margin_trading_margin_mark</code> 對處置中的 9 檔上櫃股，禁融券／禁借券／平盤下不得放空三個旗標<b>全部空白</b>。仍是近似的一點：券源與當沖標的都只查得到當日快照，事件當時的歷史值查不到。</figcaption>
+  </figure>
 </section>
 
 <section>
@@ -390,7 +400,7 @@ footer code{background:var(--surface-2);padding:1px 5px;border-radius:2px;font-s
   <h3 style="margin-top:22px;font-size:17px">只有 4 個公布週支持的（新制型態）—— 紙上追蹤</h3>
   <ul>
     <li><b>做多：處置第 1 天開盤買、出關日開盤賣，不設任何回落條件</b>（+6.59%、勝率 79.1%）。新制 D+3 就翻正，等回落＝錯過起漲，任何 X 都輸給無條件。</li>
-    <li><b>不要放空</b>：新制所有進場點、所有持有期都是負的。高價股那組（≥500 元 +3.57%）舊制不支持，且有券源與保證金的實體門檻（F5）。</li>
+    <li><b>不要放空</b>：新制所有進場點、所有持有期都是負的。高價股那組（≥500 元 +3.57%）舊制不支持。執行面已查清（F5）：<b>券源不是門檻</b>（52 檔中 44 檔有借券額度），但融券保證金 90-100% 讓報酬對實際佔用資金打對折，且<b>處置股不能當沖</b>，只能做跨日。</li>
   </ul>
   <h3 style="margin-top:22px;font-size:17px">為什麼兩個制度的規則相反</h3>
   <p style="color:var(--ink-2);margin-top:10px">處置期長度與撮合間隔決定價格路徑。舊制 10 日 + 5／20 分盤，壓制期長、D+1~D+7 一路陰跌，「等回落再接」拿得到更好的價格；新制 5 日 + 2 分盤，壓制期短、D+3 就翻正，等回落就是錯過。<b>制度參數變了要換規則，不是調參數。</b>下次制度再改，這兩套都要重測。</p>
