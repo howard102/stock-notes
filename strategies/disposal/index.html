@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="台股處置股（2026-08-10 新制）價量事件研究：新制 63 事件與舊制 597 事件的對照。盤後公開資料整理，非投資建議。">
+<title>處置股的五個交易日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  *{box-sizing:border-box}
+  html{color-scheme:light dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+
+:root{
+  --paper:#f4f4f1; --surface:#fdfdfc; --surface-2:#eceae4;
+  --ink:#15171b; --ink-2:#4b505a; --ink-3:#7d838d;
+  --rule:#dcdbd4; --rule-soft:#e7e6e0;
+  --rise:#d9402e;      /* 台股慣例：紅為漲 */
+  --fall:#00916e;      /* 綠為跌 */
+  --struct:#4a6bd6;    /* 結構線／中位數 */
+  --caution:#b8860b;   /* 判斷層與警示 */
+  --judge-bg:#f6efe0; --judge-rule:#d8bd7c;
+  --shade:rgba(74,107,214,.075);
+  --serif:"Noto Serif TC",Songti TC,serif;
+  --sans:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"IBM Plex Mono","Noto Sans TC",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131418; --surface:#1a1c21; --surface-2:#23252b;
+    --ink:#e9e9e4; --ink-2:#b3b7bf; --ink-3:#868b94;
+    --rule:#31343b; --rule-soft:#26282e;
+    --judge-bg:#241f14; --judge-rule:#6d5a2c;
+    --shade:rgba(122,148,232,.10);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131418; --surface:#1a1c21; --surface-2:#23252b;
+  --ink:#e9e9e4; --ink-2:#b3b7bf; --ink-3:#868b94;
+  --rule:#31343b; --rule-soft:#26282e;
+  --judge-bg:#241f14; --judge-rule:#6d5a2c;
+  --shade:rgba(122,148,232,.10);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
+.col{max-width:660px}
+h1,h2,h3{font-family:var(--serif);text-wrap:balance;line-height:1.3;margin:0}
+a{color:var(--struct)}
+code,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---- masthead ---- */
+header.mast{padding:64px 0 36px;border-bottom:1px solid var(--rule)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 18px}
+h1{font-size:clamp(34px,5.4vw,56px);font-weight:700;letter-spacing:-.01em}
+.dek{max-width:640px;margin:20px 0 0;font-size:18px;color:var(--ink-2)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;
+  font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.meta b{color:var(--ink-2);font-weight:500}
+
+/* ---- verdict strip ---- */
+.verdicts{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin:40px 0 8px}
+.vd{background:var(--surface);padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.vd .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
+.vd.no .tag{color:var(--fall)} .vd.yes .tag{color:var(--rise)}
+.vd h3{font-size:19px;font-weight:500}
+.vd p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.65}
+.vd .fig{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-.02em}
+.vd.no .fig{color:var(--fall)} .vd.yes .fig{color:var(--rise)}
+
+/* ---- sections ---- */
+section{padding-top:56px}
+.eyebrow{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.eyebrow .id{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.1em}
+.eyebrow .layer{font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:2px 8px;
+  border:1px solid var(--rule);color:var(--ink-3);border-radius:2px}
+h2{font-size:clamp(23px,2.7vw,30px);font-weight:700}
+section > p, .col > p{margin:16px 0 0;color:var(--ink-2)}
+section > p strong, .col strong{color:var(--ink);font-weight:500}
+.lede{font-size:17.5px;color:var(--ink)!important}
+
+/* ---- figures ---- */
+figure{margin:34px 0 0;background:var(--surface);border:1px solid var(--rule);padding:24px}
+figcaption{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule-soft);
+  font-size:13.5px;color:var(--ink-3);line-height:1.6}
+figcaption b{color:var(--ink-2);font-weight:500}
+.fig-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  flex-wrap:wrap;margin-bottom:18px}
+.fig-title{font-family:var(--serif);font-size:17px;font-weight:500}
+.legend{display:flex;gap:16px;font-size:12.5px;color:var(--ink-2);font-family:var(--mono)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;
+  vertical-align:-1px}
+.scroll{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:var(--mono);fill:var(--ink-3)}
+
+/* ---- tables ---- */
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--rule-soft);
+  white-space:nowrap}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-3);
+  font-weight:500;text-align:right;border-bottom:1px solid var(--rule)}
+th:first-child,td:first-child{text-align:left}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr.dim td{color:var(--ink-3)}
+.pos{color:var(--rise)} .neg{color:var(--fall)}
+.chip{font-family:var(--mono);font-size:11px;padding:1px 6px;border-radius:2px;
+  border:1px solid var(--rule);color:var(--ink-3)}
+.chip.warn{border-color:var(--caution);color:var(--caution)}
+.tbl-wrap{max-height:480px;overflow:auto;border:1px solid var(--rule);background:var(--surface)}
+.tbl-wrap thead th{position:sticky;top:0;background:var(--surface);z-index:1}
+
+/* ---- judgement layer ---- */
+.judge{background:var(--judge-bg);border:1px solid var(--judge-rule);
+  border-left-width:4px;padding:28px 30px;margin-top:40px}
+.judge .eyebrow .layer{border-color:var(--judge-rule);color:var(--caution)}
+.judge h2{font-size:24px}
+.judge ul{margin:18px 0 0;padding-left:20px;color:var(--ink-2)}
+.judge li{margin-bottom:12px}
+.judge li b{color:var(--ink)}
+
+/* ---- caveat list ---- */
+ol.caveats{counter-reset:c;list-style:none;padding:0;margin:26px 0 0}
+ol.caveats li{counter-increment:c;position:relative;padding-left:44px;margin-bottom:20px;
+  color:var(--ink-2);font-size:15px}
+ol.caveats li::before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:1px;
+  font-family:var(--mono);font-size:12px;color:var(--caution);letter-spacing:.05em}
+ol.caveats b{color:var(--ink);font-weight:500}
+
+/* ---- tooltip ---- */
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .1s;z-index:50;
+  background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;
+  padding:7px 10px;border-radius:3px;line-height:1.55;white-space:pre}
+footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--rule);
+  font-size:13px;color:var(--ink-3)}
+footer code{background:var(--surface-2);padding:1px 5px;border-radius:2px;font-size:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:640px){
+  header.mast{padding-top:40px}
+  figure{padding:16px}
+  .judge{padding:22px 18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../../">← 回到 stock-notes 索引</a>
+  <span class="site-nav-note">盤後公開資料整理與個人筆記，非投資建議</span>
+</nav>
+<style>
+  .site-nav{max-width:1120px;margin:0 auto;padding:20px 24px 0;display:flex;
+    justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:12.5px}
+  .site-nav a{color:var(--ink-3);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .site-nav a:hover{color:var(--ink)}
+  .site-nav-note{color:var(--ink-3)}
+</style>
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">台股事件研究 · 處置新制 vs 舊制 · 資料截止 2026-09-06</p>
+  <h1>處置股的五個交易日</h1>
+  <p class="dek">原始問題是：「進處置後急殺、然後急拉」是不是真的，該做空還是該接。答案要分兩個制度講，而且<b>兩個制度的規則是相反的</b>——舊制（10 日、5／20 分盤）等回落再接是對的；新制（5 日、2 分盤）等回落就是錯過起漲。制度參數變了，規則要跟著換，不是調參數。</p>
+  <div class="meta">
+    <span>舊制 <b>597</b> 事件 · 287 檔 · <b>115</b> 個公布週</span>
+    <span>新制 <b>63</b> 事件 · 51 檔 · <b>4</b> 個公布週</span>
+    <span>30 分 K 覆蓋兩個制度</span>
+  </div>
+</header>
+
+<div class="verdicts">
+  <div class="vd yes">
+    <span class="tag">構想二修正版 · 舊制成立</span>
+    <h3>回落 8-12% 接，出關日開盤賣</h3>
+    <span class="fig">+4.82%</span>
+    <p>舊制回落 10%：觸發率 <b>89.4%</b>、n=534、勝率 63.9%、扣成本 +4.82%，每事件期望值 +4.31%，優於無條件買進的 +3.39%。<b>你把 20-25% 改成 10-15% 是對的。</b>但同一條在新制輸給無條件。</p>
+  </div>
+  <div class="vd yes">
+    <span class="tag">構想一 · 舊制成立</span>
+    <h3>公告日盤中空，第 3-4 日回補</h3>
+    <span class="fig">+1.93%</span>
+    <p>舊制持有 4 日 n=597、勝率 58.8%、扣成本 +1.93%（週群集 CI +0.86~+4.45）；持有 3 日 +1.70%、2 日 +1.50%。<b>「跌幅達 X% 就回補」沒有一個打得贏固定持有。</b>處置第 1 天才進場會少賺一半。</p>
+  </div>
+  <div class="vd no">
+    <span class="tag">定義校正 · 影響前四輪所有數字</span>
+    <h3>出關日 ≠ 處置結束日</h3>
+    <span class="fig">+3.39% / +2.12%</span>
+    <p>出關日是處置結束日的<b>下一個</b>交易日。前四輪的「抱到出關」其實賣在處置結束日收盤（還在分盤）。校正後：<b>出關日開盤賣最好</b>，出關日收盤賣少賺 1.3%。</p>
+  </div>
+</div>
+
+<section>
+  <div class="eyebrow"><span class="id">F0</span><span class="layer">定義 · 第五輪校正</span></div>
+  <div class="col">
+    <h2>先把三個時點釘死</h2>
+    <p class="lede">處置公告在<strong>盤後</strong>發布，所以公告日當天仍是一般交易；隔天才是處置第 1 天；出關日是公告載明的處置結束日的<strong>下一個</strong>交易日。</p>
+    <p>前四輪的「抱到出關」出場價其實取在<strong>處置結束日當天收盤</strong>——那天還在分盤。差一天，而且差在「分盤 vs 已恢復逐筆撮合」。已全面改正，並用 49 項測試把三個時點釘死。</p>
+  </div>
+  <figure>
+    <div class="fig-head"><span class="fig-title">1815 富喬（公告 2026-08-10、公告處置期間 08/11~08/17）</span></div>
+    <div class="scroll"><table id="t-def"></table></div>
+    <figcaption>三個出場點的報酬排序在兩個制度一致：<b>出關日開盤 &gt; 處置結束日收盤 &gt; 出關日收盤</b>（舊制 +3.39% / +2.96% / +2.12%；新制 +6.59% / +6.21% / +5.25%）。出關當天是往下走的，所以「拿到處置結束第一天再丟」要丟在<b>開盤</b>。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F1</span><span class="layer">事實層 · 構想二</span></div>
+  <div class="col">
+    <h2>回落多少才接：舊制 8-12%，新制不要等</h2>
+    <p class="lede">出場一律取出關日開盤。<strong>每事件期望值</strong>（淨報酬 × 觸發率）才是比較不同觸發率規則的公平指標——觸發率 41% 的規則就算單筆賺 7%，一年出手次數也少一半。</p>
+    <p>舊制 X=8~15 <strong>全部優於無條件買進</strong>，最佳期望值在 X=10。新制則<strong>沒有任何 X 打得贏無條件</strong>。機制上說得通：舊制 D+1~D+7 一路陰跌，等回落拿得到更好的價格；新制 D+3 就翻正，等回落等於錯過起漲。</p>
+  </div>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">回落門檻的每事件期望值（＝淨報酬 × 觸發率）</span>
+      <span class="legend">
+        <span><i style="background:var(--struct)"></i>舊制 597 事件</span>
+        <span><i style="background:var(--caution)"></i>新制 43 事件</span>
+      </span>
+    </div>
+    <div class="scroll"><div id="c-dip"></div></div>
+    <figcaption>虛線為各自制度「無條件買進」的水準。舊制的曲線在 X=8~15 高於虛線、X=20 因觸發率掉到 41.4% 而落回；新制整條在虛線之下。<b>門檻要跟著制度的典型回落幅度走</b>——舊制中位回落 -10.5%、新制 -6.4%。</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head"><span class="fig-title">明細</span></div>
+    <div class="scroll"><table id="t-dip"></table></div>
+    <figcaption>「觸發價成交」的假設對這個結論很關鍵：舊制 X=10 在觸發價成交是 +4.29%、當日收盤 +3.83%、觸發價與高點中點 +1.82%、當日最高 -0.47%。下一段用 30 分 K 檢驗這個假設。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F1-B</span><span class="layer">事實層 · 30 分 K 驗證</span></div>
+  <div class="col">
+    <h2>連 20 分盤都掛得到單</h2>
+    <p class="lede">舊制是 5／20 分盤，一天只有約 13~50 次撮合，「日 K 最低價被觸及」不見得掛得到單。直接用 30 分 K 數：觸發當天的 9 根裡，有幾根的最低價在觸發價以下、那幾根佔當日成交量多少。</p>
+  </div>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">觸發當天跌破觸發價的 30 分 K 佔當日成交量（中位數）</span>
+      <span class="legend">
+        <span><i style="background:var(--struct)"></i>舊制 5／20 分盤</span>
+        <span><i style="background:var(--caution)"></i>新制 2 分盤</span>
+      </span>
+    </div>
+    <div class="scroll"><div id="c-fill"></div></div>
+    <figcaption>舊制 X=10 時有 <b>62.2%</b> 的當日成交量在觸發價以下（單看 20 分盤那組是 62.0%、X=20 時 74.5%），而且橫跨 5-6 根 30 分 K。<b>掛限價單成交是合理假設，包含 20 分盤。</b>新制只有 X=20 是例外——中位數僅 1 根，是瞬間穿刺。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F1-C</span><span class="layer">事實層 · 雙制度複製</span></div>
+  <div class="col">
+    <h2>接在深跌價位是賺的，但抱著看它深跌是虧的</h2>
+    <p class="lede">這兩件事同時成立，不衝突，而且是兩種完全不同的處境。</p>
+    <p>下圖兩群用完全相同的進出場（處置第 1 天開盤買、出關日賣），唯一差別是處置期間有沒有跌破 -X%。<strong>已經從高價位持有的人</strong>，看到跌破 -20% 就是壞消息；<strong>還沒進場的人</strong>，接在那個 -20% 的價位是賺的（舊制 +7.17%）。</p>
+  </div>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">曾跌破 vs 從未跌破（皆為處置第 1 天開盤買）</span>
+      <span class="legend">
+        <span><i style="background:var(--fall)"></i>曾跌破</span>
+        <span><i style="background:var(--rise)"></i>從未跌破</span>
+      </span>
+    </div>
+    <div class="scroll"><div id="c-tvn"></div></div>
+    <figcaption>左半舊制、右半新制。<b>用法是「已持有就出場」，不是「不要接」。</b>兩者的差別在你的成本價：接在觸發價的人成本低了 20%，抱著的人沒有。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F2</span><span class="layer">事實層 · 構想一</span></div>
+  <div class="col">
+    <h2>放空：公告日進場，第 3-4 個交易日回補</h2>
+    <p class="lede">舊制的放空是<strong>全面有效</strong>的（n=597、115 個獨立公布週）；新制則全部為負。差別在流動性壓縮的強度：舊制 10 日 + 5／20 分盤，新制 5 日 + 2 分盤。</p>
+    <p>你問的兩個回補點：<strong>第 3 日（+1.70%）比第 2 日（+1.50%）好，第 4 日再多一點（+1.93%），第 5 日開始回落</strong>。而且<strong>公告日盤中進場明顯優於處置第 1 天進場</strong>（+1.93% vs +1.16%），窗口在公告日當天。</p>
+  </div>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">放空持有天數 × 進場點（扣成本平均報酬，正值＝獲利）</span>
+      <span class="legend">
+        <span><i style="background:var(--struct)"></i>舊制</span>
+        <span><i style="background:var(--caution)"></i>新制</span>
+      </span>
+    </div>
+    <div class="scroll"><div id="c-short"></div></div>
+    <figcaption>放空成本以手續費 0.1425%×2 + 證交稅 0.3% + 融券手續費 0.08% ≈ 0.665% 計。公告日進場需要盤中的處置預測（公告盤後才發布），這是整條規則最大的未驗證前提。</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head"><span class="fig-title">「看到幾 % 跌幅就回補」vs 固定持有</span></div>
+    <div class="scroll"><table id="t-short"></table></div>
+    <figcaption>未達標者一律在處置結束日收盤強制回補。目標越深報酬越高、勝率越低，但<b>沒有任何一個目標打得贏單純持有 4 日的 +1.93%</b>。淺目標（-2%／-3%）的價值在勝率（80-85%）而非期望值——若你在意的是勝率穩定而非總報酬，-3% 是合理選擇。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F3</span><span class="layer">事實層</span></div>
+  <div class="col">
+    <h2>「殺兩成」是舊制的記憶</h2>
+    <p class="lede">處置期間相對公告日收盤的最大回落，中位數從舊制的 <strong>-10.48%</strong> 掉到新制的 <strong>-6.37%</strong>；達 -20% 的比例從 <strong>15.9%</strong> 掉到 <strong>1.6%</strong>。</p>
+    <p>舊制第二次處置（20 分盤）的中位回落是 -14.46%。10 個營業日加 5／20 分盤的壓縮強度，大約是新制的兩倍。這也是為什麼「回落 20% 接」在舊制觸發率有 41.4%、在新制只有 7.0%。</p>
+  </div>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">最大回落分布（相對公告日收盤）</span>
+      <span class="legend">
+        <span><i style="background:var(--struct)"></i>舊制 n=597</span>
+        <span><i style="background:var(--caution)"></i>新制 n=63</span>
+      </span>
+    </div>
+    <div class="scroll"><div id="c-mdd"></div></div>
+    <figcaption>縱軸為各自樣本內的百分比。新制最深的是 6103 合邦 -20.96%，全樣本唯一一檔到得了 -20% 的。</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">D0 起的報酬中位數：制度改變也改變了型態</span>
+      <span class="legend">
+        <span><i style="background:var(--struct)"></i>新制</span>
+        <span><i style="background:var(--ink-3)"></i>舊制</span>
+      </span>
+    </div>
+    <div class="scroll"><div id="c-curve"></div></div>
+    <figcaption>新制 D+3 就翻正、D+5 到 +5.07%；舊制 D+1 到 D+7 一路維持 -2% 上下，要到 D+10（約當出關）才回正。<b>這條曲線就是兩個制度規則相反的原因</b>：舊制有一段可以等，新制沒有。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F4</span><span class="layer">事實層 · 30 分 K</span></div>
+  <div class="col">
+    <h2>30 分 K 暴大量：測了，沒有用</h2>
+    <p class="lede">定義照規格：該根量同時大於前 5 根與前 10 根均量，<strong>均量只用之前的 K 棒</strong>（含當根就是拿當下的量判斷當下是不是暴量）。</p>
+    <p>問題出在門檻本身：處置期間 2,494 根 30 分 K 有 <strong>666 根符合（26.7%）</strong>——四根就有一根是「暴大量」。<strong>這個定義在流動性被壓縮的 regime 裡篩不出東西。</strong></p>
+  </div>
+  <figure>
+    <div class="fig-head">
+      <span class="fig-title">暴大量進場 vs 完全不看量（新制，扣成本平均報酬）</span>
+      <span class="legend"><span><i style="background:var(--caution)"></i>看量</span><span><i style="background:var(--struct)"></i>不看量</span></span>
+    </div>
+    <div class="scroll"><div id="c-spike"></div></div>
+    <figcaption>抱到出關時 +5.84% 還輸給完全不看量的 +6.59%；當作回落接的確認條件同樣沒有一致加分（X=6% 由 +6.02% 降到 +4.64%）。唯一有一點資訊的是極短線：持有 1-3 根 30 分 K 時看量（-0.52%）優於不看量（-1.41%），但兩者都是負的。<b>另一個反直覺的觀察</b>：處置期間的成交比處置前更平均——開盤半小時佔全日量由 36.2% 降到 23.3%，收盤半小時由 10.0% 升到 14.8%。分盤把開盤的集中撮合打散了，這對掛單成交是有利的。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F5</span><span class="layer">事實層 · 實務限制</span></div>
+  <div class="col">
+    <h2>放空的三道實體門檻</h2>
+    <p>證交所公告原文（解析 26 筆新制上市公告）：一般處置<strong>不停信用交易</strong>，但須收足融券保證金；第二次處置則是所有委託不論數量都要預收全額款券。26 筆裡<strong>沒有任何一筆</strong>寫「停止融資融券」或「停止當日沖銷」。</p>
+    <p>但券源是真的門檻。以下為 2026-09-06 當日快照（歷史券源查不到，這一層仍是近似）：</p>
+    <ul style="color:var(--ink-2);margin-top:14px">
+      <li><strong>19 個高價股放空事件裡，至少 2 檔完全放不了空</strong>——7610 聯友金屬-創與 7795 長廣，券源 0、停資停券。</li>
+      <li><strong>大立光只有 51 張券源</strong>，而它是該組報酬第二高的標的（+7.57%）。容量在實務上很快就搶完。</li>
+      <li><strong>融券保證金成數 90-100%</strong>（大立光 90%、金居 100%）。放空 100 萬名目要另壓 90-100 萬保證金，加上賣出價金本來就被圈存——<strong>+3.57% 是對名目算的，對實際佔用資金約打對折</strong>。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="id">F6</span><span class="layer">事實層</span></div>
+  <div class="col">
+    <h2>還沒解決的</h2>
+    <ol class="caveats">
+      <li><b>新制的有效樣本量是 4 個公布週，不是 63 個事件。</b>單週最多 25 個部位同時在場。所有新制的信賴區間都是對「週」重抽樣算的，4 個群集的 bootstrap 幾乎沒有解析度。舊制的 115 個週不受此限——這就是判斷層把結論分成兩級的原因。</li>
+      <li><b>盤中處置預測的命中率完全沒驗證。</b>放空的進場點在公告日盤中，而公告盤後才發布。預測錯了整條規則不存在。這是目前最大的未驗證前提。</li>
+      <li><b>執行摩擦只扣了手續費與證交稅。</b>處置期間買進須預收全額價金；單週最多 25 個部位代表要圈存 25 筆全額。放空的保證金成數見 F6。</li>
+      <li><b>上櫃沒有處置歷史。</b>官方端點只回當日快照（已實測各種參數組合），新制的上櫃事件有 23 筆靠第三方回補，舊制對照則完全沒有上櫃。已加每日 cron 自動累積，往後不再漏。</li>
+      <li><b>價格未還原權值。</b>管線會偵測超過 ±11% 的日間跳動並標記（新制命中 5314 世紀* 的 61.30→16.20；舊制命中 5 筆）；另有 43 筆舊制事件的處置交易日數與公告營業日數不符，疑停牌順延，已記入 missing。</li>
+    </ol>
+  </div>
+</section>
+
+<div class="judge">
+  <div class="eyebrow"><span class="id">判斷</span><span class="layer">判斷層 · 非統計事實</span></div>
+  <h2>如果要做，怎麼做</h2>
+  <p style="margin-top:14px;color:var(--ink-2)">分兩級：<strong>有 115 個獨立公布週支持的</strong>（舊制 597 事件）與<strong>只有 4 個公布週支持的</strong>（新制 63 事件）。出場點一律以「出關日開盤」為準。</p>
+  <h3 style="margin-top:22px;font-size:17px">有 115 個獨立公布週支持的（舊制型態）</h3>
+  <ul>
+    <li><b>做多：自 D0 起的滾動最高價回落 8~12% 掛限價買進、出關日開盤賣出。</b>X=10 觸發率 89.4%、n=534、勝率 63.9%、淨 +4.82%，每事件期望值 +4.31%，優於無條件的 +3.39%。掛單可成交性已用 30 分 K 驗證（觸發價以下佔當日量 62%，20 分盤亦然）。</li>
+    <li><b>放空：公告日盤中進場、第 3~4 個交易日盤中回補。</b>n=597、勝率 58.8%、淨 +1.93%（CI +0.86~+4.45）。不要用跌幅目標回補；處置第 1 天才進場會少賺一半。</li>
+    <li><b>「曾跌破自滾動高點 -20%」當出場條件</b>（不是不進場條件）。已從高價位持有的人該走；還沒進場的人接在那個價位是賺的。差別在你的成本價。</li>
+  </ul>
+  <h3 style="margin-top:22px;font-size:17px">只有 4 個公布週支持的（新制型態）—— 紙上追蹤</h3>
+  <ul>
+    <li><b>做多：處置第 1 天開盤買、出關日開盤賣，不設任何回落條件</b>（+6.59%、勝率 79.1%）。新制 D+3 就翻正，等回落＝錯過起漲，任何 X 都輸給無條件。</li>
+    <li><b>不要放空</b>：新制所有進場點、所有持有期都是負的。高價股那組（≥500 元 +3.57%）舊制不支持，且有券源與保證金的實體門檻（F5）。</li>
+  </ul>
+  <h3 style="margin-top:22px;font-size:17px">為什麼兩個制度的規則相反</h3>
+  <p style="color:var(--ink-2);margin-top:10px">處置期長度與撮合間隔決定價格路徑。舊制 10 日 + 5／20 分盤，壓制期長、D+1~D+7 一路陰跌，「等回落再接」拿得到更好的價格；新制 5 日 + 2 分盤，壓制期短、D+3 就翻正，等回落就是錯過。<b>制度參數變了要換規則，不是調參數。</b>下次制度再改，這兩套都要重測。</p>
+  <h3 style="margin-top:22px;font-size:17px">測過了，確定沒用</h3>
+  <ul>
+    <li>日 K 成交量濾網、30 分 K 暴大量 &gt;5MA &gt;10MA（處置期間 26.7% 的 K 棒都符合）</li>
+    <li>放空的跌幅目標回補（-2% 到 -10% 都不如固定持有 3-4 日）</li>
+    <li>出關日收盤賣出（比出關日開盤少 1.3~1.4%）</li>
+  </ul>
+</div>
+
+<section>
+  <div class="eyebrow"><span class="id">附錄</span><span class="layer">逐事件證據</span></div>
+  <div class="col">
+    <h2>新制 63 個事件，逐檔可核對</h2>
+    <p>報酬皆相對公告日收盤。「放空」為公告日中間價進場、第 2 個交易日中間價回補（正值＝獲利）；「做多」為 D1 開盤買、出關日收盤賣，處置期未結束者留空。點欄位標題可排序。</p>
+  </div>
+  <figure style="padding:0;border:0">
+    <div class="tbl-wrap"><table id="t-ev"></table></div>
+    <figcaption style="padding:0 4px">來源標為「回補」者取自第三方（官方無上櫃處置歷史），已與頁面自稱則數對帳。舊制 597 筆的同款表格在 <code>output/oldregime/event-summary.csv</code>。</figcaption>
+  </figure>
+</section>
+
+<footer>
+  <p>資料來源：證交所 <code>announcement/punish</code>、<code>STOCK_DAY</code>、<code>FMTQIK</code>；櫃買 <code>bulletin/disposal</code>、<code>afterTrading/tradingStock</code>、<code>tradingIndex</code>；上櫃處置歷史自第三方回補並標記；分 K 與全市場日行情自永豐 Shioaji（唯讀，<code>kbars</code> / <code>daily_quotes</code> / <code>short_stock_sources</code> / <code>credit_enquires</code>）。</p>
+  <p>抓取工具 <code>portfolio/tools/</code>，分析與結論 <code>xq-strategies/research/disposal/</code>（<code>README.md</code> 方法與限制、<code>FINDINGS.md</code> 完整結論、<code>output/</code> 與 <code>output/oldregime/</code> 可重算全部數字）。每日 18:00 由 cron 自動累積處置事件並更新紙上追蹤表。</p>
+  <p>第一輪結論經 skeptic／red-team／simplifier 三方獨立抗辯，0/3 存活被駁回。已修正：公告日收盤進場是 look-ahead、缺無條件基準對照。第二輪改用中間價與滾動高點；第三輪補 30 分 K；第四輪建舊制對照，據此把「高價股放空」降級為紙上追蹤。</p>
+</footer>
+
+</div>
+<div id="tip"></div>
+<script>
+const D={"dip":{"old":[{"x":0,"tr":100.0,"n":597,"win":56.3,"net":3.392,"med":1.398,"ev":3.392},{"x":8,"tr":95.5,"n":570,"win":60.2,"net":4.444,"med":2.892,"ev":4.243},{"x":10,"tr":89.4,"n":534,"win":63.9,"net":4.821,"med":3.912,"ev":4.312},{"x":12,"tr":80.2,"n":479,"win":63.3,"net":4.994,"med":3.638,"ev":4.007},{"x":15,"tr":66.2,"n":395,"win":63.8,"net":6.284,"med":4.517,"ev":4.158},{"x":20,"tr":41.4,"n":247,"win":67.6,"net":7.171,"med":5.639,"ev":2.967}],"new":[{"x":0,"tr":100.0,"n":43,"win":79.1,"net":6.594,"med":5.941,"ev":6.594},{"x":6,"tr":100.0,"n":43,"win":81.4,"net":5.884,"med":4.971,"ev":5.884},{"x":8,"tr":83.7,"n":36,"win":75.0,"net":5.707,"med":5.211,"ev":4.778},{"x":10,"tr":62.8,"n":27,"win":66.7,"net":3.948,"med":4.52,"ev":2.479},{"x":12,"tr":44.2,"n":19,"win":63.2,"net":4.05,"med":5.345,"ev":1.789},{"x":15,"tr":25.6,"n":11,"win":63.6,"net":1.424,"med":1.717,"ev":0.364}]},"new":{"exits":[{"x":0,"mode":"d1","label":"進場後 1 個交易日收盤","n":63,"win":55.6,"net":0.566,"tr":100.0},{"x":0,"mode":"d3","label":"進場後 3 個交易日收盤","n":63,"win":60.3,"net":1.75,"tr":100.0},{"x":0,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":43,"win":79.1,"net":6.212,"tr":100.0},{"x":0,"mode":"release_open","label":"出關日開盤","n":43,"win":79.1,"net":6.594,"tr":100.0},{"x":0,"mode":"release_close","label":"出關日收盤","n":43,"win":58.1,"net":5.248,"tr":100.0},{"x":8,"mode":"d1","label":"進場後 1 個交易日收盤","n":55,"win":70.9,"net":2.457,"tr":87.3},{"x":8,"mode":"d3","label":"進場後 3 個交易日收盤","n":55,"win":72.7,"net":2.911,"tr":87.3},{"x":8,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":36,"win":75.0,"net":5.767,"tr":83.7},{"x":8,"mode":"release_open","label":"出關日開盤","n":36,"win":75.0,"net":5.707,"tr":83.7},{"x":8,"mode":"release_close","label":"出關日收盤","n":36,"win":61.1,"net":5.096,"tr":83.7},{"x":10,"mode":"d1","label":"進場後 1 個交易日收盤","n":41,"win":63.4,"net":2.419,"tr":65.1},{"x":10,"mode":"d3","label":"進場後 3 個交易日收盤","n":41,"win":65.9,"net":2.161,"tr":65.1},{"x":10,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":27,"win":70.4,"net":4.042,"tr":62.8},{"x":10,"mode":"release_open","label":"出關日開盤","n":27,"win":66.7,"net":3.948,"tr":62.8},{"x":10,"mode":"release_close","label":"出關日收盤","n":27,"win":59.3,"net":4.019,"tr":62.8},{"x":12,"mode":"d1","label":"進場後 1 個交易日收盤","n":29,"win":65.5,"net":2.567,"tr":46.0},{"x":12,"mode":"d3","label":"進場後 3 個交易日收盤","n":29,"win":65.5,"net":2.282,"tr":46.0},{"x":12,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":19,"win":63.2,"net":3.849,"tr":44.2},{"x":12,"mode":"release_open","label":"出關日開盤","n":19,"win":63.2,"net":4.05,"tr":44.2},{"x":12,"mode":"release_close","label":"出關日收盤","n":19,"win":52.6,"net":3.403,"tr":44.2},{"x":15,"mode":"d1","label":"進場後 1 個交易日收盤","n":18,"win":83.3,"net":3.439,"tr":28.6},{"x":15,"mode":"d3","label":"進場後 3 個交易日收盤","n":18,"win":72.2,"net":2.453,"tr":28.6},{"x":15,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":11,"win":72.7,"net":2.861,"tr":25.6},{"x":15,"mode":"release_open","label":"出關日開盤","n":11,"win":63.6,"net":1.424,"tr":25.6},{"x":15,"mode":"release_close","label":"出關日收盤","n":11,"win":45.5,"net":0.018,"tr":25.6},{"x":20,"mode":"d1","label":"進場後 1 個交易日收盤","n":5,"win":40.0,"net":3.486,"tr":7.9},{"x":20,"mode":"d3","label":"進場後 3 個交易日收盤","n":5,"win":60.0,"net":3.498,"tr":7.9},{"x":20,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":3,"win":66.7,"net":5.796,"tr":7.0},{"x":20,"mode":"release_open","label":"出關日開盤","n":3,"win":66.7,"net":2.45,"tr":7.0},{"x":20,"mode":"release_close","label":"出關日收盤","n":3,"win":66.7,"net":-2.695,"tr":7.0}],"short":[{"entry":"D0_mid","kind":"固定持有","param":"1 日","n":63,"win":60.3,"net":0.126,"lo":-1.12,"hi":2.219,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"2 日","n":63,"win":54.0,"net":-0.942,"lo":-3.261,"hi":2.789,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"3 日","n":63,"win":52.4,"net":-1.55,"lo":-5.279,"hi":3.788,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"4 日","n":63,"win":52.4,"net":-1.474,"lo":-6.233,"hi":4.253,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"5 日","n":63,"win":47.6,"net":-2.247,"lo":-6.921,"hi":4.289,"hit":null},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-2%","n":63,"win":79.4,"net":-1.108,"lo":-3.87,"hi":3.05,"hit":79.4},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-3%","n":63,"win":74.6,"net":-1.136,"lo":-3.478,"hi":3.178,"hit":74.6},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-5%","n":63,"win":65.1,"net":-1.057,"lo":-4.997,"hi":4.196,"hit":63.5},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-8%","n":63,"win":44.4,"net":-2.207,"lo":-5.519,"hi":4.017,"hit":38.1},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-10%","n":63,"win":39.7,"net":-2.529,"lo":-5.456,"hi":3.317,"hit":25.4},{"entry":"D1_open","kind":"固定持有","param":"1 日","n":63,"win":47.6,"net":-1.096,"lo":-2.337,"hi":1.499,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"2 日","n":63,"win":46.0,"net":-1.69,"lo":-4.304,"hi":2.548,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"3 日","n":63,"win":47.6,"net":-1.659,"lo":-5.302,"hi":3.014,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"4 日","n":63,"win":44.4,"net":-2.418,"lo":-5.979,"hi":3.055,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"5 日","n":63,"win":44.4,"net":-2.505,"lo":-5.963,"hi":3.068,"hit":null},{"entry":"D1_open","kind":"跌幅目標回補","param":"-2%","n":63,"win":65.1,"net":-2.375,"lo":-4.283,"hi":1.19,"hit":61.9},{"entry":"D1_open","kind":"跌幅目標回補","param":"-3%","n":63,"win":61.9,"net":-2.322,"lo":-4.576,"hi":1.606,"hit":57.1},{"entry":"D1_open","kind":"跌幅目標回補","param":"-5%","n":63,"win":54.0,"net":-2.203,"lo":-4.473,"hi":2.249,"hit":46.0},{"entry":"D1_open","kind":"跌幅目標回補","param":"-8%","n":63,"win":42.9,"net":-2.644,"lo":-5.525,"hi":1.922,"hit":28.6},{"entry":"D1_open","kind":"跌幅目標回補","param":"-10%","n":63,"win":39.7,"net":-3.268,"lo":-5.216,"hi":0.684,"hit":17.5},{"entry":"D1_mid","kind":"固定持有","param":"1 日","n":63,"win":34.9,"net":-1.792,"lo":-2.332,"hi":0.566,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"2 日","n":63,"win":38.1,"net":-2.392,"lo":-4.369,"hi":1.595,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"3 日","n":63,"win":44.4,"net":-2.371,"lo":-4.76,"hi":2.047,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"4 日","n":63,"win":39.7,"net":-3.144,"lo":-5.897,"hi":2.068,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"5 日","n":63,"win":38.1,"net":-3.229,"lo":-6.07,"hi":2.08,"hit":null},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-2%","n":63,"win":68.3,"net":-2.342,"lo":-3.479,"hi":1.045,"hit":66.7},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-3%","n":63,"win":57.1,"net":-2.928,"lo":-4.597,"hi":1.444,"hit":55.6},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-5%","n":63,"win":50.8,"net":-2.456,"lo":-4.61,"hi":2.592,"hit":47.6},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-8%","n":63,"win":33.3,"net":-4.102,"lo":-6.35,"hi":0.352,"hit":15.9},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-10%","n":63,"win":30.2,"net":-4.42,"lo":-6.955,"hi":0.579,"hit":9.5}],"fill":[{"x":6,"tag":"","bars":7.0,"tot":9.0,"share":73.12,"note":"n=61（中位數）"},{"x":6,"tag":"撮合2分","bars":7.5,"tot":9.0,"share":78.73,"note":"n=56（中位數）"},{"x":10,"tag":"","bars":5.5,"tot":9.0,"share":64.43,"note":"n=40（中位數）"},{"x":10,"tag":"撮合2分","bars":5.0,"tot":9.0,"share":67.92,"note":"n=36（中位數）"},{"x":12,"tag":"","bars":3.0,"tot":9.0,"share":52.95,"note":"n=29（中位數）"},{"x":12,"tag":"撮合2分","bars":3.0,"tot":9.0,"share":52.99,"note":"n=27（中位數）"},{"x":15,"tag":"","bars":4.5,"tot":9.0,"share":51.81,"note":"n=18（中位數）"},{"x":15,"tag":"撮合2分","bars":3.0,"tot":9.0,"share":49.77,"note":"n=16（中位數）"},{"x":20,"tag":"","bars":1.0,"tot":9.0,"share":47.83,"note":"n=5（中位數）"}],"curve":[{"off":-2,"n":63,"close":-5.734,"low":-11.979,"vol":1.149},{"off":-1,"n":63,"close":-3.465,"low":-7.829,"vol":1.273},{"off":0,"n":63,"close":0.0,"low":-3.565,"vol":1.419},{"off":1,"n":63,"close":-1.724,"low":-4.174,"vol":0.384},{"off":2,"n":61,"close":-0.75,"low":-3.053,"vol":0.284},{"off":3,"n":57,"close":0.898,"low":-1.143,"vol":0.238},{"off":4,"n":51,"close":1.37,"low":-2.564,"vol":0.268},{"off":5,"n":48,"close":5.071,"low":-0.339,"vol":0.301},{"off":6,"n":44,"close":4.235,"low":-0.316,"vol":1.235},{"off":7,"n":43,"close":5.647,"low":1.302,"vol":1.235},{"off":8,"n":40,"close":5.579,"low":0.786,"vol":0.976},{"off":9,"n":39,"close":7.242,"low":3.244,"vol":0.928},{"off":10,"n":35,"close":5.578,"low":3.67,"vol":1.141}],"mdd":[-2.132,-6.017,-4.174,-4.734,-3.053,-9.924,-7.968,-4.825,-7.485,-9.697,-7.895,-10.293,-12.82,-9.091,-3.211,-5.989,-6.367,0.0,-12.446,-12.234,-4.289,-1.492,-7.625,9.901,1.215,-2.732,-7.833,-2.874,0.748,-13.333,5.41,-7.759,-6.25,10.0,-2.332,0.881,-15.385,-5.283,-16.315,-6.849,-2.667,-3.713,-10.854,-7.293,-4.509,-1.923,-13.313,-20.957,-10.09,-14.306,-2.848,-6.762,-4.279,-5.75,-11.16,-4.928,-10.741,-11.908,-8.014,-7.973,-8.716,-10.0,-2.993],"tvn":[{"x":6,"g":"triggered","n":43,"win":79.1,"net":6.212},{"x":6,"g":"never_triggered","n":0,"win":null,"net":null},{"x":10,"g":"triggered","n":27,"win":70.4,"net":4.008},{"x":10,"g":"never_triggered","n":16,"win":93.8,"net":9.933},{"x":15,"g":"triggered","n":11,"win":45.5,"net":-0.716},{"x":15,"g":"never_triggered","n":32,"win":90.6,"net":8.594},{"x":18,"g":"triggered","n":8,"win":50.0,"net":-0.536},{"x":18,"g":"never_triggered","n":35,"win":85.7,"net":7.755},{"x":20,"g":"triggered","n":3,"win":0.0,"net":-13.365},{"x":20,"g":"never_triggered","n":40,"win":85.0,"net":7.681},{"x":22,"g":"triggered","n":2,"win":0.0,"net":-17.222},{"x":22,"g":"never_triggered","n":41,"win":82.9,"net":7.356},{"x":25,"g":"triggered","n":1,"win":0.0,"net":-10.585},{"x":25,"g":"never_triggered","n":42,"win":81.0,"net":6.612},{"x":30,"g":"triggered","n":0,"win":null,"net":null},{"x":30,"g":"never_triggered","n":43,"win":79.1,"net":6.212}]},"old":{"exits":[{"x":0,"mode":"d1","label":"進場後 1 個交易日收盤","n":597,"win":41.0,"net":-1.362,"tr":100.0},{"x":0,"mode":"d3","label":"進場後 3 個交易日收盤","n":597,"win":42.5,"net":-1.266,"tr":100.0},{"x":0,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":597,"win":56.6,"net":2.956,"tr":100.0},{"x":0,"mode":"release_open","label":"出關日開盤","n":597,"win":56.3,"net":3.392,"tr":100.0},{"x":0,"mode":"release_close","label":"出關日收盤","n":597,"win":50.1,"net":2.122,"tr":100.0},{"x":8,"mode":"d1","label":"進場後 1 個交易日收盤","n":570,"win":49.3,"net":-0.124,"tr":95.5},{"x":8,"mode":"d3","label":"進場後 3 個交易日收盤","n":570,"win":48.6,"net":-0.113,"tr":95.5},{"x":8,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":570,"win":61.6,"net":3.999,"tr":95.5},{"x":8,"mode":"release_open","label":"出關日開盤","n":570,"win":60.2,"net":4.444,"tr":95.5},{"x":8,"mode":"release_close","label":"出關日收盤","n":570,"win":54.2,"net":3.172,"tr":95.5},{"x":10,"mode":"d1","label":"進場後 1 個交易日收盤","n":534,"win":50.2,"net":0.072,"tr":89.4},{"x":10,"mode":"d3","label":"進場後 3 個交易日收盤","n":534,"win":49.6,"net":0.241,"tr":89.4},{"x":10,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":534,"win":64.8,"net":4.292,"tr":89.4},{"x":10,"mode":"release_open","label":"出關日開盤","n":534,"win":63.9,"net":4.821,"tr":89.4},{"x":10,"mode":"release_close","label":"出關日收盤","n":534,"win":55.8,"net":3.416,"tr":89.4},{"x":12,"mode":"d1","label":"進場後 1 個交易日收盤","n":479,"win":47.6,"net":-0.328,"tr":80.2},{"x":12,"mode":"d3","label":"進場後 3 個交易日收盤","n":479,"win":52.2,"net":0.464,"tr":80.2},{"x":12,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":479,"win":64.7,"net":4.327,"tr":80.2},{"x":12,"mode":"release_open","label":"出關日開盤","n":479,"win":63.3,"net":4.994,"tr":80.2},{"x":12,"mode":"release_close","label":"出關日收盤","n":479,"win":56.8,"net":3.607,"tr":80.2},{"x":15,"mode":"d1","label":"進場後 1 個交易日收盤","n":395,"win":52.9,"net":0.394,"tr":66.2},{"x":15,"mode":"d3","label":"進場後 3 個交易日收盤","n":395,"win":57.0,"net":1.334,"tr":66.2},{"x":15,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":395,"win":65.8,"net":5.431,"tr":66.2},{"x":15,"mode":"release_open","label":"出關日開盤","n":395,"win":63.8,"net":6.284,"tr":66.2},{"x":15,"mode":"release_close","label":"出關日收盤","n":395,"win":62.0,"net":5.148,"tr":66.2},{"x":20,"mode":"d1","label":"進場後 1 個交易日收盤","n":247,"win":62.8,"net":1.325,"tr":41.4},{"x":20,"mode":"d3","label":"進場後 3 個交易日收盤","n":247,"win":64.4,"net":2.617,"tr":41.4},{"x":20,"mode":"last_disp_close","label":"處置結束日收盤（仍在分盤）","n":247,"win":70.0,"net":5.988,"tr":41.4},{"x":20,"mode":"release_open","label":"出關日開盤","n":247,"win":67.6,"net":7.171,"tr":41.4},{"x":20,"mode":"release_close","label":"出關日收盤","n":247,"win":66.8,"net":6.204,"tr":41.4}],"short":[{"entry":"D0_mid","kind":"固定持有","param":"1 日","n":597,"win":61.3,"net":0.845,"lo":0.931,"hi":2.042,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"2 日","n":597,"win":62.8,"net":1.496,"lo":1.179,"hi":3.179,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"3 日","n":597,"win":60.5,"net":1.701,"lo":0.959,"hi":3.806,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"4 日","n":597,"win":58.8,"net":1.931,"lo":0.861,"hi":4.453,"hit":null},{"entry":"D0_mid","kind":"固定持有","param":"5 日","n":597,"win":57.8,"net":1.816,"lo":0.534,"hi":4.395,"hit":null},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-2%","n":597,"win":84.6,"net":0.707,"lo":0.572,"hi":2.118,"hit":83.9},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-3%","n":597,"win":80.4,"net":0.748,"lo":0.539,"hi":2.214,"hit":79.1},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-5%","n":597,"win":73.0,"net":0.972,"lo":0.472,"hi":2.62,"hit":67.8},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-8%","n":597,"win":65.8,"net":1.496,"lo":0.786,"hi":3.404,"hit":54.1},{"entry":"D0_mid","kind":"跌幅目標回補","param":"-10%","n":597,"win":62.1,"net":1.626,"lo":0.723,"hi":3.754,"hit":42.5},{"entry":"D1_open","kind":"固定持有","param":"1 日","n":597,"win":58.8,"net":0.727,"lo":0.683,"hi":2.201,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"2 日","n":597,"win":56.6,"net":0.924,"lo":0.457,"hi":2.865,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"3 日","n":597,"win":55.8,"net":1.159,"lo":0.345,"hi":3.448,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"4 日","n":597,"win":55.1,"net":1.063,"lo":0.031,"hi":3.503,"hit":null},{"entry":"D1_open","kind":"固定持有","param":"5 日","n":597,"win":54.6,"net":1.203,"lo":0.074,"hi":3.703,"hit":null},{"entry":"D1_open","kind":"跌幅目標回補","param":"-2%","n":597,"win":79.9,"net":0.668,"lo":0.313,"hi":2.362,"hit":79.2},{"entry":"D1_open","kind":"跌幅目標回補","param":"-3%","n":597,"win":76.2,"net":0.747,"lo":0.325,"hi":2.573,"hit":74.2},{"entry":"D1_open","kind":"跌幅目標回補","param":"-5%","n":597,"win":70.4,"net":0.949,"lo":0.341,"hi":2.907,"hit":64.3},{"entry":"D1_open","kind":"跌幅目標回補","param":"-8%","n":597,"win":62.5,"net":0.998,"lo":0.368,"hi":2.962,"hit":48.1},{"entry":"D1_open","kind":"跌幅目標回補","param":"-10%","n":597,"win":59.5,"net":1.163,"lo":0.485,"hi":3.154,"hit":38.7},{"entry":"D1_mid","kind":"固定持有","param":"1 日","n":597,"win":53.9,"net":-0.12,"lo":0.04,"hi":1.119,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"2 日","n":597,"win":50.8,"net":0.086,"lo":-0.248,"hi":1.846,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"3 日","n":597,"win":52.1,"net":0.319,"lo":-0.412,"hi":2.433,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"4 日","n":597,"win":51.3,"net":0.233,"lo":-0.686,"hi":2.442,"hit":null},{"entry":"D1_mid","kind":"固定持有","param":"5 日","n":597,"win":48.7,"net":0.371,"lo":-0.748,"hi":2.821,"hit":null},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-2%","n":597,"win":79.6,"net":-0.008,"lo":-0.256,"hi":1.586,"hit":78.4},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-3%","n":597,"win":74.2,"net":0.023,"lo":-0.327,"hi":1.727,"hit":72.0},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-5%","n":597,"win":66.0,"net":0.086,"lo":-0.444,"hi":1.958,"hit":59.8},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-8%","n":597,"win":57.3,"net":0.116,"lo":-0.592,"hi":2.112,"hit":42.2},{"entry":"D1_mid","kind":"跌幅目標回補","param":"-10%","n":597,"win":54.6,"net":0.323,"lo":-0.434,"hi":2.322,"hit":34.7}],"fill":[{"x":6,"tag":"","bars":9.0,"tot":9.0,"share":100.0,"note":"n=277（中位數）"},{"x":6,"tag":"撮合20分","bars":9.0,"tot":9.0,"share":100.0,"note":"n=95（中位數）"},{"x":6,"tag":"撮合5分","bars":9.0,"tot":9.0,"share":100.0,"note":"n=175（中位數）"},{"x":10,"tag":"","bars":5.0,"tot":9.0,"share":62.23,"note":"n=527（中位數）"},{"x":10,"tag":"撮合20分","bars":5.0,"tot":9.0,"share":62.02,"note":"n=166（中位數）"},{"x":10,"tag":"撮合5分","bars":5.0,"tot":9.0,"share":62.08,"note":"n=348（中位數）"},{"x":10,"tag":"撮合10分","bars":8.5,"tot":9.0,"share":99.09,"note":"n=6（中位數）"},{"x":12,"tag":"","bars":6.0,"tot":9.0,"share":69.91,"note":"n=379（中位數）"},{"x":12,"tag":"撮合20分","bars":6.0,"tot":9.0,"share":71.86,"note":"n=128（中位數）"},{"x":12,"tag":"撮合5分","bars":5.0,"tot":9.0,"share":67.64,"note":"n=240（中位數）"},{"x":15,"tag":"","bars":5.0,"tot":9.0,"share":66.09,"note":"n=388（中位數）"},{"x":15,"tag":"撮合20分","bars":5.0,"tot":9.0,"share":68.13,"note":"n=136（中位數）"},{"x":15,"tag":"撮合5分","bars":5.0,"tot":9.0,"share":65.58,"note":"n=241（中位數）"},{"x":20,"tag":"","bars":6.0,"tot":9.0,"share":70.22,"note":"n=240（中位數）"},{"x":20,"tag":"撮合20分","bars":6.0,"tot":9.0,"share":74.51,"note":"n=95（中位數）"},{"x":20,"tag":"撮合5分","bars":6.0,"tot":9.0,"share":65.5,"note":"n=136（中位數）"}],"curve":[{"off":-2,"n":597,"close":-5.785,"low":-10.73,"vol":0.993},{"off":-1,"n":597,"close":-1.794,"low":-6.028,"vol":1.161},{"off":0,"n":597,"close":0.0,"low":-2.857,"vol":1.15},{"off":1,"n":597,"close":-2.115,"low":-4.624,"vol":0.32},{"off":2,"n":597,"close":-2.069,"low":-4.839,"vol":0.255},{"off":3,"n":597,"close":-2.206,"low":-4.376,"vol":0.222},{"off":4,"n":597,"close":-2.486,"low":-4.672,"vol":0.201},{"off":5,"n":597,"close":-2.015,"low":-4.338,"vol":0.191},{"off":6,"n":597,"close":-2.117,"low":-4.465,"vol":0.168},{"off":7,"n":597,"close":-2.116,"low":-4.152,"vol":0.166},{"off":8,"n":597,"close":-1.807,"low":-3.867,"vol":0.167},{"off":9,"n":597,"close":-0.201,"low":-3.785,"vol":0.172},{"off":10,"n":597,"close":0.683,"low":-2.414,"vol":0.195}],"mdd":[-8.791,-9.302,-20.467,-10.667,-5.013,-1.364,-9.635,-9.692,-9.972,-7.566,-3.75,-11.33,-5.291,-12.5,-2.478,-13.402,-10.0,-6.992,-24.868,-13.182,-22.456,-11.787,-14.369,-13.945,-4.839,-7.637,-12.833,-7.713,-3.285,-5.833,-0.717,-8.676,-3.858,-22.18,-3.27,-3.185,-3.257,-8.4,-16.936,-17.714,-11.111,-13.433,-19.343,-24.935,-14.444,-16.916,-4.747,-2.445,-3.858,-4.075,-2.979,-1.871,-4.993,-4.608,-2.318,-8.011,-6.977,-10.049,-8.406,-13.703,-10.149,-14.127,4.779,-2.154,-7.385,-12.956,-15.185,-17.036,-20.0,9.45,-3.333,-8.56,-9.421,-6.387,-8.571,-11.691,-3.797,-8.518,-6.226,-8.279,-6.305,-7.576,-10.089,1.395,-10.592,-4.441,-9.238,-14.207,-26.374,-18.76,-4.242,-14.634,-9.906,0.417,-38.987,-2.071,-25.556,-17.789,-18.085,-16.505,-15.353,-13.333,-16.458,-21.421,-13.226,-18.571,-14.135,-10.351,-8.592,-10.596,-26.281,-18.501,-22.597,-15.592,-5.594,-3.988,-3.719,-17.437,-14.358,-0.411,-15.8,-12.268,-14.419,-7.682,-0.368,-10.919,-10.454,6.111,-4.157,-2.717,-1.99,-2.746,-7.353,-5.447,-3.15,-3.55,-4.762,-15.926,-10.394,-2.253,-9.88,-0.337,-5.674,-4.177,0.0,-9.524,0.687,-1.554,-34.63,-14.309,-10.407,-37.99,-12.059,-23.502,-13.876,-7.958,-2.141,-14.793,3.289,-18.613,0.979,-7.163,-4.834,-11.208,-11.526,-6.598,-15.3,-10.0,-8.609,-4.462,-9.386,-7.2,-17.121,-2.694,-18.067,-19.185,-35.447,-42.112,-10.256,-33.288,-37.282,-33.934,-17.843,1.685,0.478,-8.974,-6.096,0.274,-6.087,-11.575,-10.905,0.0,-5.139,-4.732,-21.008,1.23,-1.651,9.804,-10.424,-9.622,-4.388,-7.234,-6.483,-8.69,-2.51,-1.409,-13.122,5.151,-5.048,-4.964,-5.048,-5.535,-8.333,-12.171,-17.302,-5.01,-18.033,-9.326,-8.511,-23.644,-7.66,-0.497,-10.266,-1.946,-17.853,-12.598,-10.983,-4.875,-1.597,-8.794,-15.917,-4.498,-8.832,-13.243,-1.37,-10.956,-20.048,-15.073,-1.992,-11.013,-9.208,-5.717,-7.143,-4.591,-19.342,-14.134,-6.231,-10.064,-25.843,-18.056,-23.397,-10.569,-1.26,-3.321,-6.475,0.98,-9.83,-12.432,-18.518,-7.312,-9.648,-5.695,-12.421,-9.649,-4.297,-9.927,-6.452,-4.676,-4.352,-5.556,-10.297,-11.06,-9.938,-9.556,-9.97,-2.697,0.515,-14.286,-5.446,-2.485,-5.844,-4.153,-4.661,-28.672,-8.701,-19.904,-15.512,-16.582,-1.246,-13.379,-15.078,-19.313,-3.649,-17.622,-22.302,0.179,-7.031,-22.379,-10.223,-2.329,-12.841,-14.062,-5.755,-8.231,-24.812,-11.264,-10.606,-36.815,-19.878,-26.306,-18.152,-19.127,-11.638,-4.0,-19.937,-20.594,-16.848,-27.903,-34.103,-14.789,-12.466,-14.699,1.216,-7.778,-11.148,-10.963,-9.041,-14.776,-9.925,-35.146,-13.842,-4.566,-20.139,-8.882,-6.056,-17.166,-6.066,-30.971,-32.99,-9.772,-12.195,-19.512,-17.862,-23.362,-9.333,-16.301,-27.445,-13.858,-18.012,-30.876,-18.774,-30.565,-21.502,-3.86,-37.65,-22.446,-30.96,-19.527,-22.222,-11.958,-22.308,-19.273,1.961,-18.563,0.13,0.0,-5.438,-8.027,-3.317,-9.244,-26.856,-5.431,-4.558,-4.161,-15.454,-12.854,-11.496,-6.527,-24.179,-12.2,-23.95,-11.98,-4.571,-5.83,0.383,-12.696,-13.695,-11.628,-12.403,-8.184,-6.966,2.934,-2.84,-2.094,-5.905,-3.077,-23.393,-19.769,7.681,-9.329,-15.924,-28.317,-17.085,-20.12,2.963,-23.126,-17.78,-8.484,-26.497,-8.996,-20.113,-16.023,-27.35,-12.079,-18.91,-16.835,-7.63,-18.85,-19.866,-9.857,-34.275,-5.896,-0.637,-13.288,-9.899,-16.186,-9.927,-9.212,0.0,-2.564,-9.722,-26.932,1.045,0.139,-14.877,-12.704,-6.742,-11.411,-9.621,-18.75,-10.48,-19.591,-21.757,-19.042,-7.407,-22.524,-18.323,-20.233,-4.097,-9.53,-18.274,-19.129,-28.571,-14.516,-7.045,-9.65,-9.418,-15.833,-16.204,-9.963,-4.903,-6.533,-4.075,-51.842,-4.082,-2.881,-11.738,-9.268,-8.085,-5.2,-8.683,-7.224,-6.667,-9.943,-11.263,-12.148,-6.404,-39.042,-11.099,-15.112,5.023,-14.224,-17.081,-11.254,-23.002,-15.414,-16.306,-18.919,-11.65,-7.107,-10.0,-17.203,-16.645,-26.557,-18.192,-20.721,-18.598,-10.279,-11.96,-23.392,-15.443,-21.569,-13.566,-28.621,-18.338,-24.501,-23.267,-19.87,-16.43,-33.75,-3.226,-32.239,-42.291,-10.241,-14.234,-8.255,-10.152,-18.876,-16.3,-14.156,-17.032,-11.824,-29.66,-22.535,-8.249,-6.41,0.599,-2.174,-5.117,-4.375,0.385,-0.602,-18.862,-16.216,-19.952,-15.171,-16.667,-7.948,-17.884,-7.522,-6.149,-8.221,-11.228,-15.598,-21.212,-14.108,-16.149,-9.31,-8.39,-17.739,-14.844,-18.676,-13.147,-11.512,2.008,9.845,-6.463,-4.851,9.476,-17.16,-23.147,-17.229,-15.947,-15.349,1.075,-20.12,-12.041,-1.312,-19.169,-10.994,-18.092,-6.803,-10.979,-38.075,-18.889,-21.039,-22.238,-41.821,-41.32,-41.388,-28.339,-25.267,-38.93,-26.299,-36.846,-34.036,-22.46,-18.876,-9.877,-0.182,-5.794,4.186,-8.469,-4.444,-9.394,-1.199,2.174],"tvn":[{"x":6,"g":"triggered","n":590,"win":56.9,"net":3.003},{"x":6,"g":"never_triggered","n":7,"win":28.6,"net":-0.956},{"x":10,"g":"triggered","n":534,"win":53.7,"net":2.147},{"x":10,"g":"never_triggered","n":63,"win":81.0,"net":9.817},{"x":15,"g":"triggered","n":395,"win":47.8,"net":-0.312},{"x":15,"g":"never_triggered","n":202,"win":73.8,"net":9.347},{"x":18,"g":"triggered","n":302,"win":37.4,"net":-4.701},{"x":18,"g":"never_triggered","n":295,"win":76.3,"net":10.796},{"x":20,"g":"triggered","n":247,"win":35.6,"net":-6.288},{"x":20,"g":"never_triggered","n":350,"win":71.4,"net":9.48},{"x":22,"g":"triggered","n":186,"win":31.7,"net":-7.578},{"x":22,"g":"never_triggered","n":411,"win":67.9,"net":7.724},{"x":25,"g":"triggered","n":116,"win":25.9,"net":-10.663},{"x":25,"g":"never_triggered","n":481,"win":64.0,"net":6.241},{"x":30,"g":"triggered","n":55,"win":14.5,"net":-18.397},{"x":30,"g":"never_triggered","n":542,"win":60.9,"net":5.123}]},"events":[{"code":"1815","name":"富喬","mkt":"TPEX","d":"2026-08-10","measure":"","iv":2,"src":"回補","d1":-0.449,"d2":1.01,"d3":0.898,"mdd":-2.132,"rel":8.305,"trade":8.549,"short":-0.666,"complete":true,"price":89.1},{"code":"2491","name":"吉祥全","mkt":"TWSE","d":"2026-08-10","measure":"第一次處置","iv":2,"src":"官方","d1":-2.006,"d2":-1.146,"d3":0.0,"mdd":-6.017,"rel":8.309,"trade":5.587,"short":-0.143,"complete":true,"price":34.9},{"code":"3006","name":"晶豪科","mkt":"TWSE","d":"2026-08-10","measure":"第一次處置","iv":2,"src":"官方","d1":-2.904,"d2":-0.544,"d3":0.726,"mdd":-4.174,"rel":-0.907,"trade":-0.365,"short":-0.274,"complete":true,"price":275.5},{"code":"3081","name":"聯亞","mkt":"TPEX","d":"2026-08-10","measure":"","iv":2,"src":"回補","d1":-2.17,"d2":7.495,"d3":5.128,"mdd":-4.734,"rel":10.059,"trade":15.289,"short":-6.244,"complete":true,"price":2535.0},{"code":"3167","name":"大量","mkt":"TWSE","d":"2026-08-10","measure":"第二次處置","iv":2,"src":"官方","d1":-3.053,"d2":2.595,"d3":2.901,"mdd":-3.053,"rel":6.87,"trade":7.692,"short":6.346,"complete":true,"price":655.0},{"code":"3450","name":"聯鈞","mkt":"TWSE","d":"2026-08-10","measure":"第二次處置","iv":2,"src":"官方","d1":-9.637,"d2":-3.244,"d3":0.573,"mdd":-9.924,"rel":4.962,"trade":10.0,"short":2.67,"complete":true,"price":524.0},{"code":"4971","name":"IET-KY","mkt":"TPEX","d":"2026-08-10","measure":"","iv":2,"src":"回補","d1":-7.37,"d2":-0.398,"d3":-1.594,"mdd":-7.968,"rel":5.179,"trade":10.46,"short":0.0,"complete":true,"price":502.0},{"code":"5351","name":"鈺創","mkt":"TPEX","d":"2026-08-10","measure":"","iv":2,"src":"回補","d1":4.825,"d2":7.018,"d3":13.158,"mdd":-4.825,"rel":18.86,"trade":16.81,"short":-11.429,"complete":true,"price":114.0},{"code":"6213","name":"聯茂","mkt":"TWSE","d":"2026-08-10","measure":"第一次處置","iv":2,"src":"官方","d1":5.731,"d2":8.538,"d3":9.708,"mdd":-7.485,"rel":12.515,"trade":12.515,"short":-8.311,"complete":true,"price":427.5},{"code":"6217","name":"中探針","mkt":"TPEX","d":"2026-08-10","measure":"","iv":2,"src":"回補","d1":-7.273,"d2":-6.667,"d3":2.121,"mdd":-9.697,"rel":3.636,"trade":2.703,"short":9.508,"complete":true,"price":165.0},{"code":"6451","name":"訊芯-KY","mkt":"TWSE","d":"2026-08-10","measure":"第一次處置","iv":2,"src":"官方","d1":-5.044,"d2":-1.097,"d3":-4.386,"mdd":-7.895,"rel":0.548,"trade":4.92,"short":2.094,"complete":true,"price":456.0},{"code":"6531","name":"愛普*","mkt":"TWSE","d":"2026-08-10","measure":"第二次處置","iv":2,"src":"官方","d1":-9.967,"d2":-4.875,"d3":-6.284,"mdd":-10.293,"rel":-5.417,"trade":-3.536,"short":12.376,"complete":true,"price":923.0},{"code":"7610","name":"聯友金屬-創","mkt":"TWSE","d":"2026-08-10","measure":"第二次處置","iv":2,"src":"官方","d1":-4.103,"d2":-2.821,"d3":-7.179,"mdd":-12.82,"rel":-5.128,"trade":-2.116,"short":5.699,"complete":true,"price":1950.0},{"code":"8021","name":"尖點","mkt":"TWSE","d":"2026-08-10","measure":"第二次處置","iv":2,"src":"官方","d1":1.036,"d2":-1.726,"d3":-1.266,"mdd":-9.091,"rel":-1.496,"trade":0.824,"short":-2.204,"complete":true,"price":434.5},{"code":"6426","name":"統新","mkt":"TWSE","d":"2026-08-11","measure":"第一次處置","iv":2,"src":"官方","d1":1.835,"d2":-0.917,"d3":0.459,"mdd":-3.211,"rel":11.927,"trade":4.721,"short":-1.839,"complete":true,"price":218.0},{"code":"3163","name":"波若威","mkt":"TPEX","d":"2026-08-12","measure":"","iv":2,"src":"回補","d1":-0.139,"d2":-2.228,"d3":2.089,"mdd":-5.989,"rel":9.053,"trade":5.811,"short":0.496,"complete":true,"price":718.0},{"code":"4931","name":"新盛力","mkt":"TPEX","d":"2026-08-12","measure":"","iv":2,"src":"回補","d1":-2.247,"d2":-1.498,"d3":0.936,"mdd":-6.367,"rel":4.869,"trade":3.321,"short":-0.575,"complete":true,"price":267.0},{"code":"7711","name":"永擎","mkt":"TWSE","d":"2026-08-12","measure":"第一次處置","iv":2,"src":"官方","d1":9.832,"d2":5.475,"d3":6.145,"mdd":0.0,"rel":9.497,"trade":7.456,"short":-9.03,"complete":true,"price":447.5},{"code":"3026","name":"禾伸堂","mkt":"TWSE","d":"2026-08-13","measure":"第二次處置","iv":2,"src":"官方","d1":-6.368,"d2":-0.289,"d3":-3.329,"mdd":-12.446,"rel":2.75,"trade":2.158,"short":11.18,"complete":true,"price":691.0},{"code":"4979","name":"華星光","mkt":"TPEX","d":"2026-08-13","measure":"","iv":2,"src":"回補","d1":-7.447,"d2":-3.369,"d3":-6.383,"mdd":-12.234,"rel":1.064,"trade":3.636,"short":10.225,"complete":true,"price":564.0},{"code":"4991","name":"環宇-KY","mkt":"TPEX","d":"2026-08-13","measure":"","iv":2,"src":"回補","d1":-3.766,"d2":2.092,"d3":1.464,"mdd":-4.289,"rel":8.787,"trade":11.828,"short":2.697,"complete":true,"price":478.0},{"code":"6213","name":"聯茂","mkt":"TWSE","d":"2026-08-13","measure":"第二次處置","iv":2,"src":"官方","d1":2.345,"d2":2.559,"d3":4.051,"mdd":-1.492,"rel":8.742,"trade":10.151,"short":-4.125,"complete":true,"price":469.0},{"code":"5475","name":"德宏","mkt":"TPEX","d":"2026-08-14","measure":"","iv":2,"src":"回補","d1":-0.88,"d2":7.038,"d3":5.572,"mdd":-7.625,"rel":2.346,"trade":2.346,"short":-3.631,"complete":true,"price":170.5},{"code":"6225","name":"天瀚","mkt":"TWSE","d":"2026-08-14","measure":"人工管制撮合","iv":10,"src":"官方","d1":9.901,"d2":20.792,"d3":32.673,"mdd":9.901,"rel":60.148,"trade":45.721,"short":-17.213,"complete":true,"price":40.4},{"code":"6716","name":"應廣","mkt":"TPEX","d":"2026-08-14","measure":"","iv":2,"src":"回補","d1":5.263,"d2":11.336,"d3":10.526,"mdd":1.215,"rel":7.692,"trade":1.527,"short":-10.332,"complete":true,"price":123.5},{"code":"7795","name":"長廣","mkt":"TWSE","d":"2026-08-17","measure":"第一次處置","iv":2,"src":"官方","d1":4.189,"d2":-0.911,"d3":0.546,"mdd":-2.732,"rel":3.461,"trade":4.029,"short":-0.628,"complete":true,"price":549.0},{"code":"8033","name":"雷虎","mkt":"TWSE","d":"2026-08-17","measure":"第二次處置","iv":2,"src":"官方","d1":-2.872,"d2":-3.394,"d3":-2.089,"mdd":-7.833,"rel":-3.394,"trade":0.0,"short":11.065,"complete":true,"price":191.5},{"code":"3498","name":"陽程","mkt":"TPEX","d":"2026-08-18","measure":"","iv":2,"src":"回補","d1":9.483,"d2":5.46,"d3":10.345,"mdd":-2.874,"rel":14.943,"trade":17.647,"short":-10.641,"complete":true,"price":174.0},{"code":"3490","name":"單井","mkt":"TPEX","d":"2026-08-19","measure":"","iv":2,"src":"回補","d1":5.021,"d2":15.171,"d3":6.197,"mdd":0.748,"rel":14.53,"trade":12.842,"short":-12.5,"complete":true,"price":46.8},{"code":"5475","name":"德宏","mkt":"TPEX","d":"2026-08-19","measure":"","iv":2,"src":"回補","d1":-2.222,"d2":-3.056,"d3":-11.389,"mdd":-13.333,"rel":0.556,"trade":0.277,"short":1.441,"complete":true,"price":180.0},{"code":"6225","name":"天瀚","mkt":"TWSE","d":"2026-08-19","measure":"人工管制撮合","iv":25,"src":"官方","d1":9.888,"d2":20.709,"d3":32.649,"mdd":5.41,"rel":27.799,"trade":16.894,"short":-19.938,"complete":true,"price":53.6},{"code":"2455","name":"全新","mkt":"TWSE","d":"2026-08-21","measure":"第二次處置","iv":2,"src":"官方","d1":-6.035,"d2":3.325,"d3":5.419,"mdd":-7.759,"rel":6.897,"trade":8.095,"short":1.322,"complete":true,"price":406.0},{"code":"3498","name":"陽程","mkt":"TPEX","d":"2026-08-21","measure":"","iv":2,"src":"回補","d1":-3.646,"d2":4.167,"d3":5.99,"mdd":-6.25,"rel":-1.302,"trade":-0.785,"short":-1.445,"complete":true,"price":192.0},{"code":"5314","name":"世紀*","mkt":"TPEX","d":"2026-08-21","measure":"","iv":2,"src":"回補","d1":10.0,"d2":20.962,"d3":32.885,"mdd":10.0,"rel":31.538,"trade":19.58,"short":-17.329,"complete":true,"price":26.0},{"code":"5321","name":"美而快","mkt":"TPEX","d":"2026-08-21","measure":"","iv":2,"src":"回補","d1":7.682,"d2":11.111,"d3":11.248,"mdd":-2.332,"rel":16.598,"trade":19.382,"short":-6.888,"complete":true,"price":72.9},{"code":"3625","name":"西勝","mkt":"TPEX","d":"2026-08-24","measure":"","iv":10,"src":"回補","d1":9.692,"d2":9.692,"d3":9.692,"mdd":0.881,"rel":13.216,"trade":12.227,"short":-9.218,"complete":true,"price":11.35},{"code":"4304","name":"勝昱","mkt":"TPEX","d":"2026-08-24","measure":"","iv":2,"src":"回補","d1":-5.628,"d2":-1.313,"d3":-7.505,"mdd":-15.385,"rel":-5.066,"trade":-5.066,"short":0.093,"complete":true,"price":26.65},{"code":"4971","name":"IET-KY","mkt":"TPEX","d":"2026-08-24","measure":"","iv":2,"src":"回補","d1":4.528,"d2":4.151,"d3":6.981,"mdd":-5.283,"rel":13.207,"trade":15.385,"short":1.0,"complete":true,"price":530.0},{"code":"6225","name":"天瀚","mkt":"TWSE","d":"2026-08-24","measure":"人工管制撮合","iv":25,"src":"官方","d1":-7.032,"d2":-3.657,"d3":-7.173,"mdd":-16.315,"rel":-15.612,"trade":-23.274,"short":2.82,"complete":true,"price":71.1},{"code":"3234","name":"光環","mkt":"TPEX","d":"2026-08-25","measure":"","iv":2,"src":"回補","d1":-1.096,"d2":-1.37,"d3":-0.548,"mdd":-6.849,"rel":9.589,"trade":11.421,"short":-6.584,"complete":true,"price":182.5},{"code":"2486","name":"一詮","mkt":"TWSE","d":"2026-08-26","measure":"第一次處置","iv":2,"src":"官方","d1":-1.333,"d2":-0.571,"d3":0.191,"mdd":-2.667,"rel":9.714,"trade":10.769,"short":-1.24,"complete":true,"price":262.5},{"code":"3362","name":"先進光","mkt":"TPEX","d":"2026-08-26","measure":"","iv":2,"src":"官方","d1":1.238,"d2":-1.238,"d3":0.0,"mdd":-3.713,"rel":3.96,"trade":3.96,"short":0.743,"complete":false,"price":202.0},{"code":"5314","name":"世紀*","mkt":"TPEX","d":"2026-08-26","measure":"","iv":2,"src":"回補","d1":9.986,"d2":-1.013,"d3":4.197,"mdd":-10.854,"rel":-1.013,"trade":-10.0,"short":-9.079,"complete":true,"price":34.55},{"code":"4979","name":"華星光","mkt":"TPEX","d":"2026-08-27","measure":"","iv":2,"src":"回補","d1":-1.135,"d2":-1.297,"d3":-2.755,"mdd":-7.293,"rel":-7.293,"trade":-5.141,"short":4.243,"complete":true,"price":617.0},{"code":"3163","name":"波若威","mkt":"TPEX","d":"2026-08-28","measure":"","iv":2,"src":"官方","d1":-1.724,"d2":0.928,"d3":1.591,"mdd":-4.509,"rel":2.785,"trade":6.019,"short":2.199,"complete":false,"price":754.0},{"code":"3441","name":"聯一光","mkt":"TPEX","d":"2026-08-28","measure":"","iv":2,"src":"官方","d1":4.615,"d2":2.308,"d3":7.308,"mdd":-1.923,"rel":10.0,"trade":12.157,"short":0.372,"complete":false,"price":130.0},{"code":"4188","name":"安克","mkt":"TPEX","d":"2026-08-28","measure":"","iv":2,"src":"官方","d1":-8.05,"d2":-9.907,"d3":-10.217,"mdd":-13.313,"rel":-10.526,"trade":-1.027,"short":9.354,"complete":false,"price":16.15},{"code":"6103","name":"合邦","mkt":"TPEX","d":"2026-08-28","measure":"","iv":2,"src":"官方","d1":-5.319,"d2":-5.106,"d3":-5.745,"mdd":-20.957,"rel":-20.851,"trade":-20.851,"short":0.656,"complete":false,"price":47.0},{"code":"4939","name":"亞電","mkt":"TPEX","d":"2026-08-31","measure":"","iv":2,"src":"官方","d1":-2.354,"d2":-0.336,"d3":-8.632,"mdd":-10.09,"rel":-1.457,"trade":-0.79,"short":2.554,"complete":false,"price":89.2},{"code":"5314","name":"世紀*","mkt":"TPEX","d":"2026-08-31","measure":"","iv":2,"src":"官方","d1":-1.944,"d2":-5.0,"d3":-13.889,"mdd":-14.306,"rel":-11.111,"trade":-11.111,"short":-4.775,"complete":false,"price":36.0},{"code":"6226","name":"光鼎","mkt":"TWSE","d":"2026-08-31","measure":"第一次處置","iv":2,"src":"官方","d1":7.595,"d2":8.07,"d3":1.266,"mdd":-2.848,"rel":6.013,"trade":2.134,"short":0.74,"complete":false,"price":31.6},{"code":"3374","name":"精材","mkt":"TPEX","d":"2026-09-01","measure":"","iv":2,"src":"官方","d1":-0.474,"d2":-5.101,"d3":2.017,"mdd":-6.762,"rel":2.017,"trade":2.871,"short":3.182,"complete":false,"price":421.5},{"code":"3406","name":"玉晶光","mkt":"TWSE","d":"2026-09-01","measure":"第一次處置","iv":2,"src":"官方","d1":4.478,"d2":-1.393,"d3":4.975,"mdd":-4.279,"rel":4.975,"trade":8.763,"short":1.117,"complete":false,"price":1005.0},{"code":"3629","name":"地心引力","mkt":"TPEX","d":"2026-09-01","measure":"","iv":45,"src":"官方","d1":-0.5,"d2":-0.75,"d3":-1.0,"mdd":-5.75,"rel":-1.0,"trade":-1.0,"short":3.359,"complete":false,"price":20.0},{"code":"6805","name":"富世達","mkt":"TWSE","d":"2026-09-01","measure":"第一次處置","iv":2,"src":"官方","d1":-7.659,"d2":-8.315,"d3":-3.72,"mdd":-11.16,"rel":-3.72,"trade":-1.786,"short":5.952,"complete":false,"price":2285.0},{"code":"6933","name":"AMAX-KY","mkt":"TWSE","d":"2026-09-01","measure":"第一次處置","iv":2,"src":"官方","d1":5.246,"d2":-3.975,"d3":0.795,"mdd":-4.928,"rel":0.795,"trade":0.795,"short":-2.085,"complete":false,"price":314.5},{"code":"8358","name":"金居","mkt":"TPEX","d":"2026-09-01","measure":"","iv":2,"src":"官方","d1":-4.373,"d2":-10.646,"d3":-4.943,"mdd":-10.741,"rel":-4.943,"trade":-2.913,"short":10.671,"complete":false,"price":526.0},{"code":"3008","name":"大立光","mkt":"TWSE","d":"2026-09-02","measure":"第一次處置","iv":2,"src":"官方","d1":-8.451,"d2":-5.25,"d3":null,"mdd":-11.908,"rel":-5.25,"trade":-4.762,"short":7.572,"complete":false,"price":7810.0},{"code":"3324","name":"雙鴻","mkt":"TPEX","d":"2026-09-02","measure":"","iv":2,"src":"官方","d1":-5.923,"d2":3.484,"d3":null,"mdd":-8.014,"rel":3.484,"trade":3.484,"short":-2.073,"complete":false,"price":1435.0},{"code":"3450","name":"聯鈞","mkt":"TWSE","d":"2026-09-02","measure":"第二次處置","iv":2,"src":"官方","d1":-7.973,"d2":-3.655,"d3":null,"mdd":-7.973,"rel":-3.655,"trade":-3.01,"short":7.726,"complete":false,"price":602.0},{"code":"4908","name":"前鼎","mkt":"TPEX","d":"2026-09-02","measure":"","iv":2,"src":"官方","d1":-6.193,"d2":2.982,"d3":null,"mdd":-8.716,"rel":2.982,"trade":2.045,"short":7.91,"complete":false,"price":218.0},{"code":"3664","name":"安瑞-KY","mkt":"TPEX","d":"2026-09-03","measure":"","iv":45,"src":"官方","d1":-10.0,"d2":null,"d3":null,"mdd":-10.0,"rel":-10.0,"trade":-1.799,"short":6.897,"complete":false,"price":9.1},{"code":"4991","name":"環宇-KY","mkt":"TPEX","d":"2026-09-03","measure":"","iv":2,"src":"官方","d1":2.58,"d2":null,"d3":null,"mdd":-2.993,"rel":2.58,"trade":-0.401,"short":6.718,"complete":false,"price":484.5}],"spike":[{"sig":"處置期間第 1 根暴大量（收盤買進）","hold":"1 根 30 分 K","n":61,"win":49.2,"net":-0.519},{"sig":"處置期間第 1 根暴大量（收盤買進）","hold":"3 根 30 分 K","n":61,"win":52.5,"net":-0.253},{"sig":"處置期間第 1 根暴大量（收盤買進）","hold":"9 根 30 分 K","n":60,"win":58.3,"net":1.079},{"sig":"處置期間第 1 根暴大量（收盤買進）","hold":"to_release","n":43,"win":81.4,"net":5.839},{"sig":"處置期間第 2 根暴大量（收盤買進）","hold":"1 根 30 分 K","n":59,"win":40.7,"net":-0.589},{"sig":"處置期間第 2 根暴大量（收盤買進）","hold":"3 根 30 分 K","n":59,"win":50.8,"net":-0.177},{"sig":"處置期間第 2 根暴大量（收盤買進）","hold":"9 根 30 分 K","n":57,"win":56.1,"net":0.772},{"sig":"處置期間第 2 根暴大量（收盤買進）","hold":"to_release","n":43,"win":79.1,"net":4.837},{"sig":"對照：處置首根 30 分 K 收盤買進（不看量）","hold":"1 根 30 分 K","n":63,"win":33.3,"net":-1.411},{"sig":"對照：處置首根 30 分 K 收盤買進（不看量）","hold":"3 根 30 分 K","n":63,"win":31.7,"net":-1.206},{"sig":"對照：處置首根 30 分 K 收盤買進（不看量）","hold":"9 根 30 分 K","n":60,"win":56.7,"net":0.337},{"sig":"對照：處置首根 30 分 K 收盤買進（不看量）","hold":"to_release","n":43,"win":81.4,"net":6.59}]};
+const NS="http://www.w3.org/2000/svg";
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const el=(t,a={})=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const tip=document.getElementById("tip");
+function hover(node,text){
+  node.addEventListener("pointerenter",()=>{tip.textContent=text;tip.style.opacity=1;});
+  node.addEventListener("pointermove",e=>{
+    const w=tip.offsetWidth,h=tip.offsetHeight;
+    tip.style.left=Math.min(e.clientX+14,innerWidth-w-8)+"px";
+    tip.style.top=Math.max(e.clientY-h-12,8)+"px";});
+  node.addEventListener("pointerleave",()=>{tip.style.opacity=0;});
+}
+const fmt=(v,d=2)=>v==null?"—":(v>0?"+":"")+v.toFixed(d);
+const W_=box=>Math.max(560,Math.min(box.clientWidth||1000,1040));
+function axisY(s,m,iw,Y,lo,hi,step,suffix="%"){
+  for(let v=Math.ceil(lo/step)*step;v<=hi;v+=step){
+    s.appendChild(el("line",{x1:m.l,x2:m.l+iw,y1:Y(v),y2:Y(v),
+      stroke:v===0?css("--ink-3"):css("--rule-soft"),"stroke-width":v===0?1.2:1}));
+    const t=el("text",{x:m.l-8,y:Y(v)+4,"text-anchor":"end","font-size":11});
+    t.textContent=(suffix==="%"&&v>0?"+":"")+v+suffix; s.appendChild(t);
+  }
+}
+
+/* ---------- 1. 最大回落分布（雙制度，比例） ---------- */
+function mdd(){
+  const box=document.getElementById("c-mdd"); if(!box) return;
+  const W=W_(box),H=280,m={t:24,r:20,b:56,l:44},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const edges=[]; for(let v=-40;v<2;v+=2) edges.push(v);
+  const binOf=v=>{let i=edges.findIndex(e=>v>=e&&v<e+2);return i<0?0:i;};
+  const series=[["old",css("--struct"),"舊制 n="+D.old.mdd.length],
+                ["new",css("--caution"),"新制 n="+D.new.mdd.length]];
+  const counts={};
+  series.forEach(([k])=>{const c=new Array(edges.length).fill(0);
+    D[k].mdd.forEach(v=>{c[binOf(v)]++;});
+    counts[k]=c.map(x=>100*x/D[k].mdd.length);});
+  const top=Math.max(...series.flatMap(([k])=>counts[k]))*1.12;
+  const X=i=>m.l+i*(iw/edges.length), bw=iw/edges.length/2-1.5;
+  const Y=v=>m.t+(1-v/top)*ih;
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"新舊制的最大回落分布比較"});
+  axisY(s,m,iw,Y,0,top,5,"%");
+  s.appendChild(el("line",{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:css("--rule")}));
+  edges.forEach((e,i)=>{
+    series.forEach(([k,color],si)=>{
+      const v=counts[k][i]; if(v<=0) return;
+      const x=X(i)+si*(bw+1.5), h=Math.max(1.5,m.t+ih-Y(v));
+      const r=el("rect",{x,y:Y(v),width:bw,height:h,rx:2,fill:color,
+        opacity:e<=-20?1:.85});
+      hover(r,`${e}% ~ ${e+2}%\n${k==="old"?"舊制":"新制"} ${(v*D[k].mdd.length/100).toFixed(0)} 檔（${v.toFixed(1)}%）`);
+      s.appendChild(r);
+    });
+    if(e%8===0){const t=el("text",{x:X(i)+bw,y:m.t+ih+18,"text-anchor":"middle","font-size":11});
+      t.textContent=e+"%";s.appendChild(t);}
+  });
+  const i20=edges.indexOf(-20), x20=X(i20)+2*bw+2;
+  s.appendChild(el("line",{x1:x20,x2:x20,y1:m.t-8,y2:m.t+ih,stroke:css("--rise"),
+    "stroke-width":1.5,"stroke-dasharray":"4 3"}));
+  const t20=el("text",{x:x20+8,y:m.t-1,"font-size":11.5,fill:css("--rise")});
+  t20.textContent="-20%：舊制 15.9% 的事件到得了，新制只有 1.6%"; s.appendChild(t20);
+  const ax=el("text",{x:m.l+iw/2,y:H-8,"text-anchor":"middle","font-size":11.5});
+  ax.textContent="處置期間最大回落（相對公告日收盤）·  縱軸為各自樣本內佔比"; s.appendChild(ax);
+  box.appendChild(s);
+}
+
+/* ---------- 2. 觸發 vs 未觸發（雙制度） ---------- */
+function tvn(){
+  const box=document.getElementById("c-tvn"); if(!box) return;
+  const W=W_(box),H=310,m={t:24,r:16,b:70,l:48},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const xs=[10,15,20];
+  const groups=[];
+  [["old","舊制"],["new","新制"]].forEach(([k,lab])=>xs.forEach(x=>{
+    const hit=D[k].tvn.find(r=>r.x===x&&r.g==="triggered");
+    const miss=D[k].tvn.find(r=>r.x===x&&r.g==="never_triggered");
+    if(hit&&miss) groups.push({k,lab,x,hit,miss});}));
+  const vs=groups.flatMap(g=>[g.hit.net,g.miss.net]).filter(v=>v!=null);
+  const top=Math.max(...vs)+2.5, bot=Math.min(...vs)-2.5;
+  const Y=v=>m.t+(top-v)/(top-bot)*ih;
+  const gw=iw/groups.length, bw=Math.min(34,gw/2-8);
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"曾跌破與從未跌破兩群的整段報酬，新舊制對照"});
+  axisY(s,m,iw,Y,bot,top,5);
+  // 制度分隔線
+  const split=m.l+gw*xs.length;
+  s.appendChild(el("line",{x1:split,x2:split,y1:m.t-6,y2:m.t+ih+34,
+    stroke:css("--rule"),"stroke-width":1,"stroke-dasharray":"3 3"}));
+  groups.forEach((g,i)=>{
+    const cx=m.l+gw*i+gw/2;
+    [[g.hit,css("--fall"),-1,"曾跌破"],[g.miss,css("--rise"),1,"從未跌破"]].forEach(([d,color,dir,name])=>{
+      if(d.net==null) return;
+      const x=cx+dir*(bw/2+2)-bw/2, y0=Y(0), y1=Y(d.net);
+      const r=el("rect",{x,y:Math.min(y0,y1),width:bw,height:Math.max(2,Math.abs(y1-y0)),
+        rx:3,fill:color,opacity:d.n<8?.5:1});
+      hover(r,`${g.lab} X=${g.x}%・${name}\nn=${d.n}　勝率 ${d.win}%\n扣成本平均 ${fmt(d.net)}%`);
+      s.appendChild(r);
+      const t=el("text",{x:x+bw/2,y:(d.net>=0?y1-7:y1+15),"text-anchor":"middle",
+        "font-size":11.5,fill:color});
+      t.textContent=fmt(d.net,1); s.appendChild(t);
+      const n=el("text",{x:x+bw/2,y:(d.net>=0?y1-20:y1+27),"text-anchor":"middle",
+        "font-size":9.5,fill:css("--ink-3")});
+      n.textContent="n="+d.n; s.appendChild(n);
+    });
+    const t=el("text",{x:cx,y:m.t+ih+20,"text-anchor":"middle","font-size":11.5,fill:css("--ink-2")});
+    t.textContent="-"+g.x+"%"; s.appendChild(t);
+    if(i===1||i===4){
+      const l=el("text",{x:cx,y:m.t+ih+42,"text-anchor":"middle","font-size":12.5,
+        fill:css("--ink")});
+      l.textContent=g.lab+(g.k==="old"?"（597 事件・115 週）":"（63 事件・4 週）");
+      s.appendChild(l);
+    }
+  });
+  const ax=el("text",{x:m.l+iw/2,y:H-6,"text-anchor":"middle","font-size":11.5});
+  ax.textContent="D1 開盤買、出關日收盤賣的扣成本平均報酬"; s.appendChild(ax);
+  box.appendChild(s);
+}
+
+/* ---------- 3. 回落門檻的每事件期望值 ---------- */
+function dip(){
+  const box=document.getElementById("c-dip"); if(!box) return;
+  const W=W_(box),H=300,m={t:24,r:70,b:52,l:52},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const xs=[0,4,5,6,8,10,12,15,20];
+  const series=[["old",css("--struct"),"舊制"],["new",css("--caution"),"新制"]];
+  const all=series.flatMap(([k])=>D.dip[k].map(r=>r.ev));
+  const top=Math.max(...all)+0.9, bot=Math.min(0,...all)-0.4;
+  const X=x=>m.l+xs.indexOf(x)/(xs.length-1)*iw;
+  const Y=v=>m.t+(top-v)/(top-bot)*ih;
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"各回落門檻的每事件期望值"});
+  axisY(s,m,iw,Y,bot,top,1);
+  xs.forEach(x=>{const t=el("text",{x:X(x),y:m.t+ih+20,"text-anchor":"middle","font-size":11.5,
+    fill:css("--ink-3")});t.textContent=x===0?"無條件":x+"%";s.appendChild(t);});
+  series.forEach(([k,color,name])=>{
+    const base=D.dip[k].find(r=>r.x===0);
+    if(base) {
+      s.appendChild(el("line",{x1:m.l,x2:m.l+iw,y1:Y(base.ev),y2:Y(base.ev),
+        stroke:color,"stroke-width":1,"stroke-dasharray":"4 4",opacity:.6}));
+      const t=el("text",{x:m.l+iw+6,y:Y(base.ev)+4,"font-size":10.5,fill:color});
+      t.textContent=name+"無條件"; s.appendChild(t);
+    }
+    const pts=D.dip[k].filter(r=>xs.includes(r.x)).map(r=>[X(r.x),Y(r.ev),r]);
+    s.appendChild(el("path",{d:"M"+pts.map(p=>p[0]+","+p[1]).join("L"),fill:"none",
+      stroke:color,"stroke-width":2.2,"stroke-linejoin":"round"}));
+    pts.forEach(([px,py,r])=>{
+      s.appendChild(el("circle",{cx:px,cy:py,r:4,fill:color,stroke:css("--surface"),"stroke-width":2}));
+      const hit=el("circle",{cx:px,cy:py,r:14,fill:"transparent"});
+      hover(hit,`${name}　${r.x===0?"無條件":"回落 "+r.x+"%"}\n觸發率 ${r.tr}%　n=${r.n}\n勝率 ${r.win}%　淨報酬 ${fmt(r.net)}%\n每事件期望值 ${fmt(r.ev)}%`);
+      s.appendChild(hit);
+    });
+    const best=D.dip[k].filter(r=>r.x>0).reduce((a,b)=>b.ev>a.ev?b:a);
+    const t=el("text",{x:X(best.x),y:Y(best.ev)-11,"text-anchor":"middle","font-size":11.5,fill:color});
+    t.textContent=fmt(best.ev,2); s.appendChild(t);
+  });
+  const ax=el("text",{x:m.l+iw/2,y:H-8,"text-anchor":"middle","font-size":11.5});
+  ax.textContent="自 D0 起滾動最高價的回落門檻 · 出場＝出關日開盤"; s.appendChild(ax);
+  box.appendChild(s);
+}
+
+/* ---------- 4. 掛單可成交性（雙制度） ---------- */
+function fill(){
+  const box=document.getElementById("c-fill"); if(!box) return;
+  const W=W_(box),H=260,m={t:22,r:16,b:56,l:48},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const xs=[6,10,12,15,20];
+  const rows=xs.map(x=>({x,old:D.old.fill.find(r=>r.x===x&&!r.tag),
+                            "new":D.new.fill.find(r=>r.x===x&&!r.tag)})).filter(r=>r.old||r["new"]);
+  const Y=v=>m.t+(1-v/108)*ih;
+  const gw=iw/rows.length, bw=Math.min(40,gw/2-8);
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"觸發價以下的成交量佔比，新舊制對照"});
+  [0,25,50,75,100].forEach(v=>{
+    s.appendChild(el("line",{x1:m.l,x2:m.l+iw,y1:Y(v),y2:Y(v),stroke:css("--rule-soft")}));
+    const t=el("text",{x:m.l-8,y:Y(v)+4,"text-anchor":"end","font-size":11});
+    t.textContent=v+"%"; s.appendChild(t);});
+  rows.forEach((r,i)=>{
+    const cx=m.l+gw*i+gw/2;
+    [[r.old,css("--struct"),-1,"舊制"],[r["new"],css("--caution"),1,"新制"]].forEach(([d,color,dir,lab])=>{
+      if(!d||d.share==null) return;
+      const x=cx+dir*(bw/2+2)-bw/2, h=Math.max(2,m.t+ih-Y(d.share));
+      const rc=el("rect",{x,y:Y(d.share),width:bw,height:h,rx:3,fill:color});
+      hover(rc,`${lab} 回落 ${r.x}%\n跌破觸發價 ${d.bars}/${d.tot} 根 30 分 K\n佔當日成交量 ${d.share}%\n${d.note}`);
+      s.appendChild(rc);
+      const t=el("text",{x:x+bw/2,y:Y(d.share)-7,"text-anchor":"middle","font-size":11.5,fill:color});
+      t.textContent=d.share+"%"; s.appendChild(t);
+      const n=el("text",{x:x+bw/2,y:Y(d.share)-20,"text-anchor":"middle","font-size":9.5,
+        fill:css("--ink-3")}); n.textContent=d.bars+"/"+d.tot+" 根"; s.appendChild(n);
+    });
+    const t=el("text",{x:cx,y:m.t+ih+20,"text-anchor":"middle","font-size":12,
+      fill:r.x>=20?css("--rise"):css("--ink-2")});
+    t.textContent="回落 "+r.x+"%"; s.appendChild(t);
+  });
+  const ax=el("text",{x:m.l+iw/2,y:H-8,"text-anchor":"middle","font-size":11.5});
+  ax.textContent="觸發當天跌破觸發價的 30 分 K 佔當日成交量（中位數）"; s.appendChild(ax);
+  box.appendChild(s);
+}
+
+/* ---------- 5. 放空持有天數 ---------- */
+function shortHold(){
+  const box=document.getElementById("c-short"); if(!box) return;
+  const W=W_(box),H=290,m={t:24,r:74,b:56,l:52},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const holds=["1 日","2 日","3 日","4 日","5 日"];
+  const cfg=[["old","D0_mid",css("--struct"),false,"舊制・公告日盤中"],
+             ["old","D1_open",css("--struct"),true,"舊制・處置首日開盤"],
+             ["new","D0_mid",css("--caution"),false,"新制・公告日盤中"],
+             ["new","D1_open",css("--caution"),true,"新制・處置首日開盤"]];
+  const get=(k,e,h)=>D[k].short.find(r=>r.entry===e&&r.kind==="固定持有"&&r.param===h);
+  const all=cfg.flatMap(([k,e])=>holds.map(h=>(get(k,e,h)||{}).net).filter(v=>v!=null));
+  const top=Math.max(...all)+0.6, bot=Math.min(...all)-0.6;
+  const X=i=>m.l+i/(holds.length-1)*iw, Y=v=>m.t+(top-v)/(top-bot)*ih;
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"放空持有天數與報酬"});
+  axisY(s,m,iw,Y,bot,top,1);
+  holds.forEach((h,i)=>{const t=el("text",{x:X(i),y:m.t+ih+20,"text-anchor":"middle","font-size":11.5,
+    fill:css("--ink-3")});t.textContent="持有 "+h;s.appendChild(t);});
+  cfg.forEach(([k,e,color,dash,name])=>{
+    const pts=holds.map((h,i)=>{const r=get(k,e,h);return r?[X(i),Y(r.net),r,h]:null;}).filter(Boolean);
+    if(!pts.length) return;
+    s.appendChild(el("path",{d:"M"+pts.map(p=>p[0]+","+p[1]).join("L"),fill:"none",stroke:color,
+      "stroke-width":dash?1.6:2.4,...(dash?{"stroke-dasharray":"5 4"}:{}),opacity:dash?.65:1}));
+    pts.forEach(([px,py,r,h])=>{
+      s.appendChild(el("circle",{cx:px,cy:py,r:dash?3:4,fill:color,stroke:css("--surface"),
+        "stroke-width":1.8,opacity:dash?.7:1}));
+      const hit=el("circle",{cx:px,cy:py,r:13,fill:"transparent"});
+      hover(hit,`${name}・持有 ${h}\nn=${r.n}　勝率 ${r.win}%\n扣成本 ${fmt(r.net)}%\n週群集 CI ${r.lo==null?"—":fmt(r.lo)+" ~ "+fmt(r.hi)}`);
+      s.appendChild(hit);
+    });
+    const last=pts[pts.length-1];
+    const t=el("text",{x:last[0]+8,y:last[1]+4,"font-size":10.5,fill:color,opacity:dash?.75:1});
+    t.textContent=name.split("・")[1]; s.appendChild(t);
+  });
+  const lg=el("text",{x:m.l,y:m.t-8,"font-size":11,fill:css("--ink-3")});
+  lg.textContent="實線＝公告日盤中進場　虛線＝處置首日開盤進場"; s.appendChild(lg);
+  const ax=el("text",{x:m.l+iw/2,y:H-8,"text-anchor":"middle","font-size":11.5});
+  ax.textContent="放空的扣成本平均報酬（正值＝獲利）"; s.appendChild(ax);
+  box.appendChild(s);
+}
+
+
+/* ---------- 6. 事件曲線（雙制度） ---------- */
+function curve(){
+  const box=document.getElementById("c-curve"); if(!box) return;
+  const W=W_(box),H=300,m={t:18,r:66,b:40,l:46},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const offs=D.new.curve.map(p=>p.off);
+  const vals=[...D.new.curve.map(p=>p.close),...D.old.curve.map(p=>p.close)];
+  const hi=Math.max(...vals)+1.5, lo=Math.min(...vals)-1.5;
+  const X=o=>m.l+(o-offs[0])/(offs[offs.length-1]-offs[0])*iw;
+  const Y=v=>m.t+(hi-v)/(hi-lo)*ih;
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"新舊制的事件報酬曲線"});
+  s.appendChild(el("rect",{x:X(0.5),y:m.t,width:X(5.5)-X(0.5),height:ih,fill:css("--shade")}));
+  const lab=el("text",{x:X(3),y:m.t+14,"text-anchor":"middle","font-size":10.5,fill:css("--ink-3")});
+  lab.textContent="新制處置期（5 日）"; s.appendChild(lab);
+  axisY(s,m,iw,Y,lo,hi,2);
+  offs.forEach(o=>{
+    const t=el("text",{x:X(o),y:H-20,"text-anchor":"middle","font-size":11,
+      fill:o===0?css("--ink"):css("--ink-3")});
+    t.textContent=o===0?"D0":(o>0?"D+"+o:"D"+o); s.appendChild(t);});
+  [["new",css("--struct"),false,"新制"],["old",css("--ink-3"),true,"舊制"]].forEach(([k,color,dash,name])=>{
+    const rows=D[k].curve.filter(p=>offs.includes(p.off));
+    const pts=rows.map(p=>[X(p.off),Y(p.close)]);
+    s.appendChild(el("path",{d:"M"+pts.map(p=>p.join(",")).join("L"),fill:"none",stroke:color,
+      "stroke-width":2,"stroke-linejoin":"round",...(dash?{"stroke-dasharray":"5 4"}:{})}));
+    rows.forEach((p,i)=>{
+      s.appendChild(el("circle",{cx:pts[i][0],cy:pts[i][1],r:3.5,fill:color,
+        stroke:css("--surface"),"stroke-width":1.8}));
+      const hit=el("circle",{cx:pts[i][0],cy:pts[i][1],r:13,fill:"transparent"});
+      hover(hit,`${name} D${p.off>0?"+":""}${p.off}　n=${p.n}\n收盤中位 ${fmt(p.close)}%\n最低中位 ${fmt(p.low)}%\n量比中位 ${p.vol==null?"—":p.vol.toFixed(2)}`);
+      s.appendChild(hit);});
+    const last=rows[rows.length-1];
+    const t=el("text",{x:X(last.off)+8,y:Y(last.close)+4,"font-size":11.5,fill:color});
+    t.textContent=name+" "+fmt(last.close,1); s.appendChild(t);});
+  box.appendChild(s);
+}
+
+/* ---------- 7. 暴大量訊號 ---------- */
+function spike(){
+  const box=document.getElementById("c-spike"); if(!box) return;
+  const pick=(sig,hold)=>D.spike.find(r=>r.sig.indexOf(sig)>=0&&r.hold.indexOf(hold)===0);
+  const rows=[
+    {lab:"看量・持有 1 根 30 分 K",r:pick("第 1 根暴大量","1 根"),sp:1},
+    {lab:"不看量・持有 1 根",r:pick("對照","1 根"),sp:0},
+    {lab:"看量・持有 9 根（約 1 日）",r:pick("第 1 根暴大量","9 根"),sp:1},
+    {lab:"不看量・持有 9 根",r:pick("對照","9 根"),sp:0},
+    {lab:"看量・抱到處置結束",r:pick("第 1 根暴大量","to_release"),sp:1},
+    {lab:"不看量・抱到處置結束",r:pick("對照","to_release"),sp:0},
+  ].filter(x=>x.r);
+  const W=W_(box),H=250,m={t:14,r:74,b:22,l:206},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const vs=rows.map(x=>x.r.net);
+  const top=Math.max(...vs)+0.8, bot=Math.min(...vs)-0.8;
+  const X=v=>m.l+(v-bot)/(top-bot)*iw, rh=ih/rows.length;
+  const s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"暴大量訊號與不看量對照"});
+  s.appendChild(el("line",{x1:X(0),x2:X(0),y1:m.t,y2:m.t+ih,stroke:css("--ink-3"),"stroke-width":1.2}));
+  rows.forEach((x,i)=>{
+    const y=m.t+i*rh+rh*0.22, h=rh*0.56;
+    const color=x.r.net>=0?(x.sp?css("--caution"):css("--struct")):css("--fall");
+    const x0=X(0), x1=X(x.r.net);
+    const rect=el("rect",{x:Math.min(x0,x1),y,width:Math.max(2,Math.abs(x1-x0)),height:h,rx:3,
+      fill:color,opacity:x.sp?1:.55});
+    hover(rect,`${x.lab}\nn=${x.r.n}　勝率 ${x.r.win}%\n扣成本平均 ${fmt(x.r.net)}%`);
+    s.appendChild(rect);
+    const t=el("text",{x:m.l-12,y:y+h/2+4,"text-anchor":"end","font-size":11.5,
+      fill:x.sp?css("--ink"):css("--ink-3")});
+    t.textContent=x.lab; s.appendChild(t);
+    const v=el("text",{x:(x.r.net>=0?x1+8:x1-8),y:y+h/2+4,"font-size":12,fill:css("--ink"),
+      "text-anchor":x.r.net>=0?"start":"end"});
+    v.textContent=fmt(x.r.net)+"%"; s.appendChild(v);});
+  box.appendChild(s);
+}
+
+/* ---------- 表格 ---------- */
+const sign=v=>v==null?"—":`<span class="${v>0?"pos":"neg"}">${fmt(v)}</span>`;
+const ENTRY={D0_close:"公告日收盤",D0_mid:"公告日中間價",D1_open:"處置首日開盤",
+  D1_close:"處置首日收盤",D1_mid:"處置首日中間價"};
+const EXE={2:'<span class="chip">可執行</span>',1:'<span class="chip warn">需盤中預測</span>',
+  0:'<span class="chip warn">不可執行</span>'};
+
+function tblDef(){
+  const t=document.getElementById("t-def"); if(!t) return;
+  const rows=[["D0","2026-08-10","公告日","一般交易（公告盤後才發布）","89.1",""],
+    ["D+1","2026-08-11","處置第 1 天","分盤","88.7",""],
+    ["D+2 ~ D+4","08-12 ~ 08-14","處置中","分盤","…",""],
+    ["D+5","2026-08-17","<b>公告的處置結束日</b>","<b>仍在分盤</b>","96.5","前四輪誤標為「出關」"],
+    ["D+6","2026-08-18","<b>出關日</b>","已恢復逐筆撮合","95.3","★ 正確的出關日"]];
+  t.innerHTML=`<thead><tr><th>相對日</th><th>日期</th><th>時點</th><th>撮合方式</th><th>收盤</th><th>註</th></tr></thead><tbody>`+
+    rows.map(r=>`<tr class="${r[5]?"":"dim"}"><td class="n">${r[0]}</td><td class="n">${r[1]}</td>
+      <td>${r[2]}</td><td>${r[3]}</td><td class="n">${r[4]}</td>
+      <td>${r[5]?'<span class="chip warn">'+r[5]+'</span>':""}</td></tr>`).join("")+"</tbody>";
+}
+
+function tblDip(){
+  const t=document.getElementById("t-dip"); if(!t) return;
+  const xs=[0,6,8,10,12,15,20];
+  const cell=r=>r?`<td class="n">${r.tr}%</td><td class="n">${r.n}</td><td class="n">${r.win}%</td>
+    <td class="n">${sign(r.net)}%</td><td class="n">${sign(r.ev)}%</td>`
+    :"<td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>";
+  t.innerHTML=`<thead><tr><th rowspan="2">進場</th>
+    <th colspan="5" style="text-align:center;border-bottom:1px solid var(--rule)">舊制（597 事件・115 週）</th>
+    <th colspan="5" style="text-align:center;border-bottom:1px solid var(--rule)">新制（43 事件・4 週）</th></tr>
+    <tr><th>觸發率</th><th>n</th><th>勝率</th><th>淨報酬</th><th>每事件期望值</th>
+        <th>觸發率</th><th>n</th><th>勝率</th><th>淨報酬</th><th>每事件期望值</th></tr></thead><tbody>`+
+    xs.map(x=>{
+      const o=D.dip.old.find(r=>r.x===x), n2=D.dip["new"].find(r=>r.x===x);
+      if(!o&&!n2) return "";
+      const best=(x===10);
+      return `<tr${best?' style="background:var(--surface-2)"':''}>
+        <td>${x===0?"<b>無條件</b>（處置第 1 天開盤買）":"回落 "+x+"%"}</td>
+        ${cell(o)}${cell(n2)}</tr>`;}).join("")+"</tbody>";
+}
+
+function tblShort(){
+  const t=document.getElementById("t-short"); if(!t) return;
+  const get=(k,kind,p)=>D[k].short.find(r=>r.entry==="D0_mid"&&r.kind===kind&&r.param===p);
+  const rows=[["固定持有","4 日"],["固定持有","3 日"],["固定持有","2 日"],
+    ["跌幅目標回補","-2%"],["跌幅目標回補","-3%"],["跌幅目標回補","-5%"],
+    ["跌幅目標回補","-8%"],["跌幅目標回補","-10%"]];
+  const cell=r=>r?`<td class="n">${r.hit==null?"—":r.hit+"%"}</td><td class="n">${r.n}</td>
+    <td class="n">${r.win}%</td><td class="n">${sign(r.net)}%</td>`
+    :"<td>—</td><td>—</td><td>—</td><td>—</td>";
+  t.innerHTML=`<thead><tr><th rowspan="2">出場方式</th><th rowspan="2">參數</th>
+    <th colspan="4" style="text-align:center;border-bottom:1px solid var(--rule)">舊制</th>
+    <th colspan="4" style="text-align:center;border-bottom:1px solid var(--rule)">新制</th></tr>
+    <tr><th>達標率</th><th>n</th><th>勝率</th><th>扣成本</th>
+        <th>達標率</th><th>n</th><th>勝率</th><th>扣成本</th></tr></thead><tbody>`+
+    rows.map(([kind,p],i)=>{
+      const o=get("old",kind,p), n2=get("new",kind,p);
+      return `<tr${i===0?' style="background:var(--surface-2)"':''}>
+        <td>${i===0||i===3?kind:""}</td><td class="n">${p}</td>${cell(o)}${cell(n2)}</tr>`;}).join("")+
+    "</tbody>";
+}
+
+function tblEV(){
+  const t=document.getElementById("t-ev"); if(!t) return;
+  const cols=[["名稱","name",0],["代號","code",0],["市場","mkt",0],["公布日","d",0],
+    ["措施","measure",0],["分盤","iv",1],["來源","src",0],["公告日收盤","price",1],
+    ["D+1","d1",1],["D+2","d2",1],["D+3","d3",1],["最大回落","mdd",1],["出關","rel",1],
+    ["放空 2 日","short",1],["做多至出關","trade",1]];
+  let dir={};
+  const render=rows=>{
+    t.innerHTML="<thead><tr>"+cols.map((c,i)=>`<th data-i="${i}" style="cursor:pointer">${c[0]}</th>`).join("")+
+      "</tr></thead><tbody>"+rows.map(e=>`<tr>
+      <td>${e.name}</td><td class="n">${e.code}</td><td>${e.mkt==="TWSE"?"上市":"上櫃"}</td>
+      <td class="n">${e.d.slice(5)}</td><td>${e.measure||"—"}</td>
+      <td class="n">${e.iv} 分</td><td>${e.src}</td>
+      <td class="n">${e.price==null?"—":e.price}</td>
+      <td class="n">${e.d1==null?"—":sign(e.d1)+"%"}</td>
+      <td class="n">${e.d2==null?"—":sign(e.d2)+"%"}</td>
+      <td class="n">${e.d3==null?"—":sign(e.d3)+"%"}</td>
+      <td class="n">${e.mdd==null?"—":sign(e.mdd)+"%"}</td>
+      <td class="n">${e.rel==null?"—":sign(e.rel)+"%"}</td>
+      <td class="n">${e.short==null?"—":sign(e.short)+"%"}</td>
+      <td class="n">${e.complete&&e.trade!=null?sign(e.trade)+"%":"—"}</td></tr>`).join("")+"</tbody>";
+    t.querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{
+      const i=+th.dataset.i,[,key,num]=cols[i];
+      dir[key]=!dir[key];
+      render([...rows].sort((a,b)=>{
+        const av=a[key],bv=b[key];
+        if(av==null)return 1; if(bv==null)return -1;
+        return (num?av-bv:String(av).localeCompare(String(bv),"zh-Hant"))*(dir[key]?1:-1);}));
+    }));
+  };
+  render(D.events);
+}
+
+function draw(){
+  ["c-mdd","c-tvn","c-dip","c-fill","c-short","c-curve","c-spike"].forEach(id=>{
+    const b=document.getElementById(id); if(b) b.innerHTML="";});
+  mdd();tvn();dip();fill();shortHold();curve();spike();
+}
+draw();tblDef();tblDip();tblShort();tblEV();
+let rz;addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(draw,180);});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",draw);
+</script>
+
+</body>
+</html>
