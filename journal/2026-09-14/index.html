@@ -13,7 +13,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.toc,.back-top,.site-bar,.skip{display:none}.layout{display:block;margin:0;padding:0}.masthead{padding:0}article{border:0;padding:0}body{background:white;color:black;font-size:11pt}.table-scroll{overflow:visible}table{font-size:8pt}th,td{white-space:normal;padding:.3rem}h2,h3,h4,h5{break-after:avoid}tr{break-inside:avoid}}
 
-figure.alloc{margin:2rem 0 0;padding:1.25rem 1.25rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+figure.alloc{margin:0 0 1.5rem;padding:1.25rem 1.25rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
 figure.alloc .alloc-title{font-weight:700;font-size:1rem;margin-bottom:.9rem}
 figure.alloc .alloc-note{font-weight:400;font-size:.8rem;color:var(--muted);margin-left:.5rem;white-space:nowrap}
 .alloc-bar{display:flex;gap:2px;height:30px;border-radius:4px;overflow:hidden}
@@ -45,6 +45,7 @@ figure.alloc .alloc-note{font-weight:400;font-size:.8rem;color:var(--muted);marg
 <a class="nav-level-4" href="#section-10">臺指選擇權留倉</a>
 <a class="nav-level-3" href="#section-11">想法</a>
 <a class="nav-level-2" href="#section-12">庫存</a>
+<a class="nav-level-4" href="#section-alloc">族群分布</a>
 <a class="nav-level-3" href="#section-13">族群:光通（3008大立光）</a>
 <a class="nav-level-3" href="#section-14">族群:封測（6147頎邦）</a>
 <a class="nav-level-3" href="#section-15">族群:ASIC（2454發哥、3443創意）</a>
@@ -53,7 +54,6 @@ figure.alloc .alloc-note{font-weight:400;font-size:.8rem;color:var(--muted);marg
 <a class="nav-level-3" href="#section-18">族群:晶圓代工（2303聯電）</a>
 <a class="nav-level-3" href="#section-19">族群:ccl及其材料（2383台光電、1303南亞）</a>
 <a class="nav-level-3" href="#section-20">族群:功率元件（2481強茂）</a>
-<a class="nav-level-4" href="#section-alloc">族群分布</a>
 <a class="nav-level-2" href="#section-21">觀察</a>
 <a class="nav-level-3" href="#section-22">族群:資安（3529力旺）</a>
 <a class="nav-level-3" href="#section-23">族群:ABF（3037欣興）</a>
@@ -327,6 +327,31 @@ figure.alloc .alloc-note{font-weight:400;font-size:.8rem;color:var(--muted);marg
 <li>槓桿今天早上降了，然後馬上被拉起，昨天沒有減碼也導致今天早盤沒得加，失去彈性不應該</li>
 </ul>
 <h3 id="section-12" tabindex="-1">庫存</h3>
+<figure class="alloc" id="section-alloc" tabindex="-1">
+<figcaption class="alloc-title">族群分布 <span class="alloc-note">依本日原文比例，合計 99%</span></figcaption>
+<div class="alloc-bar" role="img" aria-label="持倉族群分布長條圖：ASIC 17%、CCL及其材料 15%、散熱 14%、封測 12%、記憶體 11%、光通 9%、晶圓代工 9%、指數 7%、功率元件 5%。">
+<span style="--w:17;--c:#2a78d6" title="ASIC 17%"></span>
+<span style="--w:15;--c:#eb6834" title="CCL及其材料 15%"></span>
+<span style="--w:14;--c:#1baf7a" title="散熱 14%"></span>
+<span style="--w:12;--c:#eda100" title="封測 12%"></span>
+<span style="--w:11;--c:#e87ba4" title="記憶體 11%"></span>
+<span style="--w:9;--c:#008300" title="光通 9%"></span>
+<span style="--w:9;--c:#4a3aa7" title="晶圓代工 9%"></span>
+<span style="--w:5;--c:#e34948" title="功率元件 5%"></span>
+<span style="--w:7;--c:#9c9384" title="指數 7%"></span>
+</div>
+<ul class="alloc-legend">
+<li><i style="--c:#2a78d6"></i>ASIC <b>17%</b></li>
+<li><i style="--c:#eb6834"></i>CCL及其材料 <b>15%</b></li>
+<li><i style="--c:#1baf7a"></i>散熱 <b>14%</b></li>
+<li><i style="--c:#eda100"></i>封測 <b>12%</b></li>
+<li><i style="--c:#e87ba4"></i>記憶體 <b>11%</b></li>
+<li><i style="--c:#008300"></i>光通 <b>9%</b></li>
+<li><i style="--c:#4a3aa7"></i>晶圓代工 <b>9%</b></li>
+<li><i style="--c:#e34948"></i>功率元件 <b>5%</b></li>
+<li><i style="--c:#9c9384"></i>指數 <b>7%</b></li>
+</ul>
+</figure>
 <h4 id="section-13" tabindex="-1">族群:光通（3008大立光）</h4>
 <ul>
 <li>比例：9%</li>
@@ -424,31 +449,6 @@ figure.alloc .alloc-note{font-weight:400;font-size:.8rem;color:var(--muted);marg
 </li>
 </ul>
 <p>剩餘部位7％在指數</p>
-<figure class="alloc" id="section-alloc" tabindex="-1">
-<figcaption class="alloc-title">族群分布 <span class="alloc-note">依本日原文比例，合計 99%</span></figcaption>
-<div class="alloc-bar" role="img" aria-label="持倉族群分布長條圖：ASIC 17%、CCL及其材料 15%、散熱 14%、封測 12%、記憶體 11%、光通 9%、晶圓代工 9%、指數 7%、功率元件 5%。">
-<span style="--w:17;--c:#2a78d6" title="ASIC 17%"></span>
-<span style="--w:15;--c:#eb6834" title="CCL及其材料 15%"></span>
-<span style="--w:14;--c:#1baf7a" title="散熱 14%"></span>
-<span style="--w:12;--c:#eda100" title="封測 12%"></span>
-<span style="--w:11;--c:#e87ba4" title="記憶體 11%"></span>
-<span style="--w:9;--c:#008300" title="光通 9%"></span>
-<span style="--w:9;--c:#4a3aa7" title="晶圓代工 9%"></span>
-<span style="--w:5;--c:#e34948" title="功率元件 5%"></span>
-<span style="--w:7;--c:#9c9384" title="指數 7%"></span>
-</div>
-<ul class="alloc-legend">
-<li><i style="--c:#2a78d6"></i>ASIC <b>17%</b></li>
-<li><i style="--c:#eb6834"></i>CCL及其材料 <b>15%</b></li>
-<li><i style="--c:#1baf7a"></i>散熱 <b>14%</b></li>
-<li><i style="--c:#eda100"></i>封測 <b>12%</b></li>
-<li><i style="--c:#e87ba4"></i>記憶體 <b>11%</b></li>
-<li><i style="--c:#008300"></i>光通 <b>9%</b></li>
-<li><i style="--c:#4a3aa7"></i>晶圓代工 <b>9%</b></li>
-<li><i style="--c:#e34948"></i>功率元件 <b>5%</b></li>
-<li><i style="--c:#9c9384"></i>指數 <b>7%</b></li>
-</ul>
-</figure>
 <h3 id="section-21" tabindex="-1">觀察</h3>
 <h4 id="section-22" tabindex="-1">族群:資安（3529力旺）</h4>
 <ul>
