@@ -492,7 +492,8 @@ links.forEach(link => link.addEventListener('click', () => {
 const sections = links.map(link => document.getElementById(link.hash.slice(1)));
 let pending = false;
 function updateActiveSection() {
-  const offset = mobile.matches ? 110 : 60;
+  const scrollPadding = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+  const offset = scrollPadding + 16;
   let active = sections[0];
   for (const section of sections) {
     if (section.getBoundingClientRect().top <= offset) active = section;
