@@ -10,7 +10,8 @@
 
 ```
 index.html            站台索引
-4931/index.html       個股研究卡 — 每檔一個目錄
+4931/index.html       個股研究卡互動版 — 每檔一個目錄
+4931/static.html      個股研究卡純靜態匯入版
 journal/              每日筆記
   index.html          日期索引
   2026-09-09/index.html 每日筆記 — 保留原文段落與導覽
@@ -23,14 +24,15 @@ strategies/           策略研究
 
 沒有建置步驟，直接開啟 HTML 就是最終樣子。
 
-`4931/` 為純靜態閱讀頁：五張圖表直接內嵌 SVG，不執行 JavaScript，
-不含浮動導覽、回頂按鈕或滑鼠提示。使用系統字型與固定淺色配色；
-窄螢幕將表格展開為附欄名的逐筆內容，不需左右滑動。
-`4931/chart-data.json` 保留原圖表的歷史資料，供後續修改比對，頁面不會載入它；
-修改資料時須同步更新對應 SVG。其他頁面維持各自的呈現方式。
+`4931/index.html` 是互動閱讀版：五張圖表由 JavaScript 繪製，提供滑鼠 tooltip、
+浮動章節導覽、回到頂端按鈕，以及跟隨系統／淺色／深色三態主題切換。
+`4931/static.html` 是給 WINWIN 等文章平台匯入的純靜態版，圖表直接內嵌 SVG，
+不依賴 JavaScript。`4931/chart-data.json` 是互動圖表的資料正本；資料更新時，
+`index.html`、`static.html` 與圖表資料必須同步，避免網站與平台快照顯示不同內容。
+其他頁面維持各自的呈現方式。
 
 WINWIN 等文章平台保存的是匯入快照。更新 GitHub Pages 後，仍須在平台重新匯入
-`4931/index.html`，既有文章不會因來源檔更新而自動同步。
+`4931/static.html`，既有文章不會因來源檔更新而自動同步。
 
 ## strategies/disposal 的來源
 

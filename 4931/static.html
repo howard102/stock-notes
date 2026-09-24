@@ -1,60 +1,21 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><title>新盛力 4931 研究卡</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>body{margin:0}.research-card{color-scheme:light}.research-card{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style><title>新盛力 4931 研究卡</title>
 <meta name="robots" content="noindex,nofollow">
-<script>
-(function(){
-  try{
-    var theme=localStorage.getItem("4931-theme");
-    if(theme==="light"||theme==="dark") document.documentElement.setAttribute("data-theme",theme);
-  }catch(e){}
-})();
-</script>
+</head><body>
+<main class="research-card">
 <style>
-
-:root{
-  color-scheme:light;
+.research-card{
+  color-scheme: light;
   --bg:#f1f4f6; --surface:#fdfdfe; --surface-2:#f7f9fa; --sunken:#eaeef1;
   --ink:#0f1418; --ink-2:#4a5560; --ink-3:#78838e;
   --rule:#dce2e7; --rule-strong:#c3ccd4;
-  --accent:#a8620a; --accent-soft:#f6ecdc;
-  --up:#d1382f; --down:#128a5e;
+  --accent:#a8620a;            /* 電流琥珀 */
+  --accent-soft:#f6ecdc;
+  --up:#d1382f; --down:#128a5e;   /* 台股慣例：紅漲綠跌 */
   --up-soft:#fbe9e7; --down-soft:#e2f3ec;
   --s1:#1b5e8f; --s2:#c8790c; --s3:#cf5b8e;
   --grid:#e4e9ed;
-  --shadow:0 1px 2px rgba(15,20,24,.05),0 8px 24px -16px rgba(15,20,24,.28);
-  --verdict:#5b4ba8; --verdict-soft:#eeebf8;
+  --shadow:0 1px 2px rgba(15,20,24,.05), 0 8px 24px -16px rgba(15,20,24,.28);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#0d1014; --surface:#15181d; --surface-2:#1a1e24; --sunken:#101317;
-    --ink:#eef2f5; --ink-2:#a3aeb8; --ink-3:#6f7a85;
-    --rule:#252b32; --rule-strong:#39424b;
-    --accent:#d9a24a; --accent-soft:#2a2318;
-    --up:#ef5b4c; --down:#2eab77;
-    --up-soft:#2c1a19; --down-soft:#12241d;
-    --s1:#4d9ad0; --s2:#c08420; --s3:#c9628f;
-    --grid:#232930;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -18px rgba(0,0,0,.8);
-    --verdict:#a99ae8; --verdict-soft:#1d1930;
-  }
-}
-:root[data-theme="light"]{color-scheme:light}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0d1014; --surface:#15181d; --surface-2:#1a1e24; --sunken:#101317;
-  --ink:#eef2f5; --ink-2:#a3aeb8; --ink-3:#6f7a85;
-  --rule:#252b32; --rule-strong:#39424b;
-  --accent:#d9a24a; --accent-soft:#2a2318;
-  --up:#ef5b4c; --down:#2eab77;
-  --up-soft:#2c1a19; --down-soft:#12241d;
-  --s1:#4d9ad0; --s2:#c08420; --s3:#c9628f;
-  --grid:#232930;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -18px rgba(0,0,0,.8);
-  --verdict:#a99ae8; --verdict-soft:#1d1930;
-}
-body{margin:0;background:var(--bg);color:var(--ink)}
-
-
 
 *{box-sizing:border-box}
 .research-card{
@@ -227,9 +188,12 @@ footer{border-top:1px solid var(--rule);margin-top:8px;padding-top:20px;color:va
 }
 
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
 
-
+<style>
 /* ---------- 判斷區（我的判斷）：與事實層刻意區隔 ---------- */
+.research-card{ --verdict:#5b4ba8; --verdict-soft:#eeebf8; }
+
 #verdict .sec-head{border-bottom-color:var(--verdict)}
 #verdict .sec-head h2{color:var(--verdict)}
 #verdict .panel{border-left:3px solid var(--verdict)}
@@ -263,63 +227,7 @@ footer{border-top:1px solid var(--rule);margin-top:8px;padding-top:20px;color:va
   .research-card .tw td{display:block;text-align:left;padding:7px 0}
   .research-card .tw td::before{content:attr(data-label);display:block;font:500 12px/1.75 system-ui,sans-serif;color:var(--ink-2)}
 }
-
-
-section{scroll-margin-top:72px}
-.chart{position:relative}
-.chart svg{overflow:visible}
-.tip{
-  position:absolute;pointer-events:none;opacity:0;transition:opacity .12s;
-  background:var(--surface);border:1px solid var(--rule-strong);border-radius:4px;
-  padding:9px 12px;font-size:12px;box-shadow:var(--shadow);z-index:9;min-width:130px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.65;
-}
-.tip b{font-weight:600;display:block;margin-bottom:4px;color:var(--ink)}
-.tip i{font-style:normal;color:var(--ink-3);margin-right:8px}
-.tocwrap{position:sticky;top:0;z-index:30;background:var(--bg);padding:10px 0;margin:-24px 0 24px}
-.toc{display:flex;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;
-  overflow-x:auto;overflow-y:hidden;margin:0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc a{flex:1 0 auto;text-align:center;background:var(--surface);color:var(--ink-2);text-decoration:none;
-  padding:10px 14px 8px;font-size:12.5px;white-space:nowrap;border-bottom:2px solid transparent;
-  transition:background .12s,color .12s,border-color .12s}
-.toc a:hover{background:var(--accent-soft);color:var(--ink)}
-.toc a.on{background:var(--accent-soft);color:var(--ink);font-weight:500;border-bottom-color:var(--accent)}
-.totop{position:fixed;right:22px;bottom:22px;z-index:40;width:44px;height:44px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;background:var(--surface);
-  color:var(--ink-2);border:1px solid var(--rule-strong);box-shadow:var(--shadow);opacity:0;visibility:hidden;
-  transform:translateY(8px);transition:opacity .18s,transform .18s,visibility .18s,background .15s,color .15s,border-color .15s}
-.totop.show{opacity:1;visibility:visible;transform:none}
-.totop:hover{background:var(--accent-soft);color:var(--ink);border-color:var(--accent)}
-.theme-toggle{margin:0 0 12px auto;padding:6px 10px;border:1px solid var(--rule-strong);border-radius:4px;
-  background:var(--surface-2);color:var(--ink-2);font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
-  cursor:pointer;display:block}
-.theme-toggle:hover{background:var(--accent-soft);color:var(--ink);border-color:var(--accent)}
-.reading-note{margin:0 0 44px}
-.panel-gap{margin-bottom:20px}
-.customer-concentration{margin-top:20px}
-.concentration-grid + .concentration-grid{margin-top:20px}
-.metric-label{font-size:11.5px;color:var(--ink-3);margin-bottom:4px}
-.metric-value{font-size:30px;font-weight:600;line-height:1.1}
-.metric-unit{font-size:14px;color:var(--ink-3);font-weight:400}
-.metric-detail{font-size:12.5px;margin-top:4px;color:var(--ink-3)}
-.body-copy{font-size:13.5px;color:var(--ink-2);margin:14px 0 0;line-height:1.75}
-.compact-copy{font-size:13px;color:var(--ink-2);margin:14px 0 0;line-height:1.7}
-.breadth-panel .tw{background:var(--surface)}
-.verdict-addendum{margin-top:0}
-.known-limits{margin-top:24px}
-.data-cutoff{margin:0}
-.noscript-note{margin:0 0 24px}
-@media (max-width:640px){
-  .totop{right:14px;bottom:14px;width:40px;height:40px}
-  .theme-toggle{margin-left:0}
-}
-@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-
 </style>
-</head><body>
-<main class="research-card">
 
 <header class="masthead">
   <div class="masthead-in">
@@ -329,7 +237,6 @@ section{scroll-margin-top:72px}
       <p class="tagline">AI 伺服器 BBU（Backup Battery Unit，機櫃停電時頂住運算負載的備援電池模組）製造商。與台系電源廠共同開發高功率規格，17KW 已導入 Google TPU 機櫃。</p>
     </div>
     <div class="quote-block">
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切換顯示主題" title="切換顯示主題">主題：跟隨系統</button>
       <div class="px mono" id="px">241.50</div>
       <div class="chg up mono"><span>+3.00</span><span>+1.26%</span></div>
       <div class="asof">收盤 2026-09-24 · 成交 1,314 張</div>
@@ -348,19 +255,9 @@ section{scroll-margin-top:72px}
     <div class="kpi"><dt>外資持股</dt><dd>17.48<small>%</small></dd></div>
   </dl>
 
-  <div class="note reading-note">
+  <div class="note" style="margin:0 0 44px">
     <b>怎麼讀這一頁。</b>每一項主張後面的標記代表證據強度：<span class="ev ev-f">財報公告</span>已由公開資訊觀測站或財報證實；<span class="ev ev-r">研調預估</span>來自訂閱制研調機構的財測與訪查，付費、有具名財測，但依你的要求不具名呈現；<span class="ev ev-w">原廠白皮書</span>取自 NVIDIA《800 VDC Architecture for Next-Generation AI Infrastructure》全文；<span class="ev ev-m">媒體轉述</span>是媒體轉述的法人估算，未經公司確認；<span class="ev ev-u">未知</span>代表查不到，不臆測。<b>沒有標記的段落是頁面自己的計算或整理。</b>
   </div>
-
-  <div class="tocwrap">
-    <nav class="toc" aria-label="章節導覽">
-      <a href="#verdict">我的判斷</a><a href="#about">公司簡介</a><a href="#fundamentals">基本面</a>
-      <a href="#chips">籌碼面</a><a href="#technical">技術面</a><a href="#industry">產業結構</a>
-      <a href="#news">消息面</a><a href="#debate">多空論證</a><a href="#watch">追蹤清單</a>
-      <a href="#sources">資料來源</a>
-    </nav>
-  </div>
-  <noscript><div class="note noscript-note">互動圖表需要 JavaScript；請改看 <a href="static.html">純靜態版</a>。</div></noscript>
 
   <!-- ============ 我的判斷 ============ -->
   <section id="verdict">
@@ -477,10 +374,10 @@ section{scroll-margin-top:72px}
       </div>
     </div>
 
-    <div class="panel panel-gap breadth-panel">
+    <div class="panel" style="margin-bottom:20px">
       <h3>市場寬度閘門：逐日讀數</h3>
       <p class="h3sub">上市＋上櫃普通股 · 20／60 日新低家數 · 任一超過 200 家時擋下 · 合計欄僅供參考</p>
-      <figure class="tw breadth-table"><table>
+      <figure class="tw"><table>
         <thead><tr><th scope="col">日期</th><th scope="col">20 日新低</th><th scope="col">60 日新低</th><th scope="col">兩者合計</th><th scope="col">逐日結果</th></tr></thead>
         <tbody>
           <tr><td data-label="日期">09-08</td><td data-label="20 日新低">336</td><td data-label="60 日新低">124</td><td data-label="兩者合計">460</td><td data-label="逐日結果" class="neg">擋下</td></tr>
@@ -498,10 +395,10 @@ section{scroll-margin-top:72px}
           <tr><td data-label="日期">09-24</td><td data-label="20 日新低">124</td><td data-label="60 日新低">64</td><td data-label="兩者合計">188</td><td data-label="逐日結果" class="pos">通過</td></tr>
         </tbody>
       </table></figure>
-      <p class="compact-copy">09-08、09-10 雖在季線帶內，市場寬度閘門均擋下。09-16 起 20 日與 60 日新低家數各自都未超過 200，閘門通過；09-16 當日價格也在季線帶內，但隔日即跌破季線。</p>
+      <p style="font-size:13px;color:var(--ink-2);margin:14px 0 0;line-height:1.7">09-08、09-10 雖在季線帶內，市場寬度閘門均擋下。09-16 起 20 日與 60 日新低家數各自都未超過 200，閘門通過；09-16 當日價格也在季線帶內，但隔日即跌破季線。</p>
     </div>
 
-    <div class="note warn verdict-addendum">
+    <div class="note warn">
       <b>2026-09-24 補訂的兩條規則：</b>（a）跌破季線後再收復，季線條件帶重新成立，與減碼表「收復季線」的重設標準一致。（b）寬度閘門的 20 日與 60 日新低家數各自和 200 比，不相加。<br>
       依補訂後規則回看：09-16 三項條件成立一日（隔日跌破季線），09-18 起連續成立。
     </div>
@@ -590,7 +487,127 @@ section{scroll-margin-top:72px}
         <span><i class="swatch sq" style="background:var(--up)"></i>年增率為正</span>
         <span><i class="swatch sq" style="background:var(--down)"></i>年增率為負</span>
       </div>
-      <figure class="chart" id="c-rev"><div class="tip"></div></figure>
+      <figure class="chart" id="c-rev">
+<svg style="display:block;width:100%;height:auto" viewBox="0 0 760 328" role="img" aria-label="新盛力 2025 年 1 月至 2026 年 8 月單月營收與年增率" xmlns="http://www.w3.org/2000/svg">
+<line x1="52" x2="746" y1="182" y2="182" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="186" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">0</text>
+<line x1="52" x2="746" y1="148.4" y2="148.4" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="152.4" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">100</text>
+<line x1="52" x2="746" y1="114.8" y2="114.8" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="118.8" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">200</text>
+<line x1="52" x2="746" y1="81.2" y2="81.2" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="85.2" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">300</text>
+<line x1="52" x2="746" y1="47.599999999999994" y2="47.599999999999994" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="51.599999999999994" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">400</text>
+<line x1="52" x2="746" y1="14" y2="14" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="18" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">500</text>
+<text x="43" y="11" text-anchor="end" font-size="10" fill="#78838e" font-family="monospace">百萬元</text>
+<line x1="52" x2="746" y1="216" y2="216" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="220" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">+200%</text>
+<line x1="52" x2="746" y1="259" y2="259" stroke="#c3ccd4" stroke-width="1">
+</line>
+<text x="43" y="263" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">0%</text>
+<line x1="52" x2="746" y1="302" y2="302" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="43" y="306" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">-200%</text>
+<text x="43" y="213" text-anchor="end" font-size="10" fill="#78838e" font-family="monospace">年增率</text>
+<rect x="58.59299999999999" y="113.5232" width="21.514000000000003" height="68.4768" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="58.59299999999999" y="259" width="21.514000000000003" height="3.6657500000000027" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="69.35" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">25/01</text>
+<rect x="93.293" y="99.7808" width="21.514" height="82.22" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="93.293" y="238.3256" width="21.514000000000003" height="20.67439999999999" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="127.993" y="112.11200000000001" width="21.514000000000003" height="69.88799999999999" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="127.993" y="251.6513" width="21.514000000000003" height="7.348700000000008" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="162.693" y="130.424" width="21.514000000000003" height="51.57599999999999" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="162.693" y="259" width="21.514000000000003" height="4.6913000000000125" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="173.45000000000002" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">25/04</text>
+<rect x="197.393" y="131.8352" width="21.514000000000003" height="50.164800000000014" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="197.393" y="259" width="21.514000000000003" height="2" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="232.093" y="127.9376" width="21.514000000000003" height="54.0624" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="232.093" y="258.62805" width="21.514000000000003" height="2" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="266.79300000000006" y="123.8048" width="21.514000000000003" height="58.1952" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="266.79300000000006" y="259" width="21.514000000000003" height="4.590250000000026" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="277.55000000000007" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">25/07</text>
+<rect x="301.49300000000005" y="108.34880000000001" width="21.514000000000003" height="73.65119999999999" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="301.49300000000005" y="250.86225" width="21.514000000000003" height="8.137750000000011" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="336.19300000000004" y="130.32319999999999" width="21.514000000000003" height="51.676800000000014" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="336.19300000000004" y="259" width="21.514000000000003" height="2.094100000000026" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="370.89300000000003" y="94.2032" width="21.514000000000003" height="87.7968" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="370.89300000000003" y="245.69365" width="21.514000000000003" height="13.306350000000009" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="381.65000000000003" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">25/10</text>
+<rect x="405.593" y="88.15520000000001" width="21.514000000000003" height="93.84479999999999" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="405.593" y="230.3749" width="21.514000000000003" height="28.625100000000003" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="440.29300000000006" y="99.88159999999999" width="21.514000000000003" height="82.11840000000001" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="440.29300000000006" y="239.02005" width="21.514000000000003" height="19.979950000000002" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="474.99300000000005" y="84.56" width="21.514000000000003" height="97.44" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="474.99300000000005" y="249.90765" width="21.514000000000003" height="9.09235000000001" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="485.75000000000006" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">26/01</text>
+<rect x="509.69300000000004" y="108.65119999999999" width="21.514000000000003" height="73.34880000000001" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="509.69300000000004" y="259" width="21.514000000000003" height="2.3220000000000027" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="544.3930000000001" y="86.8784" width="21.514000000000003" height="95.1216" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="544.3930000000001" y="251.2342" width="21.514000000000003" height="7.765800000000013" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="579.0930000000001" y="80.2256" width="21.514000000000003" height="101.7744" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="579.0930000000001" y="238.0633" width="21.514000000000003" height="20.936700000000002" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="589.85" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">26/04</text>
+<rect x="613.7930000000001" y="42.2576" width="21.514000000000003" height="139.7424" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="613.7930000000001" y="220.5924" width="21.514000000000003" height="38.4076" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="648.4930000000002" y="49.481600000000014" width="21.514000000000003" height="132.51839999999999" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="648.4930000000002" y="227.8078" width="21.514000000000003" height="31.192200000000014" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="683.1930000000001" y="31.001600000000025" width="21.514000000000003" height="150.99839999999998" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="683.1930000000001" y="224.70535" width="21.514000000000003" height="34.29464999999999" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="693.95" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">26/07</text>
+<rect x="717.8930000000001" y="15.6464" width="21.514000000000003" height="166.3536" rx="3" fill="#c8790c" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<rect x="717.8930000000001" y="231.9401" width="21.514000000000003" height="27.0599" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1">
+</rect>
+<text x="728.6500000000001" y="320" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">26/08</text>
+</svg>
+</figure>
     </div>
 
     <div class="grid2">
@@ -630,7 +647,63 @@ section{scroll-margin-top:72px}
           </tbody>
         </table></figure>
         <p style="font-size:13.5px;color:var(--ink-2);margin:14px 0 0;line-height:1.75"><b>2025Q2 本業曾由盈轉虧、EPS −0.55 元</b>，公司歸因匯率。公司年報自述直、間接外銷約占營收淨額 99%<span class="ev ev-f">財報公告</span>；帳面銷售地區則為內銷 56.41%、外銷 43.59%，因出貨對象包含台系電源廠、形成間接外銷，與「經電源廠出貨」的通路描述一致。匯率因此仍是結構性風險。上半年 EPS 3.69 元已超過 2025 全年的 3.13 元；Q1 1.48 元加 Q2 2.20 元為 3.68 元，與半年報累計 3.69 元的差異來自各季加權股數與四捨五入。</p>
-        <figure class="chart" id="c-margin"><div class="tip"></div></figure>
+        <figure class="chart" id="c-margin">
+<svg style="display:block;width:100%;height:auto" viewBox="0 0 560 200" role="img" aria-label="2025Q1 至 2026Q2 合併毛利率與營業利益率" xmlns="http://www.w3.org/2000/svg">
+<line x1="42" x2="508" y1="16" y2="16" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="34" y="20" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">30</text>
+<line x1="42" x2="508" y1="61.14285714285714" y2="61.14285714285714" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="34" y="65.14285714285714" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">20</text>
+<line x1="42" x2="508" y1="106.28571428571429" y2="106.28571428571429" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="34" y="110.28571428571429" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">10</text>
+<line x1="42" x2="508" y1="151.42857142857144" y2="151.42857142857144" stroke="#c3ccd4" stroke-width="1">
+</line>
+<text x="34" y="155.42857142857144" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">0</text>
+<line x1="42" x2="508" y1="174" y2="174" stroke="#e4e9ed" stroke-width="1">
+</line>
+<text x="34" y="178" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">-5</text>
+<path d="M42.0 27.6 L135.2 110.4 L228.4 63.6 L321.6 32.8 L414.8 51.8 L508.0 46.1 " fill="none" stroke="#1b5e8f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+</path>
+<circle cx="42" cy="27.64685714285713" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="135.2" cy="110.43885714285713" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="228.4" cy="63.58057142857143" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="321.6" cy="32.83828571428572" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="414.8" cy="51.75314285714286" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="508" cy="46.11028571428572" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<text x="517" y="50.11028571428572" font-size="11" fill="#1b5e8f" font-weight="600" font-family="monospace">23.33%</text>
+<path d="M42.0 81.0 L135.2 159.1 L228.4 124.3 L321.6 81.7 L414.8 95.4 L508.0 83.4 " fill="none" stroke="#c8790c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+</path>
+<circle cx="42" cy="80.96057142857143" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="135.2" cy="159.10285714285715" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="228.4" cy="124.29771428571428" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="321.6" cy="81.68285714285715" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="414.8" cy="95.40628571428572" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<circle cx="508" cy="83.39828571428572" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2">
+</circle>
+<text x="517" y="87.39828571428572" font-size="11" fill="#c8790c" font-weight="600" font-family="monospace">15.07%</text>
+<text x="135.2" y="176.10285714285715" text-anchor="middle" font-size="10" fill="#128a5e" font-family="monospace">−1.70% 匯率</text>
+<text x="42" y="192" text-anchor="middle" font-size="10.5" fill="#78838e" font-family="monospace">25Q1</text>
+<text x="135.2" y="192" text-anchor="middle" font-size="10.5" fill="#78838e" font-family="monospace">25Q2</text>
+<text x="228.4" y="192" text-anchor="middle" font-size="10.5" fill="#78838e" font-family="monospace">25Q3</text>
+<text x="321.6" y="192" text-anchor="middle" font-size="10.5" fill="#78838e" font-family="monospace">25Q4</text>
+<text x="414.8" y="192" text-anchor="middle" font-size="10.5" fill="#78838e" font-family="monospace">26Q1</text>
+<text x="508" y="192" text-anchor="middle" font-size="10.5" fill="#78838e" font-family="monospace">26Q2</text>
+<text x="34" y="14" text-anchor="end" font-size="10" fill="#78838e" font-family="monospace">%</text>
+</svg>
+</figure>
         <div class="legend" style="margin-top:8px">
           <span><i class="swatch" style="background:var(--s1)"></i>合併毛利率</span>
           <span><i class="swatch" style="background:var(--s2)"></i>營業利益率</span>
@@ -735,7 +808,58 @@ section{scroll-margin-top:72px}
         <span><i class="swatch sq" style="background:var(--up)"></i>買超（＋）</span>
         <span><i class="swatch sq" style="background:var(--down)"></i>賣超（－）</span>
       </div>
-      <figure class="chart" id="c-inst"><div class="tip"></div></figure>
+      <figure class="chart" id="c-inst">
+<svg style="display:block;width:100%;height:auto" viewBox="0 0 760 190" role="img" aria-label="外資近 30 個交易日單日買賣超" xmlns="http://www.w3.org/2000/svg">
+<line x1="56" x2="746" y1="12" y2="12" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="47" y="16" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">+3,000</text>
+<line x1="56" x2="746" y1="49.5" y2="49.5" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="47" y="53.5" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">+1,500</text>
+<line x1="56" x2="746" y1="87" y2="87" stroke="#c3ccd4" stroke-width="1"></line>
+<text x="47" y="91" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">0</text>
+<line x1="56" x2="746" y1="124.5" y2="124.5" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="47" y="128.5" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">-1,500</text>
+<line x1="56" x2="746" y1="162" y2="162" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="47" y="166" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">-3,000</text>
+<rect x="60.6" y="79.97" width="13.8" height="7.03" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="67.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">08-14</text>
+<rect x="83.6" y="76.58" width="13.8" height="10.43" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="106.6" y="80.7" width="13.8" height="6.3" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="129.6" y="78.55" width="13.8" height="8.45" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="152.6" y="79.5" width="13.8" height="7.5" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="175.6" y="80.67" width="13.8" height="6.33" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="182.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">08-21</text>
+<rect x="198.6" y="87" width="13.8" height="32.23" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="221.6" y="74.83" width="13.8" height="12.18" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="244.6" y="87" width="13.8" height="61.02" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="267.6" y="80.22" width="13.8" height="6.78" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="290.6" y="87" width="13.8" height="3.48" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="297.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">08-28</text>
+<rect x="313.6" y="87" width="13.8" height="28.77" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="336.6" y="87" width="13.8" height="11.25" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="359.6" y="87" width="13.8" height="7.33" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="382.6" y="85.5" width="13.8" height="1.5" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="405.6" y="87" width="13.8" height="2.88" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="412.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">09-04</text>
+<rect x="428.6" y="87" width="13.8" height="14.28" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="451.6" y="87" width="13.8" height="23.7" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="474.6" y="67.8" width="13.8" height="19.2" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="497.6" y="87" width="13.8" height="26.75" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="520.6" y="87" width="13.8" height="10.03" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="527.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">09-11</text>
+<rect x="543.6" y="81.65" width="13.8" height="5.35" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="566.6" y="87" width="13.8" height="6.55" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="589.6" y="81.92" width="13.8" height="5.08" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="612.6" y="87" width="13.8" height="17.52" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="635.6" y="87" width="13.8" height="11.62" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="642.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">09-18</text>
+<rect x="658.6" y="87" width="13.8" height="18.07" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="681.6" y="87" width="13.8" height="12.85" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="704.6" y="87" width="13.8" height="4.1" rx="2" fill="#128a5e" stroke="#fdfdfe" stroke-width="1"></rect>
+<rect x="727.6" y="82.33" width="13.8" height="4.67" rx="2" fill="#d1382f" stroke="#fdfdfe" stroke-width="1"></rect>
+<text x="734.5" y="181" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">09-24</text>
+<text x="47" y="11" text-anchor="end" font-size="10" fill="#78838e" font-family="monospace">張</text>
+</svg>
+</figure>
       <p style="font-size:12px;color:var(--ink-3);margin:12px 0 0">同期投信買賣超 30 個交易日皆為 0 張，故未入圖。</p>
     </div>
 
@@ -773,44 +897,44 @@ section{scroll-margin-top:72px}
       </div>
     </div>
 
-    <div class="panel customer-concentration">
+    <div class="panel" style="margin-top:20px">
       <h3>股權與客戶集中：籌碼、接單兩端都集中</h3>
       <p class="h3sub">股權結構與二供風險放在一起看</p>
-      <div class="grid3 concentration-grid">
+      <div class="grid3">
         <div>
-          <div class="metric-label">董監事持股</div>
-          <div class="mono metric-value">3.48<small class="metric-unit">&nbsp;%</small></div>
-          <div class="mono metric-detail">質押 0</div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:4px">董監事持股</div>
+          <div class="mono" style="font-size:30px;font-weight:600;line-height:1.1">3.48<small style="font-size:14px;color:var(--ink-3);font-weight:400">&nbsp;%</small></div>
+          <div class="mono" style="font-size:12.5px;margin-top:4px;color:var(--ink-3)">質押 0</div>
         </div>
         <div>
-          <div class="metric-label">最大股東</div>
-          <div class="mono metric-value">4.88<small class="metric-unit">&nbsp;%</small></div>
-          <div class="metric-detail">晶采光電．無控股集團</div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:4px">最大股東</div>
+          <div class="mono" style="font-size:30px;font-weight:600;line-height:1.1">4.88<small style="font-size:14px;color:var(--ink-3);font-weight:400">&nbsp;%</small></div>
+          <div style="font-size:12.5px;margin-top:4px;color:var(--ink-3)">晶采光電．無控股集團</div>
         </div>
         <div>
-          <div class="metric-label">投信持股變動</div>
-          <div class="mono metric-value">0<small class="metric-unit">&nbsp;張／30 日</small></div>
-          <div class="metric-detail">無本土法人長線籌碼</div>
-        </div>
-      </div>
-      <div class="grid3 concentration-grid">
-        <div>
-          <div class="metric-label">2025 第一大客戶 S1</div>
-          <div class="mono metric-value">55.12<small class="metric-unit">&nbsp;%</small></div>
-          <div class="metric-detail">年報未揭露公司名稱</div>
-        </div>
-        <div>
-          <div class="metric-label">2025 第二大客戶 S2</div>
-          <div class="mono metric-value">14.49<small class="metric-unit">&nbsp;%</small></div>
-          <div class="metric-detail">前兩大合計約 70%</div>
-        </div>
-        <div>
-          <div class="metric-label">2025 電芯供應商 A</div>
-          <div class="mono metric-value">31.65<small class="metric-unit">&nbsp;%</small></div>
-          <div class="metric-detail">占年度進貨</div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:4px">投信持股變動</div>
+          <div class="mono" style="font-size:30px;font-weight:600;line-height:1.1">0<small style="font-size:14px;color:var(--ink-3);font-weight:400">&nbsp;張／30 日</small></div>
+          <div style="font-size:12.5px;margin-top:4px;color:var(--ink-3)">無本土法人長線籌碼</div>
         </div>
       </div>
-      <p class="body-copy"><b>籌碼面沒有單一強勢控股者：</b>董監持股 3.48%、最大股東 4.88%，投信近 30 日買賣超為 0；董監 2026-06～08 的設質與解質均為 0<span class="ev ev-f">財報公告</span>。另一方面，<b>接單集中度很高：</b>2025 年單一客戶 S1 占營收 55.12%，S2 占 14.49%，前兩大合計約 70%<span class="ev ev-f">財報公告</span>。年報沒有揭露 S1 名稱，不由本頁推測。這使「二供」的訂單分配風險可被量化：任一大客戶調整份額，都可能明顯影響營收；進貨端另有電芯供應商 A 占 31.65%。</p>
+      <div class="grid3" style="margin-top:20px">
+        <div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:4px">2025 第一大客戶 S1</div>
+          <div class="mono" style="font-size:30px;font-weight:600;line-height:1.1">55.12<small style="font-size:14px;color:var(--ink-3);font-weight:400">&nbsp;%</small></div>
+          <div style="font-size:12.5px;margin-top:4px;color:var(--ink-3)">年報未揭露公司名稱</div>
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:4px">2025 第二大客戶 S2</div>
+          <div class="mono" style="font-size:30px;font-weight:600;line-height:1.1">14.49<small style="font-size:14px;color:var(--ink-3);font-weight:400">&nbsp;%</small></div>
+          <div style="font-size:12.5px;margin-top:4px;color:var(--ink-3)">前兩大合計約 70%</div>
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:4px">2025 電芯供應商 A</div>
+          <div class="mono" style="font-size:30px;font-weight:600;line-height:1.1">31.65<small style="font-size:14px;color:var(--ink-3);font-weight:400">&nbsp;%</small></div>
+          <div style="font-size:12.5px;margin-top:4px;color:var(--ink-3)">占年度進貨</div>
+        </div>
+      </div>
+      <p style="font-size:13.5px;color:var(--ink-2);margin:14px 0 0;line-height:1.75"><b>籌碼面沒有單一強勢控股者：</b>董監持股 3.48%、最大股東 4.88%，投信近 30 日買賣超為 0；董監 2026-06～08 的設質與解質均為 0<span class="ev ev-f">財報公告</span>。另一方面，<b>接單集中度很高：</b>2025 年單一客戶 S1 占營收 55.12%，S2 占 14.49%，前兩大合計約 70%<span class="ev ev-f">財報公告</span>。年報沒有揭露 S1 名稱，不由本頁推測。這使「二供」的訂單分配風險可被量化：任一大客戶調整份額，都可能明顯影響營收；進貨端另有電芯供應商 A 占 31.65%。</p>
     </div>
   </section>
 
@@ -827,10 +951,182 @@ section{scroll-margin-top:72px}
         <span><i class="swatch" style="background:var(--s2)"></i>20 日均線</span>
         <span><i class="swatch" style="background:var(--s3)"></i>60 日均線</span>
       </div>
-      <figure class="chart" id="c-price"><div class="tip"></div></figure>
+      <figure class="chart" id="c-price">
+<svg style="display:block;width:100%;height:auto" viewBox="0 0 760 290" role="img" aria-label="新盛力近 120 個交易日收盤價與 20 日、60 日均線" xmlns="http://www.w3.org/2000/svg">
+<line x1="46" x2="716" y1="264" y2="264" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="268" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">120</text>
+<line x1="46" x2="716" y1="222.33" y2="222.33" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="226.33" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">150</text>
+<line x1="46" x2="716" y1="180.67" y2="180.67" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="184.67" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">180</text>
+<line x1="46" x2="716" y1="139" y2="139" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="143" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">210</text>
+<line x1="46" x2="716" y1="97.33" y2="97.33" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="101.33" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">240</text>
+<line x1="46" x2="716" y1="55.67" y2="55.67" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="59.67" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">270</text>
+<line x1="46" x2="716" y1="14" y2="14" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="18" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">300</text>
+<path d="M46, 224.72 L51.63, 225.81 L57.26, 226.85 L62.89, 227.9 L68.52, 228.65 L74.15, 229.57 L79.78, 230.46 L85.41, 231.07 L91.04, 231.67 L96.67, 232.01 L102.3, 232.18 L107.93, 232.06 L113.56, 231.76 L119.19, 231.56 L124.82, 231.19 L130.45, 231.04 L136.08, 230.89 L141.71, 231.06 L147.34, 231.24 L152.97, 231.26 L158.61, 230.97 L164.24, 230.83 L169.87, 230.4 L175.5, 229.46 L181.13, 228.1 L186.76, 226.99 L192.39, 225.82 L198.02, 224.97 L203.65, 223.89 L209.28, 222.93 L214.91, 221.79 L220.54, 220.54 L226.17, 218.96 L231.8, 217.22 L237.43, 215.68 L243.06, 214.38 L248.69, 212.93 L254.32, 210.9 L259.95, 208.35 L265.58, 206.11 L271.21, 203.29 L276.84, 200.07 L282.47, 197.32 L288.1, 194.14 L293.73, 190.78 L299.36, 188.35 L304.99, 186.31 L310.62, 184.07 L316.25, 181.47 L321.88, 178.83 L327.51, 176.21 L333.14, 173.18 L338.77, 170.32 L344.4, 167.82 L350.03, 165.22 L355.66, 162.64 L361.29, 160.5 L366.92, 158.14 L372.55, 155.76 L378.18, 153.33 L383.82, 150.89 L389.45, 148.47 L395.08, 145.56 L400.71, 142.97 L406.34, 139.93 L411.97, 137.25 L417.6, 134.96 L423.23, 133.1 L428.86, 131.26 L434.49, 129.44 L440.12, 128.19 L445.75, 127.21 L451.38, 126.19 L457.01, 124.99 L462.64, 123.93 L468.27, 123.08 L473.9, 122.08 L479.53, 121.47 L485.16, 121.01 L490.79, 120.89 L496.42, 120.64 L502.05, 120 L507.68, 119.4 L513.31, 119.12 L518.94, 118.76 L524.57, 118.31 L530.2, 117.39 L535.83, 115.74 L541.46, 113.9 L547.09, 112.08 L552.72, 110.39 L558.35, 108.61 L563.98, 107.51 L569.61, 106.49 L575.24, 105.14 L580.87, 103.46 L586.5, 102.46 L592.13, 102.1 L597.76, 101.71 L603.39, 100.9 L609.03, 100.49 L614.66, 100.5 L620.29, 100.08 L625.92, 100.47 L631.55, 101.4 L637.18, 101.42 L642.81, 101.11 L648.44, 100.97 L654.07, 100.97 L659.7, 101.11 L665.33, 101.56 L670.96, 102.25 L676.59, 103.22 L682.22, 103.82 L687.85, 104.38 L693.48, 104.82 L699.11, 104.64 L704.74, 104.44 L710.37, 104.46 L716, 104.33" fill="none" stroke="#cf5b8e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+<path d="M46, 240.29 L51.63, 239.39 L57.26, 238.61 L62.89, 238.17 L68.52, 237.71 L74.15, 238.24 L79.78, 238.79 L85.41, 238.72 L91.04, 238.38 L96.67, 237.92 L102.3, 237.57 L107.93, 235.57 L113.56, 234.04 L119.19, 233.4 L124.82, 231.92 L130.45, 230.74 L136.08, 229.35 L141.71, 227.36 L147.34, 226.15 L152.97, 224.38 L158.61, 221.92 L164.24, 219.81 L169.87, 217.38 L175.5, 213.79 L181.13, 209.49 L186.76, 205.5 L192.39, 201.29 L198.02, 198.31 L203.65, 195.35 L209.28, 192.54 L214.91, 189.44 L220.54, 187.12 L226.17, 183.89 L231.8, 179.67 L237.43, 176.29 L243.06, 173.17 L248.69, 169.72 L254.32, 164.83 L259.95, 158.97 L265.58, 153.75 L271.21, 147.68 L276.84, 141.01 L282.47, 135.97 L288.1, 130.46 L293.73, 125.11 L299.36, 121.29 L304.99, 118.82 L310.62, 115.18 L316.25, 110.69 L321.88, 106.01 L327.51, 101.6 L333.14, 96.85 L338.77, 93.03 L344.4, 90.39 L350.03, 87.47 L355.66, 84 L361.29, 82.44 L366.92, 82.22 L372.55, 82.19 L378.18, 81.85 L383.82, 83.06 L389.45, 84.62 L395.08, 83.35 L400.71, 84.67 L406.34, 85.18 L411.97, 84.97 L417.6, 84.76 L423.23, 85.81 L428.86, 87.75 L434.49, 89.79 L440.12, 93.56 L445.75, 97.64 L451.38, 101.67 L457.01, 104.9 L462.64, 108.03 L468.27, 112.08 L473.9, 114.07 L479.53, 117.38 L485.16, 121.89 L490.79, 127.06 L496.42, 131.15 L502.05, 134.39 L507.68, 138.9 L513.31, 142.26 L518.94, 145.99 L524.57, 148.65 L530.2, 148.58 L535.83, 146.22 L541.46, 143.24 L547.09, 140.46 L552.72, 136.01 L558.35, 131.36 L563.98, 127.85 L569.61, 124.17 L575.24, 119.94 L580.87, 114.28 L586.5, 110.88 L592.13, 106.71 L597.76, 101.06 L603.39, 93.82 L609.03, 87.22 L614.66, 82.5 L620.29, 78.03 L625.92, 74.49 L631.55, 73.03 L637.18, 70.62 L642.81, 69.97 L648.44, 70.92 L654.07, 71.92 L659.7, 73.1 L665.33, 75.11 L670.96, 77.75 L676.59, 80.14 L682.22, 82.36 L687.85, 85.14 L693.48, 88.1 L699.11, 88.96 L704.74, 89.28 L710.37, 90.46 L716, 92.12" fill="none" stroke="#c8790c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+<path d="M46, 248.72 L51.63, 245.25 L57.26, 243.17 L62.89, 242.47 L68.52, 235.53 L74.15, 236.92 L79.78, 239 L85.41, 235.53 L91.04, 229.28 L96.67, 232.75 L102.3, 229.28 L107.93, 209.14 L113.56, 200.81 L119.19, 204.97 L124.82, 199.42 L130.45, 205.67 L136.08, 209.14 L141.71, 209.83 L147.34, 216.78 L152.97, 214 L158.61, 199.42 L164.24, 202.89 L169.87, 194.56 L175.5, 170.94 L181.13, 149.42 L186.76, 157.06 L192.39, 154.97 L198.02, 175.81 L203.65, 170.25 L209.28, 176.5 L214.91, 167.47 L220.54, 162.61 L226.17, 136.22 L231.8, 120.25 L237.43, 132.06 L243.06, 143.17 L248.69, 140.39 L254.32, 111.92 L259.95, 99.42 L265.58, 109.83 L271.21, 77.89 L276.84, 69.56 L282.47, 93.86 L288.1, 60.53 L293.73, 42.47 L299.36, 80.67 L304.99, 105.67 L310.62, 102.89 L316.25, 80.67 L321.88, 82.75 L327.51, 79.28 L333.14, 67.47 L338.77, 59.83 L344.4, 67.47 L350.03, 73.72 L355.66, 73.72 L361.29, 109.14 L366.92, 107.75 L372.55, 98.72 L378.18, 102.89 L383.82, 102.19 L389.45, 100.81 L395.08, 68.17 L400.71, 86.92 L406.34, 52.89 L411.97, 76.5 L417.6, 101.5 L423.23, 123.72 L428.86, 119.56 L434.49, 123.72 L440.12, 154.28 L445.75, 149.42 L451.38, 140.39 L457.01, 132.06 L462.64, 136.22 L468.27, 154.97 L473.9, 148.72 L479.53, 173.72 L485.16, 189 L490.79, 206.36 L496.42, 184.14 L502.05, 165.39 L507.68, 158.44 L513.31, 154.28 L518.94, 127.19 L524.57, 129.97 L530.2, 100.11 L535.83, 76.5 L541.46, 59.83 L547.09, 68.17 L552.72, 65.39 L558.35, 56.36 L563.98, 70.25 L569.61, 58.44 L575.24, 51.5 L580.87, 41.78 L586.5, 80.67 L592.13, 90.39 L597.76, 75.81 L603.39, 61.92 L609.03, 52.19 L614.66, 70.94 L620.29, 68.86 L625.92, 83.44 L631.55, 98.03 L637.18, 82.06 L642.81, 86.92 L648.44, 95.25 L654.07, 79.97 L659.7, 91.78 L665.33, 105.67 L670.96, 109.14 L676.59, 118.17 L682.22, 102.89 L687.85, 107.06 L693.48, 100.81 L699.11, 98.03 L704.74, 96.64 L710.37, 99.42 L716, 95.25" fill="none" stroke="#1b5e8f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+<circle cx="716" cy="95.25" r="4" fill="#1b5e8f" stroke="#fdfdfe" stroke-width="2"></circle>
+<text x="724" y="99.25" font-size="11" fill="#1b5e8f" font-weight="600" font-family="monospace">241.5</text>
+<circle cx="716" cy="92.12" r="4" fill="#c8790c" stroke="#fdfdfe" stroke-width="2"></circle>
+<text x="724" y="96.12" font-size="11" fill="#c8790c" font-weight="600" font-family="monospace">243.8</text>
+<circle cx="716" cy="104.33" r="4" fill="#cf5b8e" stroke="#fdfdfe" stroke-width="2"></circle>
+<text x="724" y="108.33" font-size="11" fill="#cf5b8e" font-weight="600" font-family="monospace">235.0</text>
+<text x="614.66" y="38.67" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">波段高 288</text>
+<text x="46" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">04-07</text>
+<text x="158.61" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">05-06</text>
+<text x="271.21" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">06-03</text>
+<text x="383.82" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">07-02</text>
+<text x="496.42" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">07-31</text>
+<text x="609.03" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">08-28</text>
+<text x="716" y="282" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">09-24</text>
+</svg>
+</figure>
       <h3 style="margin-top:20px">成交量</h3>
       <p class="h3sub">單位：張 · 紅漲綠跌</p>
-      <figure class="chart" id="c-vol"><div class="tip"></div></figure>
+      <figure class="chart" id="c-vol">
+<svg style="display:block;width:100%;height:auto" viewBox="0 0 760 124" role="img" aria-label="近 120 個交易日成交量" xmlns="http://www.w3.org/2000/svg">
+<line x1="46" x2="716" y1="100" y2="100" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="104" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">0k</text>
+<line x1="46" x2="716" y1="71.33" y2="71.33" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="75.33" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">20k</text>
+<line x1="46" x2="716" y1="42.67" y2="42.67" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="46.67" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">40k</text>
+<line x1="46" x2="716" y1="14" y2="14" stroke="#e4e9ed" stroke-width="1"></line>
+<text x="37" y="18" text-anchor="end" font-size="10.5" fill="#78838e" font-family="monospace">60k</text>
+<rect x="44.27" y="96.8" width="3.46" height="3.2" rx="1" fill="#128a5e"></rect>
+<rect x="49.9" y="91.95" width="3.46" height="8.05" rx="1" fill="#128a5e"></rect>
+<rect x="55.53" y="91.79" width="3.46" height="8.21" rx="1" fill="#128a5e"></rect>
+<rect x="61.16" y="95.59" width="3.46" height="4.41" rx="1" fill="#128a5e"></rect>
+<rect x="66.79" y="93.28" width="3.46" height="6.72" rx="1" fill="#d1382f"></rect>
+<rect x="72.42" y="93.95" width="3.46" height="6.05" rx="1" fill="#128a5e"></rect>
+<rect x="78.05" y="93.46" width="3.46" height="6.54" rx="1" fill="#128a5e"></rect>
+<rect x="83.68" y="95.64" width="3.46" height="4.36" rx="1" fill="#d1382f"></rect>
+<rect x="89.31" y="93.3" width="3.46" height="6.7" rx="1" fill="#d1382f"></rect>
+<rect x="94.94" y="90.54" width="3.46" height="9.46" rx="1" fill="#128a5e"></rect>
+<rect x="100.57" y="93.87" width="3.46" height="6.13" rx="1" fill="#d1382f"></rect>
+<rect x="106.2" y="70.56" width="3.46" height="29.44" rx="1" fill="#d1382f"></rect>
+<rect x="111.83" y="19.34" width="3.46" height="80.66" rx="1" fill="#d1382f"></rect>
+<rect x="117.46" y="50.79" width="3.46" height="49.21" rx="1" fill="#128a5e"></rect>
+<rect x="123.09" y="75.72" width="3.46" height="24.28" rx="1" fill="#128a5e"></rect>
+<rect x="128.72" y="85.72" width="3.46" height="14.28" rx="1" fill="#128a5e"></rect>
+<rect x="134.35" y="93.55" width="3.46" height="6.45" rx="1" fill="#d1382f"></rect>
+<rect x="139.98" y="92.12" width="3.46" height="7.88" rx="1" fill="#d1382f"></rect>
+<rect x="145.61" y="91.38" width="3.46" height="8.62" rx="1" fill="#128a5e"></rect>
+<rect x="151.24" y="94.23" width="3.46" height="5.77" rx="1" fill="#d1382f"></rect>
+<rect x="156.87" y="82.94" width="3.46" height="17.06" rx="1" fill="#d1382f"></rect>
+<rect x="162.5" y="81.24" width="3.46" height="18.76" rx="1" fill="#128a5e"></rect>
+<rect x="168.13" y="73.31" width="3.46" height="26.69" rx="1" fill="#d1382f"></rect>
+<rect x="173.76" y="77.22" width="3.46" height="22.78" rx="1" fill="#d1382f"></rect>
+<rect x="179.39" y="53.69" width="3.46" height="46.31" rx="1" fill="#d1382f"></rect>
+<rect x="185.02" y="60.58" width="3.46" height="39.42" rx="1" fill="#128a5e"></rect>
+<rect x="190.66" y="82.93" width="3.46" height="17.07" rx="1" fill="#128a5e"></rect>
+<rect x="196.29" y="64.33" width="3.46" height="35.67" rx="1" fill="#128a5e"></rect>
+<rect x="201.92" y="87.86" width="3.46" height="12.14" rx="1" fill="#d1382f"></rect>
+<rect x="207.55" y="90.47" width="3.46" height="9.53" rx="1" fill="#128a5e"></rect>
+<rect x="213.18" y="91.85" width="3.46" height="8.15" rx="1" fill="#d1382f"></rect>
+<rect x="218.81" y="86" width="3.46" height="14" rx="1" fill="#d1382f"></rect>
+<rect x="224.44" y="82.33" width="3.46" height="17.67" rx="1" fill="#d1382f"></rect>
+<rect x="230.07" y="79.67" width="3.46" height="20.33" rx="1" fill="#128a5e"></rect>
+<rect x="235.7" y="76.1" width="3.46" height="23.9" rx="1" fill="#128a5e"></rect>
+<rect x="241.33" y="83.24" width="3.46" height="16.76" rx="1" fill="#128a5e"></rect>
+<rect x="246.96" y="83.79" width="3.46" height="16.21" rx="1" fill="#128a5e"></rect>
+<rect x="252.59" y="84.13" width="3.46" height="15.87" rx="1" fill="#d1382f"></rect>
+<rect x="258.22" y="72.51" width="3.46" height="27.49" rx="1" fill="#128a5e"></rect>
+<rect x="263.85" y="88.83" width="3.46" height="11.17" rx="1" fill="#128a5e"></rect>
+<rect x="269.48" y="84.46" width="3.46" height="15.54" rx="1" fill="#d1382f"></rect>
+<rect x="275.11" y="65.24" width="3.46" height="34.76" rx="1" fill="#d1382f"></rect>
+<rect x="280.74" y="80.66" width="3.46" height="19.34" rx="1" fill="#128a5e"></rect>
+<rect x="286.37" y="62.4" width="3.46" height="37.6" rx="1" fill="#d1382f"></rect>
+<rect x="292" y="41.73" width="3.46" height="58.27" rx="1" fill="#d1382f"></rect>
+<rect x="297.63" y="77.7" width="3.46" height="22.3" rx="1" fill="#128a5e"></rect>
+<rect x="303.26" y="86.16" width="3.46" height="13.84" rx="1" fill="#128a5e"></rect>
+<rect x="308.89" y="90.51" width="3.46" height="9.49" rx="1" fill="#128a5e"></rect>
+<rect x="314.52" y="84.98" width="3.46" height="15.02" rx="1" fill="#d1382f"></rect>
+<rect x="320.15" y="87.45" width="3.46" height="12.55" rx="1" fill="#128a5e"></rect>
+<rect x="325.78" y="93.58" width="3.46" height="6.42" rx="1" fill="#d1382f"></rect>
+<rect x="331.41" y="89" width="3.46" height="11" rx="1" fill="#d1382f"></rect>
+<rect x="337.04" y="88.01" width="3.46" height="11.99" rx="1" fill="#d1382f"></rect>
+<rect x="342.67" y="83.71" width="3.46" height="16.29" rx="1" fill="#128a5e"></rect>
+<rect x="348.3" y="92.74" width="3.46" height="7.26" rx="1" fill="#128a5e"></rect>
+<rect x="353.93" y="95.27" width="3.46" height="4.73" rx="1" fill="#128a5e"></rect>
+<rect x="359.56" y="91.78" width="3.46" height="8.22" rx="1" fill="#128a5e"></rect>
+<rect x="365.19" y="96.03" width="3.46" height="3.97" rx="1" fill="#d1382f"></rect>
+<rect x="370.82" y="96.93" width="3.46" height="3.07" rx="1" fill="#d1382f"></rect>
+<rect x="376.45" y="96.42" width="3.46" height="3.58" rx="1" fill="#128a5e"></rect>
+<rect x="382.08" y="97.68" width="3.46" height="2.32" rx="1" fill="#d1382f"></rect>
+<rect x="387.71" y="98" width="3.46" height="2" rx="1" fill="#d1382f"></rect>
+<rect x="393.34" y="88.47" width="3.46" height="11.53" rx="1" fill="#d1382f"></rect>
+<rect x="398.97" y="77.49" width="3.46" height="22.51" rx="1" fill="#128a5e"></rect>
+<rect x="404.6" y="75.82" width="3.46" height="24.18" rx="1" fill="#d1382f"></rect>
+<rect x="410.24" y="71.92" width="3.46" height="28.08" rx="1" fill="#128a5e"></rect>
+<rect x="415.87" y="87.82" width="3.46" height="12.18" rx="1" fill="#128a5e"></rect>
+<rect x="421.5" y="91.43" width="3.46" height="8.57" rx="1" fill="#128a5e"></rect>
+<rect x="427.13" y="95.05" width="3.46" height="4.95" rx="1" fill="#128a5e"></rect>
+<rect x="432.76" y="96.35" width="3.46" height="3.65" rx="1" fill="#128a5e"></rect>
+<rect x="438.39" y="95.42" width="3.46" height="4.58" rx="1" fill="#128a5e"></rect>
+<rect x="444.02" y="94.62" width="3.46" height="5.38" rx="1" fill="#d1382f"></rect>
+<rect x="449.65" y="95.13" width="3.46" height="4.87" rx="1" fill="#d1382f"></rect>
+<rect x="455.28" y="94.95" width="3.46" height="5.05" rx="1" fill="#d1382f"></rect>
+<rect x="460.91" y="96.98" width="3.46" height="3.02" rx="1" fill="#128a5e"></rect>
+<rect x="466.54" y="97.36" width="3.46" height="2.64" rx="1" fill="#128a5e"></rect>
+<rect x="472.17" y="96.32" width="3.46" height="3.68" rx="1" fill="#d1382f"></rect>
+<rect x="477.8" y="97.03" width="3.46" height="2.97" rx="1" fill="#128a5e"></rect>
+<rect x="483.43" y="90.7" width="3.46" height="9.3" rx="1" fill="#128a5e"></rect>
+<rect x="489.06" y="93.73" width="3.46" height="6.27" rx="1" fill="#128a5e"></rect>
+<rect x="494.69" y="97.52" width="3.46" height="2.48" rx="1" fill="#d1382f"></rect>
+<rect x="500.32" y="95.29" width="3.46" height="4.71" rx="1" fill="#d1382f"></rect>
+<rect x="505.95" y="92.25" width="3.46" height="7.75" rx="1" fill="#d1382f"></rect>
+<rect x="511.58" y="94.77" width="3.46" height="5.23" rx="1" fill="#128a5e"></rect>
+<rect x="517.21" y="91.7" width="3.46" height="8.3" rx="1" fill="#d1382f"></rect>
+<rect x="522.84" y="76.77" width="3.46" height="23.23" rx="1" fill="#128a5e"></rect>
+<rect x="528.47" y="96.05" width="3.46" height="3.95" rx="1" fill="#d1382f"></rect>
+<rect x="534.1" y="69.16" width="3.46" height="30.84" rx="1" fill="#d1382f"></rect>
+<rect x="539.73" y="76.92" width="3.46" height="23.08" rx="1" fill="#d1382f"></rect>
+<rect x="545.36" y="96.64" width="3.46" height="3.36" rx="1" fill="#128a5e"></rect>
+<rect x="550.99" y="97.57" width="3.46" height="2.43" rx="1" fill="#128a5e"></rect>
+<rect x="556.62" y="97.5" width="3.46" height="2.5" rx="1" fill="#d1382f"></rect>
+<rect x="562.25" y="97.77" width="3.46" height="2.23" rx="1" fill="#128a5e"></rect>
+<rect x="567.88" y="96.99" width="3.46" height="3.01" rx="1" fill="#d1382f"></rect>
+<rect x="573.51" y="96.97" width="3.46" height="3.03" rx="1" fill="#d1382f"></rect>
+<rect x="579.14" y="96.61" width="3.46" height="3.39" rx="1" fill="#d1382f"></rect>
+<rect x="584.77" y="88.16" width="3.46" height="11.84" rx="1" fill="#128a5e"></rect>
+<rect x="590.4" y="86.72" width="3.46" height="13.28" rx="1" fill="#128a5e"></rect>
+<rect x="596.03" y="85.09" width="3.46" height="14.91" rx="1" fill="#d1382f"></rect>
+<rect x="601.66" y="83.56" width="3.46" height="16.44" rx="1" fill="#d1382f"></rect>
+<rect x="607.29" y="80.55" width="3.46" height="19.45" rx="1" fill="#128a5e"></rect>
+<rect x="612.92" y="81.84" width="3.46" height="18.16" rx="1" fill="#128a5e"></rect>
+<rect x="618.55" y="92.42" width="3.46" height="7.58" rx="1" fill="#d1382f"></rect>
+<rect x="624.18" y="93.39" width="3.46" height="6.61" rx="1" fill="#128a5e"></rect>
+<rect x="629.81" y="93.69" width="3.46" height="6.31" rx="1" fill="#128a5e"></rect>
+<rect x="635.45" y="94.73" width="3.46" height="5.27" rx="1" fill="#d1382f"></rect>
+<rect x="641.08" y="95.97" width="3.46" height="4.03" rx="1" fill="#128a5e"></rect>
+<rect x="646.71" y="94.33" width="3.46" height="5.67" rx="1" fill="#128a5e"></rect>
+<rect x="652.34" y="89.97" width="3.46" height="10.03" rx="1" fill="#d1382f"></rect>
+<rect x="657.97" y="94.63" width="3.46" height="5.37" rx="1" fill="#128a5e"></rect>
+<rect x="663.6" y="96.2" width="3.46" height="3.8" rx="1" fill="#128a5e"></rect>
+<rect x="669.23" y="96.38" width="3.46" height="3.62" rx="1" fill="#d1382f"></rect>
+<rect x="674.86" y="97.34" width="3.46" height="2.66" rx="1" fill="#128a5e"></rect>
+<rect x="680.49" y="96.88" width="3.46" height="3.12" rx="1" fill="#d1382f"></rect>
+<rect x="686.12" y="95.61" width="3.46" height="4.39" rx="1" fill="#128a5e"></rect>
+<rect x="691.75" y="96.73" width="3.46" height="3.27" rx="1" fill="#d1382f"></rect>
+<rect x="697.38" y="93.8" width="3.46" height="6.2" rx="1" fill="#d1382f"></rect>
+<rect x="703.01" y="92.42" width="3.46" height="7.58" rx="1" fill="#128a5e"></rect>
+<rect x="708.64" y="97.82" width="3.46" height="2.18" rx="1" fill="#128a5e"></rect>
+<rect x="714.27" y="98.12" width="3.46" height="1.88" rx="1" fill="#d1382f"></rect>
+<text x="46" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">04-07</text>
+<text x="158.61" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">05-06</text>
+<text x="271.21" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">06-03</text>
+<text x="383.82" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">07-02</text>
+<text x="496.42" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">07-31</text>
+<text x="609.03" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">08-28</text>
+<text x="716" y="117" text-anchor="middle" font-size="10" fill="#78838e" font-family="monospace">09-24</text>
+</svg>
+</figure>
     </div>
 
     <div class="grid2">
@@ -1145,7 +1441,7 @@ section{scroll-margin-top:72px}
         </div>
       </div>
 
-      <div class="note known-limits">
+      <div class="note" style="margin-top:24px">
         <b>已知限制。</b>
         ① 本頁月營收最新月份為 2026 年 8 月（資料集更新至 2026-09-24）；9 月營收申報期限為 10/10。
         ② 均線、乖離率、RSI(14)、KD(9,3,3)、量比、52 週高低與各期間法人累計，皆由原始日成交資料自行計算，可能與看盤軟體因參數或還原權值方式不同而有差異。
@@ -1160,2115 +1456,9 @@ section{scroll-margin-top:72px}
   </section>
 
   <footer>
-    <p class="data-cutoff">本頁彙整自公開市場資料與內部研究筆記，僅供研究參考，不構成投資建議。市場資料截止 2026-09-24 收盤；信用交易截止 2026-09-23。</p>
+    <p style="margin:0">本頁彙整自公開市場資料與內部研究筆記，僅供研究參考，不構成投資建議。市場資料截止 2026-09-24 收盤；信用交易截止 2026-09-23。</p>
   </footer>
 </div>
 
-
 </main>
-<button class="totop" id="totop" type="button" aria-label="回到頁面頂端" title="回到頂端">
-  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
-<script id="data" type="application/json">{
-  "price": [
-    {
-      "d": "04-07",
-      "date": "2026-04-07",
-      "c": 131,
-      "o": 132.5,
-      "h": 135,
-      "l": 130.5,
-      "v": 2236,
-      "ma20": 137.07,
-      "ma60": 148.28
-    },
-    {
-      "d": "04-08",
-      "date": "2026-04-08",
-      "c": 133.5,
-      "o": 135.5,
-      "h": 137.5,
-      "l": 132.5,
-      "v": 5615,
-      "ma20": 137.72,
-      "ma60": 147.5
-    },
-    {
-      "d": "04-09",
-      "date": "2026-04-09",
-      "c": 135,
-      "o": 138,
-      "h": 140,
-      "l": 133,
-      "v": 5731,
-      "ma20": 138.28,
-      "ma60": 146.75
-    },
-    {
-      "d": "04-10",
-      "date": "2026-04-10",
-      "c": 135.5,
-      "o": 137,
-      "h": 138,
-      "l": 134,
-      "v": 3078,
-      "ma20": 138.6,
-      "ma60": 145.99
-    },
-    {
-      "d": "04-13",
-      "date": "2026-04-13",
-      "c": 140.5,
-      "o": 134,
-      "h": 143,
-      "l": 133.5,
-      "v": 4691,
-      "ma20": 138.93,
-      "ma60": 145.45
-    },
-    {
-      "d": "04-14",
-      "date": "2026-04-14",
-      "c": 139.5,
-      "o": 143,
-      "h": 145.5,
-      "l": 137,
-      "v": 4223,
-      "ma20": 138.55,
-      "ma60": 144.79
-    },
-    {
-      "d": "04-15",
-      "date": "2026-04-15",
-      "c": 138,
-      "o": 140.5,
-      "h": 142,
-      "l": 138,
-      "v": 4565,
-      "ma20": 138.15,
-      "ma60": 144.15
-    },
-    {
-      "d": "04-16",
-      "date": "2026-04-16",
-      "c": 140.5,
-      "o": 139,
-      "h": 142,
-      "l": 139,
-      "v": 3039,
-      "ma20": 138.2,
-      "ma60": 143.71
-    },
-    {
-      "d": "04-17",
-      "date": "2026-04-17",
-      "c": 145,
-      "o": 142.5,
-      "h": 146,
-      "l": 141,
-      "v": 4672,
-      "ma20": 138.45,
-      "ma60": 143.28
-    },
-    {
-      "d": "04-20",
-      "date": "2026-04-20",
-      "c": 142.5,
-      "o": 147,
-      "h": 152,
-      "l": 141.5,
-      "v": 6599,
-      "ma20": 138.78,
-      "ma60": 143.03
-    },
-    {
-      "d": "04-21",
-      "date": "2026-04-21",
-      "c": 145,
-      "o": 144.5,
-      "h": 147.5,
-      "l": 140,
-      "v": 4278,
-      "ma20": 139.03,
-      "ma60": 142.91
-    },
-    {
-      "d": "04-22",
-      "date": "2026-04-22",
-      "c": 159.5,
-      "o": 146,
-      "h": 159.5,
-      "l": 145.5,
-      "v": 20537,
-      "ma20": 140.47,
-      "ma60": 143.0
-    },
-    {
-      "d": "04-23",
-      "date": "2026-04-23",
-      "c": 165.5,
-      "o": 165,
-      "h": 174.5,
-      "l": 152.5,
-      "v": 56276,
-      "ma20": 141.57,
-      "ma60": 143.21
-    },
-    {
-      "d": "04-24",
-      "date": "2026-04-24",
-      "c": 162.5,
-      "o": 173,
-      "h": 179,
-      "l": 162.5,
-      "v": 34333,
-      "ma20": 142.03,
-      "ma60": 143.36
-    },
-    {
-      "d": "04-27",
-      "date": "2026-04-27",
-      "c": 166.5,
-      "o": 167,
-      "h": 169,
-      "l": 151.5,
-      "v": 16937,
-      "ma20": 143.1,
-      "ma60": 143.62
-    },
-    {
-      "d": "04-28",
-      "date": "2026-04-28",
-      "c": 162,
-      "o": 166.5,
-      "h": 167,
-      "l": 160.5,
-      "v": 9963,
-      "ma20": 143.95,
-      "ma60": 143.73
-    },
-    {
-      "d": "04-29",
-      "date": "2026-04-29",
-      "c": 159.5,
-      "o": 158,
-      "h": 161,
-      "l": 155.5,
-      "v": 4500,
-      "ma20": 144.95,
-      "ma60": 143.84
-    },
-    {
-      "d": "04-30",
-      "date": "2026-04-30",
-      "c": 159,
-      "o": 158.5,
-      "h": 162.5,
-      "l": 154.5,
-      "v": 5495,
-      "ma20": 146.38,
-      "ma60": 143.72
-    },
-    {
-      "d": "05-04",
-      "date": "2026-05-04",
-      "c": 154,
-      "o": 159,
-      "h": 161,
-      "l": 153,
-      "v": 6013,
-      "ma20": 147.25,
-      "ma60": 143.59
-    },
-    {
-      "d": "05-05",
-      "date": "2026-05-05",
-      "c": 156,
-      "o": 153,
-      "h": 157,
-      "l": 152,
-      "v": 4024,
-      "ma20": 148.53,
-      "ma60": 143.57
-    },
-    {
-      "d": "05-06",
-      "date": "2026-05-06",
-      "c": 166.5,
-      "o": 157,
-      "h": 169,
-      "l": 153,
-      "v": 11903,
-      "ma20": 150.3,
-      "ma60": 143.78
-    },
-    {
-      "d": "05-07",
-      "date": "2026-05-07",
-      "c": 164,
-      "o": 166.5,
-      "h": 171,
-      "l": 164,
-      "v": 13087,
-      "ma20": 151.82,
-      "ma60": 143.88
-    },
-    {
-      "d": "05-08",
-      "date": "2026-05-08",
-      "c": 170,
-      "o": 165,
-      "h": 173,
-      "l": 159.5,
-      "v": 18620,
-      "ma20": 153.57,
-      "ma60": 144.19
-    },
-    {
-      "d": "05-11",
-      "date": "2026-05-11",
-      "c": 187,
-      "o": 174,
-      "h": 187,
-      "l": 172,
-      "v": 15894,
-      "ma20": 156.15,
-      "ma60": 144.87
-    },
-    {
-      "d": "05-12",
-      "date": "2026-05-12",
-      "c": 202.5,
-      "o": 198,
-      "h": 205.5,
-      "l": 192,
-      "v": 32312,
-      "ma20": 159.25,
-      "ma60": 145.85
-    },
-    {
-      "d": "05-13",
-      "date": "2026-05-13",
-      "c": 197,
-      "o": 200,
-      "h": 216,
-      "l": 196,
-      "v": 27500,
-      "ma20": 162.12,
-      "ma60": 146.65
-    },
-    {
-      "d": "05-14",
-      "date": "2026-05-14",
-      "c": 198.5,
-      "o": 201.5,
-      "h": 203.5,
-      "l": 191,
-      "v": 11911,
-      "ma20": 165.15,
-      "ma60": 147.49
-    },
-    {
-      "d": "05-15",
-      "date": "2026-05-15",
-      "c": 183.5,
-      "o": 199,
-      "h": 213.5,
-      "l": 182.5,
-      "v": 24883,
-      "ma20": 167.3,
-      "ma60": 148.1
-    },
-    {
-      "d": "05-18",
-      "date": "2026-05-18",
-      "c": 187.5,
-      "o": 181.5,
-      "h": 188.5,
-      "l": 175.5,
-      "v": 8471,
-      "ma20": 169.43,
-      "ma60": 148.88
-    },
-    {
-      "d": "05-19",
-      "date": "2026-05-19",
-      "c": 183,
-      "o": 185,
-      "h": 191,
-      "l": 176.5,
-      "v": 6649,
-      "ma20": 171.45,
-      "ma60": 149.57
-    },
-    {
-      "d": "05-20",
-      "date": "2026-05-20",
-      "c": 189.5,
-      "o": 182.5,
-      "h": 190,
-      "l": 180.5,
-      "v": 5687,
-      "ma20": 173.68,
-      "ma60": 150.39
-    },
-    {
-      "d": "05-21",
-      "date": "2026-05-21",
-      "c": 193,
-      "o": 193,
-      "h": 202,
-      "l": 191.5,
-      "v": 9767,
-      "ma20": 175.35,
-      "ma60": 151.29
-    },
-    {
-      "d": "05-22",
-      "date": "2026-05-22",
-      "c": 212,
-      "o": 196.5,
-      "h": 212,
-      "l": 195.5,
-      "v": 12328,
-      "ma20": 177.68,
-      "ma60": 152.43
-    },
-    {
-      "d": "05-25",
-      "date": "2026-05-25",
-      "c": 223.5,
-      "o": 231.5,
-      "h": 233,
-      "l": 220,
-      "v": 14185,
-      "ma20": 180.72,
-      "ma60": 153.68
-    },
-    {
-      "d": "05-26",
-      "date": "2026-05-26",
-      "c": 215,
-      "o": 229,
-      "h": 238,
-      "l": 214.5,
-      "v": 16671,
-      "ma20": 183.15,
-      "ma60": 154.79
-    },
-    {
-      "d": "05-27",
-      "date": "2026-05-27",
-      "c": 207,
-      "o": 219,
-      "h": 228,
-      "l": 205.5,
-      "v": 11694,
-      "ma20": 185.4,
-      "ma60": 155.73
-    },
-    {
-      "d": "05-28",
-      "date": "2026-05-28",
-      "c": 209,
-      "o": 210,
-      "h": 222,
-      "l": 207,
-      "v": 11307,
-      "ma20": 187.88,
-      "ma60": 156.77
-    },
-    {
-      "d": "05-29",
-      "date": "2026-05-29",
-      "c": 229.5,
-      "o": 221,
-      "h": 229.5,
-      "l": 219,
-      "v": 11072,
-      "ma20": 191.4,
-      "ma60": 158.23
-    },
-    {
-      "d": "06-01",
-      "date": "2026-06-01",
-      "c": 238.5,
-      "o": 241.5,
-      "h": 249.5,
-      "l": 233,
-      "v": 19177,
-      "ma20": 195.62,
-      "ma60": 160.07
-    },
-    {
-      "d": "06-02",
-      "date": "2026-06-02",
-      "c": 231,
-      "o": 235,
-      "h": 239.5,
-      "l": 226,
-      "v": 7792,
-      "ma20": 199.38,
-      "ma60": 161.68
-    },
-    {
-      "d": "06-03",
-      "date": "2026-06-03",
-      "c": 254,
-      "o": 236.5,
-      "h": 254,
-      "l": 231.5,
-      "v": 10842,
-      "ma20": 203.75,
-      "ma60": 163.71
-    },
-    {
-      "d": "06-04",
-      "date": "2026-06-04",
-      "c": 260,
-      "o": 258.5,
-      "h": 274,
-      "l": 257,
-      "v": 24253,
-      "ma20": 208.55,
-      "ma60": 166.03
-    },
-    {
-      "d": "06-05",
-      "date": "2026-06-05",
-      "c": 242.5,
-      "o": 259,
-      "h": 266,
-      "l": 238,
-      "v": 13496,
-      "ma20": 212.18,
-      "ma60": 168.01
-    },
-    {
-      "d": "06-08",
-      "date": "2026-06-08",
-      "c": 266.5,
-      "o": 223,
-      "h": 266.5,
-      "l": 223,
-      "v": 26232,
-      "ma20": 216.15,
-      "ma60": 170.3
-    },
-    {
-      "d": "06-09",
-      "date": "2026-06-09",
-      "c": 279.5,
-      "o": 278,
-      "h": 287,
-      "l": 262.5,
-      "v": 40653,
-      "ma20": 220.0,
-      "ma60": 172.72
-    },
-    {
-      "d": "06-10",
-      "date": "2026-06-10",
-      "c": 252,
-      "o": 263,
-      "h": 270,
-      "l": 252,
-      "v": 15558,
-      "ma20": 222.75,
-      "ma60": 174.47
-    },
-    {
-      "d": "06-11",
-      "date": "2026-06-11",
-      "c": 234,
-      "o": 248.5,
-      "h": 249,
-      "l": 229,
-      "v": 9654,
-      "ma20": 224.53,
-      "ma60": 175.94
-    },
-    {
-      "d": "06-12",
-      "date": "2026-06-12",
-      "c": 236,
-      "o": 246,
-      "h": 249.5,
-      "l": 235,
-      "v": 6621,
-      "ma20": 227.15,
-      "ma60": 177.55
-    },
-    {
-      "d": "06-15",
-      "date": "2026-06-15",
-      "c": 252,
-      "o": 248.5,
-      "h": 258.5,
-      "l": 240.5,
-      "v": 10477,
-      "ma20": 230.38,
-      "ma60": 179.42
-    },
-    {
-      "d": "06-16",
-      "date": "2026-06-16",
-      "c": 250.5,
-      "o": 254.5,
-      "h": 262,
-      "l": 248,
-      "v": 8757,
-      "ma20": 233.75,
-      "ma60": 181.32
-    },
-    {
-      "d": "06-17",
-      "date": "2026-06-17",
-      "c": 253,
-      "o": 252.5,
-      "h": 257,
-      "l": 250,
-      "v": 4479,
-      "ma20": 236.93,
-      "ma60": 183.21
-    },
-    {
-      "d": "06-18",
-      "date": "2026-06-18",
-      "c": 261.5,
-      "o": 255,
-      "h": 268.5,
-      "l": 254,
-      "v": 7673,
-      "ma20": 240.35,
-      "ma60": 185.39
-    },
-    {
-      "d": "06-22",
-      "date": "2026-06-22",
-      "c": 267,
-      "o": 263,
-      "h": 272.5,
-      "l": 255,
-      "v": 8363,
-      "ma20": 243.1,
-      "ma60": 187.45
-    },
-    {
-      "d": "06-23",
-      "date": "2026-06-23",
-      "c": 261.5,
-      "o": 272.5,
-      "h": 283,
-      "l": 260,
-      "v": 11364,
-      "ma20": 245.0,
-      "ma60": 189.25
-    },
-    {
-      "d": "06-24",
-      "date": "2026-06-24",
-      "c": 257,
-      "o": 258,
-      "h": 269.5,
-      "l": 252,
-      "v": 5064,
-      "ma20": 247.1,
-      "ma60": 191.12
-    },
-    {
-      "d": "06-25",
-      "date": "2026-06-25",
-      "c": 257,
-      "o": 261.5,
-      "h": 262.5,
-      "l": 253.5,
-      "v": 3297,
-      "ma20": 249.6,
-      "ma60": 192.98
-    },
-    {
-      "d": "06-26",
-      "date": "2026-06-26",
-      "c": 231.5,
-      "o": 255,
-      "h": 256.5,
-      "l": 231.5,
-      "v": 5738,
-      "ma20": 250.72,
-      "ma60": 194.52
-    },
-    {
-      "d": "06-29",
-      "date": "2026-06-29",
-      "c": 232.5,
-      "o": 232,
-      "h": 246.5,
-      "l": 230.5,
-      "v": 2769,
-      "ma20": 250.88,
-      "ma60": 196.22
-    },
-    {
-      "d": "06-30",
-      "date": "2026-06-30",
-      "c": 239,
-      "o": 237.5,
-      "h": 245,
-      "l": 237,
-      "v": 2141,
-      "ma20": 250.9,
-      "ma60": 197.93
-    },
-    {
-      "d": "07-01",
-      "date": "2026-07-01",
-      "c": 236,
-      "o": 244,
-      "h": 246.5,
-      "l": 232.5,
-      "v": 2499,
-      "ma20": 251.15,
-      "ma60": 199.68
-    },
-    {
-      "d": "07-02",
-      "date": "2026-07-02",
-      "c": 236.5,
-      "o": 231,
-      "h": 240,
-      "l": 230,
-      "v": 1616,
-      "ma20": 250.28,
-      "ma60": 201.44
-    },
-    {
-      "d": "07-03",
-      "date": "2026-07-03",
-      "c": 237.5,
-      "o": 233,
-      "h": 241,
-      "l": 233,
-      "v": 1395,
-      "ma20": 249.15,
-      "ma60": 203.18
-    },
-    {
-      "d": "07-06",
-      "date": "2026-07-06",
-      "c": 261,
-      "o": 248,
-      "h": 261,
-      "l": 248,
-      "v": 8046,
-      "ma20": 250.07,
-      "ma60": 205.28
-    },
-    {
-      "d": "07-07",
-      "date": "2026-07-07",
-      "c": 247.5,
-      "o": 270.5,
-      "h": 273,
-      "l": 243.5,
-      "v": 15703,
-      "ma20": 249.12,
-      "ma60": 207.14
-    },
-    {
-      "d": "07-08",
-      "date": "2026-07-08",
-      "c": 272,
-      "o": 260,
-      "h": 272,
-      "l": 259,
-      "v": 16873,
-      "ma20": 248.75,
-      "ma60": 209.33
-    },
-    {
-      "d": "07-09",
-      "date": "2026-07-09",
-      "c": 255,
-      "o": 274.5,
-      "h": 275,
-      "l": 255,
-      "v": 19592,
-      "ma20": 248.9,
-      "ma60": 211.26
-    },
-    {
-      "d": "07-13",
-      "date": "2026-07-13",
-      "c": 237,
-      "o": 260.5,
-      "h": 264.5,
-      "l": 233.5,
-      "v": 8498,
-      "ma20": 249.05,
-      "ma60": 212.91
-    },
-    {
-      "d": "07-14",
-      "date": "2026-07-14",
-      "c": 221,
-      "o": 233.5,
-      "h": 235.5,
-      "l": 213.5,
-      "v": 5978,
-      "ma20": 248.3,
-      "ma60": 214.25
-    },
-    {
-      "d": "07-15",
-      "date": "2026-07-15",
-      "c": 224,
-      "o": 225,
-      "h": 228.5,
-      "l": 220,
-      "v": 3454,
-      "ma20": 246.9,
-      "ma60": 215.57
-    },
-    {
-      "d": "07-16",
-      "date": "2026-07-16",
-      "c": 221,
-      "o": 221.5,
-      "h": 227.5,
-      "l": 215,
-      "v": 2548,
-      "ma20": 245.43,
-      "ma60": 216.88
-    },
-    {
-      "d": "07-17",
-      "date": "2026-07-17",
-      "c": 199,
-      "o": 209.5,
-      "h": 211.5,
-      "l": 199,
-      "v": 3193,
-      "ma20": 242.72,
-      "ma60": 217.78
-    },
-    {
-      "d": "07-20",
-      "date": "2026-07-20",
-      "c": 202.5,
-      "o": 193.5,
-      "h": 203.5,
-      "l": 181.5,
-      "v": 3754,
-      "ma20": 239.78,
-      "ma60": 218.49
-    },
-    {
-      "d": "07-21",
-      "date": "2026-07-21",
-      "c": 209,
-      "o": 204,
-      "h": 212,
-      "l": 200.5,
-      "v": 3396,
-      "ma20": 236.88,
-      "ma60": 219.22
-    },
-    {
-      "d": "07-22",
-      "date": "2026-07-22",
-      "c": 215,
-      "o": 215,
-      "h": 222,
-      "l": 212.5,
-      "v": 3520,
-      "ma20": 234.55,
-      "ma60": 220.09
-    },
-    {
-      "d": "07-23",
-      "date": "2026-07-23",
-      "c": 212,
-      "o": 216,
-      "h": 217,
-      "l": 209.5,
-      "v": 2108,
-      "ma20": 232.3,
-      "ma60": 220.85
-    },
-    {
-      "d": "07-24",
-      "date": "2026-07-24",
-      "c": 198.5,
-      "o": 207.5,
-      "h": 210,
-      "l": 198.5,
-      "v": 1843,
-      "ma20": 229.38,
-      "ma60": 221.46
-    },
-    {
-      "d": "07-27",
-      "date": "2026-07-27",
-      "c": 203,
-      "o": 196,
-      "h": 206,
-      "l": 196,
-      "v": 2566,
-      "ma20": 227.95,
-      "ma60": 222.18
-    },
-    {
-      "d": "07-28",
-      "date": "2026-07-28",
-      "c": 185,
-      "o": 193.5,
-      "h": 194.5,
-      "l": 185,
-      "v": 2069,
-      "ma20": 225.57,
-      "ma60": 222.62
-    },
-    {
-      "d": "07-29",
-      "date": "2026-07-29",
-      "c": 174,
-      "o": 186.5,
-      "h": 193,
-      "l": 166.5,
-      "v": 6488,
-      "ma20": 222.32,
-      "ma60": 222.95
-    },
-    {
-      "d": "07-30",
-      "date": "2026-07-30",
-      "c": 161.5,
-      "o": 170.5,
-      "h": 176.5,
-      "l": 160,
-      "v": 4373,
-      "ma20": 218.6,
-      "ma60": 223.04
-    },
-    {
-      "d": "07-31",
-      "date": "2026-07-31",
-      "c": 177.5,
-      "o": 177.5,
-      "h": 177.5,
-      "l": 174.5,
-      "v": 1729,
-      "ma20": 215.65,
-      "ma60": 223.22
-    },
-    {
-      "d": "08-03",
-      "date": "2026-08-03",
-      "c": 191,
-      "o": 176,
-      "h": 195,
-      "l": 176,
-      "v": 3289,
-      "ma20": 213.32,
-      "ma60": 223.68
-    },
-    {
-      "d": "08-04",
-      "date": "2026-08-04",
-      "c": 196,
-      "o": 195,
-      "h": 197,
-      "l": 190,
-      "v": 5406,
-      "ma20": 210.07,
-      "ma60": 224.11
-    },
-    {
-      "d": "08-05",
-      "date": "2026-08-05",
-      "c": 199,
-      "o": 201,
-      "h": 205,
-      "l": 198.5,
-      "v": 3652,
-      "ma20": 207.65,
-      "ma60": 224.31
-    },
-    {
-      "d": "08-06",
-      "date": "2026-08-06",
-      "c": 218.5,
-      "o": 197,
-      "h": 218.5,
-      "l": 197,
-      "v": 5791,
-      "ma20": 204.97,
-      "ma60": 224.57
-    },
-    {
-      "d": "08-07",
-      "date": "2026-08-07",
-      "c": 216.5,
-      "o": 217,
-      "h": 233,
-      "l": 213,
-      "v": 16206,
-      "ma20": 203.05,
-      "ma60": 224.9
-    },
-    {
-      "d": "08-10",
-      "date": "2026-08-10",
-      "c": 238,
-      "o": 231.5,
-      "h": 238,
-      "l": 230.5,
-      "v": 2759,
-      "ma20": 203.1,
-      "ma60": 225.56
-    },
-    {
-      "d": "08-11",
-      "date": "2026-08-11",
-      "c": 255,
-      "o": 239.5,
-      "h": 261,
-      "l": 239,
-      "v": 21517,
-      "ma20": 204.8,
-      "ma60": 226.75
-    },
-    {
-      "d": "08-12",
-      "date": "2026-08-12",
-      "c": 267,
-      "o": 255,
-      "h": 268,
-      "l": 250.5,
-      "v": 16104,
-      "ma20": 206.95,
-      "ma60": 228.07
-    },
-    {
-      "d": "08-13",
-      "date": "2026-08-13",
-      "c": 261,
-      "o": 271,
-      "h": 271.5,
-      "l": 261,
-      "v": 2347,
-      "ma20": 208.95,
-      "ma60": 229.38
-    },
-    {
-      "d": "08-14",
-      "date": "2026-08-14",
-      "c": 263,
-      "o": 265,
-      "h": 265,
-      "l": 256.5,
-      "v": 1694,
-      "ma20": 212.15,
-      "ma60": 230.6
-    },
-    {
-      "d": "08-17",
-      "date": "2026-08-17",
-      "c": 269.5,
-      "o": 267,
-      "h": 270,
-      "l": 264,
-      "v": 1744,
-      "ma20": 215.5,
-      "ma60": 231.88
-    },
-    {
-      "d": "08-18",
-      "date": "2026-08-18",
-      "c": 259.5,
-      "o": 270.5,
-      "h": 271,
-      "l": 259,
-      "v": 1559,
-      "ma20": 218.03,
-      "ma60": 232.67
-    },
-    {
-      "d": "08-19",
-      "date": "2026-08-19",
-      "c": 268,
-      "o": 252,
-      "h": 271.5,
-      "l": 250,
-      "v": 2097,
-      "ma20": 220.68,
-      "ma60": 233.41
-    },
-    {
-      "d": "08-20",
-      "date": "2026-08-20",
-      "c": 273,
-      "o": 273,
-      "h": 275,
-      "l": 259,
-      "v": 2111,
-      "ma20": 223.72,
-      "ma60": 234.38
-    },
-    {
-      "d": "08-21",
-      "date": "2026-08-21",
-      "c": 280,
-      "o": 277,
-      "h": 280,
-      "l": 265.5,
-      "v": 2363,
-      "ma20": 227.8,
-      "ma60": 235.59
-    },
-    {
-      "d": "08-24",
-      "date": "2026-08-24",
-      "c": 252,
-      "o": 266,
-      "h": 272,
-      "l": 252,
-      "v": 8262,
-      "ma20": 230.25,
-      "ma60": 236.31
-    },
-    {
-      "d": "08-25",
-      "date": "2026-08-25",
-      "c": 245,
-      "o": 252,
-      "h": 259,
-      "l": 238.5,
-      "v": 9268,
-      "ma20": 233.25,
-      "ma60": 236.57
-    },
-    {
-      "d": "08-26",
-      "date": "2026-08-26",
-      "c": 255.5,
-      "o": 249,
-      "h": 256,
-      "l": 240,
-      "v": 10405,
-      "ma20": 237.32,
-      "ma60": 236.85
-    },
-    {
-      "d": "08-27",
-      "date": "2026-08-27",
-      "c": 265.5,
-      "o": 256,
-      "h": 269,
-      "l": 254,
-      "v": 11470,
-      "ma20": 242.53,
-      "ma60": 237.43
-    },
-    {
-      "d": "08-28",
-      "date": "2026-08-28",
-      "c": 272.5,
-      "o": 276,
-      "h": 281,
-      "l": 262.5,
-      "v": 13573,
-      "ma20": 247.28,
-      "ma60": 237.73
-    },
-    {
-      "d": "08-31",
-      "date": "2026-08-31",
-      "c": 259,
-      "o": 268,
-      "h": 288,
-      "l": 256,
-      "v": 12667,
-      "ma20": 250.68,
-      "ma60": 237.72
-    },
-    {
-      "d": "09-01",
-      "date": "2026-09-01",
-      "c": 260.5,
-      "o": 260.5,
-      "h": 266,
-      "l": 254,
-      "v": 5290,
-      "ma20": 253.9,
-      "ma60": 238.02
-    },
-    {
-      "d": "09-02",
-      "date": "2026-09-02",
-      "c": 250,
-      "o": 257,
-      "h": 264.5,
-      "l": 250,
-      "v": 4609,
-      "ma20": 256.45,
-      "ma60": 237.74
-    },
-    {
-      "d": "09-03",
-      "date": "2026-09-03",
-      "c": 239.5,
-      "o": 251.5,
-      "h": 253,
-      "l": 239,
-      "v": 4405,
-      "ma20": 257.5,
-      "ma60": 237.07
-    },
-    {
-      "d": "09-04",
-      "date": "2026-09-04",
-      "c": 251,
-      "o": 244.5,
-      "h": 253,
-      "l": 241.5,
-      "v": 3677,
-      "ma20": 259.23,
-      "ma60": 237.06
-    },
-    {
-      "d": "09-07",
-      "date": "2026-09-07",
-      "c": 247.5,
-      "o": 254.5,
-      "h": 254.5,
-      "l": 247,
-      "v": 2814,
-      "ma20": 259.7,
-      "ma60": 237.28
-    },
-    {
-      "d": "09-08",
-      "date": "2026-09-08",
-      "c": 241.5,
-      "o": 254.5,
-      "h": 257.5,
-      "l": 240.5,
-      "v": 3959,
-      "ma20": 259.02,
-      "ma60": 237.38
-    },
-    {
-      "d": "09-09",
-      "date": "2026-09-09",
-      "c": 252.5,
-      "o": 243,
-      "h": 264,
-      "l": 242,
-      "v": 7000,
-      "ma20": 258.3,
-      "ma60": 237.38
-    },
-    {
-      "d": "09-10",
-      "date": "2026-09-10",
-      "c": 244,
-      "o": 253.5,
-      "h": 254,
-      "l": 244,
-      "v": 3748,
-      "ma20": 257.45,
-      "ma60": 237.28
-    },
-    {
-      "d": "09-11",
-      "date": "2026-09-11",
-      "c": 234,
-      "o": 240,
-      "h": 242.5,
-      "l": 234,
-      "v": 2652,
-      "ma20": 256.0,
-      "ma60": 236.96
-    },
-    {
-      "d": "09-14",
-      "date": "2026-09-14",
-      "c": 231.5,
-      "o": 229,
-      "h": 237.5,
-      "l": 223,
-      "v": 2527,
-      "ma20": 254.1,
-      "ma60": 236.46
-    },
-    {
-      "d": "09-15",
-      "date": "2026-09-15",
-      "c": 225,
-      "o": 229.5,
-      "h": 233,
-      "l": 225,
-      "v": 1854,
-      "ma20": 252.38,
-      "ma60": 235.76
-    },
-    {
-      "d": "09-16",
-      "date": "2026-09-16",
-      "c": 236,
-      "o": 226,
-      "h": 237.5,
-      "l": 226,
-      "v": 2180,
-      "ma20": 250.78,
-      "ma60": 235.33
-    },
-    {
-      "d": "09-17",
-      "date": "2026-09-17",
-      "c": 233,
-      "o": 241,
-      "h": 243,
-      "l": 232,
-      "v": 3066,
-      "ma20": 248.78,
-      "ma60": 234.93
-    },
-    {
-      "d": "09-18",
-      "date": "2026-09-18",
-      "c": 237.5,
-      "o": 236,
-      "h": 239.5,
-      "l": 234.5,
-      "v": 2280,
-      "ma20": 246.65,
-      "ma60": 234.61
-    },
-    {
-      "d": "09-21",
-      "date": "2026-09-21",
-      "c": 239.5,
-      "o": 239,
-      "h": 246,
-      "l": 238,
-      "v": 4324,
-      "ma20": 246.03,
-      "ma60": 234.74
-    },
-    {
-      "d": "09-22",
-      "date": "2026-09-22",
-      "c": 240.5,
-      "o": 242.5,
-      "h": 249.5,
-      "l": 237,
-      "v": 5285,
-      "ma20": 245.8,
-      "ma60": 234.88
-    },
-    {
-      "d": "09-23",
-      "date": "2026-09-23",
-      "c": 238.5,
-      "o": 242.5,
-      "h": 242.5,
-      "l": 237,
-      "v": 1522,
-      "ma20": 244.95,
-      "ma60": 234.87
-    },
-    {
-      "d": "09-24",
-      "date": "2026-09-24",
-      "c": 241.5,
-      "o": 239.5,
-      "h": 241.5,
-      "l": 235.5,
-      "v": 1314,
-      "ma20": 243.75,
-      "ma60": 234.96
-    }
-  ],
-  "rev": [
-    {
-      "m": "25/01",
-      "rev": 203.8,
-      "yoy": -17.05,
-      "mom": 60.89
-    },
-    {
-      "m": "25/02",
-      "rev": 244.7,
-      "yoy": 96.16,
-      "mom": 20.09
-    },
-    {
-      "m": "25/03",
-      "rev": 208,
-      "yoy": 34.18,
-      "mom": -15.01
-    },
-    {
-      "m": "25/04",
-      "rev": 153.5,
-      "yoy": -21.82,
-      "mom": -26.21
-    },
-    {
-      "m": "25/05",
-      "rev": 149.3,
-      "yoy": -5.43,
-      "mom": -2.72
-    },
-    {
-      "m": "25/06",
-      "rev": 160.9,
-      "yoy": 1.73,
-      "mom": 7.8
-    },
-    {
-      "m": "25/07",
-      "rev": 173.2,
-      "yoy": -21.35,
-      "mom": 7.61
-    },
-    {
-      "m": "25/08",
-      "rev": 219.2,
-      "yoy": 37.85,
-      "mom": 26.57
-    },
-    {
-      "m": "25/09",
-      "rev": 153.8,
-      "yoy": -9.74,
-      "mom": -29.85
-    },
-    {
-      "m": "25/10",
-      "rev": 261.3,
-      "yoy": 61.89,
-      "mom": 69.96
-    },
-    {
-      "m": "25/11",
-      "rev": 279.3,
-      "yoy": 133.14,
-      "mom": 6.88
-    },
-    {
-      "m": "25/12",
-      "rev": 244.4,
-      "yoy": 92.93,
-      "mom": -12.52
-    },
-    {
-      "m": "26/01",
-      "rev": 290,
-      "yoy": 42.29,
-      "mom": 18.66
-    },
-    {
-      "m": "26/02",
-      "rev": 218.3,
-      "yoy": -10.8,
-      "mom": -24.72
-    },
-    {
-      "m": "26/03",
-      "rev": 283.1,
-      "yoy": 36.12,
-      "mom": 29.69
-    },
-    {
-      "m": "26/04",
-      "rev": 302.9,
-      "yoy": 97.38,
-      "mom": 6.99
-    },
-    {
-      "m": "26/05",
-      "rev": 415.9,
-      "yoy": 178.64,
-      "mom": 37.31
-    },
-    {
-      "m": "26/06",
-      "rev": 394.4,
-      "yoy": 145.08,
-      "mom": -5.17
-    },
-    {
-      "m": "26/07",
-      "rev": 449.4,
-      "yoy": 159.51,
-      "mom": 13.95
-    },
-    {
-      "m": "26/08",
-      "rev": 495.1,
-      "yoy": 125.86,
-      "mom": 10.16
-    }
-  ],
-  "inst": [
-    {
-      "d": "08-14",
-      "date": "2026-08-14",
-      "f": 281,
-      "t": 0,
-      "de": -42
-    },
-    {
-      "d": "08-17",
-      "date": "2026-08-17",
-      "f": 417,
-      "t": 0,
-      "de": -8
-    },
-    {
-      "d": "08-18",
-      "date": "2026-08-18",
-      "f": 252,
-      "t": 0,
-      "de": -24
-    },
-    {
-      "d": "08-19",
-      "date": "2026-08-19",
-      "f": 338,
-      "t": 0,
-      "de": 5
-    },
-    {
-      "d": "08-20",
-      "date": "2026-08-20",
-      "f": 300,
-      "t": 0,
-      "de": 68
-    },
-    {
-      "d": "08-21",
-      "date": "2026-08-21",
-      "f": 253,
-      "t": 0,
-      "de": 30
-    },
-    {
-      "d": "08-24",
-      "date": "2026-08-24",
-      "f": -1289,
-      "t": 0,
-      "de": -104
-    },
-    {
-      "d": "08-25",
-      "date": "2026-08-25",
-      "f": 487,
-      "t": 0,
-      "de": -13
-    },
-    {
-      "d": "08-26",
-      "date": "2026-08-26",
-      "f": -2441,
-      "t": 0,
-      "de": 100
-    },
-    {
-      "d": "08-27",
-      "date": "2026-08-27",
-      "f": 271,
-      "t": 0,
-      "de": 158
-    },
-    {
-      "d": "08-28",
-      "date": "2026-08-28",
-      "f": -139,
-      "t": 0,
-      "de": 60
-    },
-    {
-      "d": "08-31",
-      "date": "2026-08-31",
-      "f": -1151,
-      "t": 0,
-      "de": -94
-    },
-    {
-      "d": "09-01",
-      "date": "2026-09-01",
-      "f": -450,
-      "t": 0,
-      "de": 29
-    },
-    {
-      "d": "09-02",
-      "date": "2026-09-02",
-      "f": -293,
-      "t": 0,
-      "de": -9
-    },
-    {
-      "d": "09-03",
-      "date": "2026-09-03",
-      "f": 39,
-      "t": 0,
-      "de": -129
-    },
-    {
-      "d": "09-04",
-      "date": "2026-09-04",
-      "f": -115,
-      "t": 0,
-      "de": -20
-    },
-    {
-      "d": "09-07",
-      "date": "2026-09-07",
-      "f": -571,
-      "t": 0,
-      "de": -16
-    },
-    {
-      "d": "09-08",
-      "date": "2026-09-08",
-      "f": -948,
-      "t": 0,
-      "de": -26
-    },
-    {
-      "d": "09-09",
-      "date": "2026-09-09",
-      "f": 768,
-      "t": 0,
-      "de": 77
-    },
-    {
-      "d": "09-10",
-      "date": "2026-09-10",
-      "f": -1070,
-      "t": 0,
-      "de": -92
-    },
-    {
-      "d": "09-11",
-      "date": "2026-09-11",
-      "f": -401,
-      "t": 0,
-      "de": -45
-    },
-    {
-      "d": "09-14",
-      "date": "2026-09-14",
-      "f": 214,
-      "t": 0,
-      "de": -92
-    },
-    {
-      "d": "09-15",
-      "date": "2026-09-15",
-      "f": -262,
-      "t": 0,
-      "de": -66
-    },
-    {
-      "d": "09-16",
-      "date": "2026-09-16",
-      "f": 203,
-      "t": 0,
-      "de": 16
-    },
-    {
-      "d": "09-17",
-      "date": "2026-09-17",
-      "f": -701,
-      "t": 0,
-      "de": 1
-    },
-    {
-      "d": "09-18",
-      "date": "2026-09-18",
-      "f": -465,
-      "t": 0,
-      "de": 2
-    },
-    {
-      "d": "09-21",
-      "date": "2026-09-21",
-      "f": -723,
-      "t": 0,
-      "de": 21
-    },
-    {
-      "d": "09-22",
-      "date": "2026-09-22",
-      "f": -514,
-      "t": 0,
-      "de": 48
-    },
-    {
-      "d": "09-23",
-      "date": "2026-09-23",
-      "f": -164,
-      "t": 0,
-      "de": -27
-    },
-    {
-      "d": "09-24",
-      "date": "2026-09-24",
-      "f": 187,
-      "t": 0,
-      "de": 17
-    }
-  ],
-  "margin": [
-    {
-      "q": "25Q1",
-      "gm": 27.42,
-      "om": 15.61
-    },
-    {
-      "q": "25Q2",
-      "gm": 9.08,
-      "om": -1.7
-    },
-    {
-      "q": "25Q3",
-      "gm": 19.46,
-      "om": 6.01
-    },
-    {
-      "q": "25Q4",
-      "gm": 26.27,
-      "om": 15.45
-    },
-    {
-      "q": "26Q1",
-      "gm": 22.08,
-      "om": 12.41
-    },
-    {
-      "q": "26Q2",
-      "gm": 23.33,
-      "om": 15.07
-    }
-  ]
-}
-</script>
-<script>
-function draw4931Charts(){
-  "use strict";
-  var D = JSON.parse(document.getElementById("data").textContent);
-  [].forEach.call(document.querySelectorAll(".chart svg"), function(svg){ svg.remove(); });
-  var cs = getComputedStyle(document.documentElement);
-  function tok(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
-  var NS = "http://www.w3.org/2000/svg";
-
-  function el(n, a){ var e = document.createElementNS(NS, n);
-    for(var k in a){ if(a[k]!==null&&a[k]!==undefined) e.setAttribute(k, a[k]); } return e; }
-  function fmt(v, d){ return v.toLocaleString("en-US",{minimumFractionDigits:d||0,maximumFractionDigits:d||0}); }
-
-  // ---- shared tooltip plumbing --------------------------------------------
-  function attachTip(host, svg){
-    var tip = host.querySelector(".tip");
-    function show(html, cx, cy){
-      tip.innerHTML = html; tip.style.opacity = 1;
-      var hb = host.getBoundingClientRect(), tb = tip.getBoundingClientRect();
-      var x = cx - hb.left + 14, y = cy - hb.top - tb.height - 10;
-      if(x + tb.width > hb.width) x = cx - hb.left - tb.width - 14;
-      if(y < 0) y = cy - hb.top + 16;
-      tip.style.left = Math.max(0, x) + "px"; tip.style.top = y + "px";
-    }
-    function hide(){ tip.style.opacity = 0; }
-    svg.addEventListener("mouseleave", hide);
-    return {show:show, hide:hide};
-  }
-
-  // ---- 1. 月營收 + 年增率 (two stacked panels, one shared x) ---------------
-  (function(){
-    var host = document.getElementById("c-rev"), r = D.rev;
-    var W = 760, HT = 168, HB = 86, GAP = 34, PL = 52, PR = 14, PT = 14, PBX = 26;
-    var H = PT + HT + GAP + HB + PBX;
-    var svg = el("svg", {viewBox:"0 0 "+W+" "+H, role:"img",
-      "aria-label":"新盛力 2025 年 1 月至 2026 年 8 月單月營收與年增率"});
-    var iw = W - PL - PR, bw = iw / r.length, bar = Math.min(26, bw * 0.62);
-    var maxR = 500, topY = PT, botY = PT + HT;
-    var yr = function(v){ return botY - v / maxR * HT; };
-
-    // revenue grid + axis
-    [0,100,200,300,400,500].forEach(function(v){
-      svg.appendChild(el("line",{x1:PL,x2:W-PR,y1:yr(v),y2:yr(v),stroke:tok("--grid"),"stroke-width":1}));
-      var t = el("text",{x:PL-9,y:yr(v)+4,"text-anchor":"end","font-size":10.5,
-        fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-      t.textContent = v; svg.appendChild(t);
-    });
-    var lab = el("text",{x:PL-9,y:topY-3,"text-anchor":"end","font-size":10,fill:tok("--ink-3"),
-      "font-family":"IBM Plex Mono, monospace"}); lab.textContent="百萬元"; svg.appendChild(lab);
-
-    // yoy panel
-    var yTop = PT + HT + GAP, yH = HB, maxY = 200;
-    var zero = yTop + yH/2;
-    var yy = function(v){ var c = Math.max(-maxY, Math.min(maxY, v)); return zero - c/maxY*(yH/2); };
-    [200,0,-200].forEach(function(v){
-      svg.appendChild(el("line",{x1:PL,x2:W-PR,y1:yy(v),y2:yy(v),
-        stroke: v===0 ? tok("--rule-strong") : tok("--grid"),"stroke-width":1}));
-      var t = el("text",{x:PL-9,y:yy(v)+4,"text-anchor":"end","font-size":10.5,
-        fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-      t.textContent = (v>0?"+":"")+v+"%"; svg.appendChild(t);
-    });
-    var lab2 = el("text",{x:PL-9,y:yTop-3,"text-anchor":"end","font-size":10,fill:tok("--ink-3"),
-      "font-family":"IBM Plex Mono, monospace"}); lab2.textContent="年增率"; svg.appendChild(lab2);
-
-    var tips = attachTip(host, svg);
-    r.forEach(function(d, i){
-      var cx = PL + bw*i + bw/2, x = cx - bar/2;
-      var hR = Math.max(2, botY - yr(d.rev));
-      svg.appendChild(el("rect",{x:x, y:yr(d.rev), width:bar, height:hR, rx:3,
-        fill:tok("--s2"), stroke:tok("--surface"), "stroke-width":1}));
-      var yv = yy(d.yoy), up = d.yoy >= 0;
-      svg.appendChild(el("rect",{x:x, y: up?yv:zero, width:bar, height:Math.max(2,Math.abs(zero-yv)), rx:2,
-        fill: up?tok("--up"):tok("--down"), stroke:tok("--surface"), "stroke-width":1}));
-      if(i % 3 === 0 || i === r.length-1){
-        var t = el("text",{x:cx, y:H-8,"text-anchor":"middle","font-size":10,
-          fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-        t.textContent = d.m; svg.appendChild(t);
-      }
-      var hit = el("rect",{x:PL+bw*i, y:PT, width:bw, height:H-PT-PBX, fill:"transparent"});
-      hit.addEventListener("mousemove", function(ev){
-        tips.show("<b>20"+d.m.replace("/","-")+"</b>"+
-          "<i>營收</i>"+fmt(d.rev,1)+" 百萬<br>"+
-          "<i>年增</i>"+(d.yoy>=0?"+":"")+d.yoy.toFixed(2)+"%<br>"+
-          "<i>月增</i>"+(d.mom>=0?"+":"")+d.mom.toFixed(2)+"%", ev.clientX, ev.clientY);
-      });
-      svg.appendChild(hit);
-    });
-    // clipped-value marker for the two months beyond the yoy scale
-    r.forEach(function(d,i){
-      if(Math.abs(d.yoy) > maxY){
-        var cx = PL + bw*i + bw/2;
-        var t = el("text",{x:cx, y: yy(maxY)-3, "text-anchor":"middle","font-size":9,
-          fill:tok("--up"),"font-family":"IBM Plex Mono, monospace"});
-        t.textContent = "▲"; svg.appendChild(t);
-      }
-    });
-    host.appendChild(svg);
-  })();
-
-  // ---- 2. 外資買賣超 ------------------------------------------------------
-  (function(){
-    var host = document.getElementById("c-inst"), r = D.inst;
-    var W = 760, H = 190, PL = 56, PR = 14, PT = 12, PB = 28;
-    var svg = el("svg",{viewBox:"0 0 "+W+" "+H, role:"img",
-      "aria-label":"外資近 30 個交易日單日買賣超"});
-    var iw = W-PL-PR, ih = H-PT-PB, bw = iw/r.length, bar = Math.min(16, bw*0.6);
-    var m = 3000, zero = PT + ih/2;
-    var y = function(v){ return zero - Math.max(-m,Math.min(m,v))/m*(ih/2); };
-    [3000,1500,0,-1500,-3000].forEach(function(v){
-      svg.appendChild(el("line",{x1:PL,x2:W-PR,y1:y(v),y2:y(v),
-        stroke: v===0?tok("--rule-strong"):tok("--grid"),"stroke-width":1}));
-      var t = el("text",{x:PL-9,y:y(v)+4,"text-anchor":"end","font-size":10.5,
-        fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-      t.textContent = (v>0?"+":"")+fmt(v); svg.appendChild(t);
-    });
-    var tips = attachTip(host, svg);
-    r.forEach(function(d,i){
-      var cx = PL+bw*i+bw/2, yv = y(d.f), up = d.f>=0;
-      svg.appendChild(el("rect",{x:cx-bar/2, y: up?yv:zero, width:bar,
-        height:Math.max(1.5,Math.abs(zero-yv)), rx:2,
-        fill: up?tok("--up"):tok("--down"), stroke:tok("--surface"),"stroke-width":1}));
-      if(i%5===0 || i===r.length-1){
-        var t = el("text",{x:cx,y:H-9,"text-anchor":"middle","font-size":10,
-          fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-        t.textContent = d.d; svg.appendChild(t);
-      }
-      var hit = el("rect",{x:PL+bw*i,y:PT,width:bw,height:ih,fill:"transparent"});
-      hit.addEventListener("mousemove", function(ev){
-        tips.show("<b>"+d.date+"</b>"+
-          "<i>外資</i>"+(d.f>=0?"+":"")+fmt(d.f)+" 張<br>"+
-          "<i>投信</i>"+(d.t>=0?"+":"")+fmt(d.t)+" 張<br>"+
-          "<i>自營</i>"+(d.de>=0?"+":"")+fmt(d.de)+" 張", ev.clientX, ev.clientY);
-      });
-      svg.appendChild(hit);
-    });
-    var lab = el("text",{x:PL-9,y:PT-1,"text-anchor":"end","font-size":10,fill:tok("--ink-3"),
-      "font-family":"IBM Plex Mono, monospace"}); lab.textContent="張"; svg.appendChild(lab);
-    host.appendChild(svg);
-  })();
-
-  // ---- 3. 股價 + 均線, 4. 成交量 ------------------------------------------
-  (function(){
-    var p = D.price;
-    var W = 760, PL = 46, PR = 44, PT = 14;
-    var lo = 120, hi = 300;
-    function xAt(i, iw){ return PL + iw * i/(p.length-1); }
-
-    // --- price ---
-    var host = document.getElementById("c-price");
-    var H = 290, PB = 26, ih = H-PT-PB, iw = W-PL-PR;
-    var svg = el("svg",{viewBox:"0 0 "+W+" "+H, role:"img",
-      "aria-label":"新盛力近 120 個交易日收盤價與 20 日、60 日均線"});
-    var y = function(v){ return PT + ih - (v-lo)/(hi-lo)*ih; };
-    [120,150,180,210,240,270,300].forEach(function(v){
-      svg.appendChild(el("line",{x1:PL,x2:W-PR,y1:y(v),y2:y(v),stroke:tok("--grid"),"stroke-width":1}));
-      var t = el("text",{x:PL-9,y:y(v)+4,"text-anchor":"end","font-size":10.5,
-        fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-      t.textContent = v; svg.appendChild(t);
-    });
-    function path(key, color, w){
-      var d = "", started = false;
-      p.forEach(function(pt,i){
-        var v = pt[key]; if(v===null||v===undefined) return;
-        d += (started?"L":"M") + xAt(i,iw).toFixed(1) + " " + y(v).toFixed(1) + " ";
-        started = true;
-      });
-      svg.appendChild(el("path",{d:d, fill:"none", stroke:color, "stroke-width":w,
-        "stroke-linejoin":"round","stroke-linecap":"round"}));
-    }
-    path("ma60", tok("--s3"), 2);
-    path("ma20", tok("--s2"), 2);
-    path("c",    tok("--s1"), 2);
-
-    // endpoint markers + direct labels
-    var last = p[p.length-1], lx = xAt(p.length-1, iw);
-    [["c",tok("--s1"),last.c],["ma20",tok("--s2"),last.ma20],["ma60",tok("--s3"),last.ma60]].forEach(function(s){
-      svg.appendChild(el("circle",{cx:lx, cy:y(s[2]), r:4, fill:s[1],
-        stroke:tok("--surface"),"stroke-width":2}));
-      var t = el("text",{x:lx+8, y:y(s[2])+4,"font-size":11,fill:s[1],"font-weight":600,
-        "font-family":"IBM Plex Mono, monospace"});
-      t.textContent = s[2].toFixed(1); svg.appendChild(t);
-    });
-    // 52w high marker within window
-    p.forEach(function(pt,i){
-      if(pt.h === 288){
-        var t = el("text",{x:xAt(i,iw), y:y(288)-9,"text-anchor":"middle","font-size":10,
-          fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-        t.textContent = "波段高 288"; svg.appendChild(t);
-      }
-    });
-    p.forEach(function(pt,i){
-      if(i%20===0 || i===p.length-1){
-        var t = el("text",{x:xAt(i,iw), y:H-8,"text-anchor":"middle","font-size":10,
-          fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-        t.textContent = pt.d; svg.appendChild(t);
-      }
-    });
-
-    var cross = el("line",{x1:0,x2:0,y1:PT,y2:PT+ih,stroke:tok("--rule-strong"),
-      "stroke-width":1,"stroke-dasharray":"3 3",opacity:0});
-    svg.appendChild(cross);
-    var dot = el("circle",{r:4.5,fill:tok("--s1"),stroke:tok("--surface"),"stroke-width":2,opacity:0});
-    svg.appendChild(dot);
-    var tips = attachTip(host, svg);
-    var hit = el("rect",{x:PL,y:PT,width:iw,height:ih,fill:"transparent"});
-    hit.addEventListener("mousemove", function(ev){
-      var b = svg.getBoundingClientRect();
-      var rel = (ev.clientX - b.left)/b.width*W;
-      var i = Math.round((rel-PL)/iw*(p.length-1));
-      i = Math.max(0, Math.min(p.length-1, i));
-      var d = p[i], px = xAt(i,iw);
-      cross.setAttribute("x1",px); cross.setAttribute("x2",px); cross.setAttribute("opacity",1);
-      dot.setAttribute("cx",px); dot.setAttribute("cy",y(d.c)); dot.setAttribute("opacity",1);
-      tips.show("<b>"+d.date+"</b>"+
-        "<i>收盤</i>"+d.c.toFixed(1)+"<br>"+
-        "<i>高低</i>"+d.h.toFixed(1)+" / "+d.l.toFixed(1)+"<br>"+
-        "<i>20MA</i>"+(d.ma20?d.ma20.toFixed(1):"—")+"<br>"+
-        "<i>60MA</i>"+(d.ma60?d.ma60.toFixed(1):"—")+"<br>"+
-        "<i>成交</i>"+fmt(d.v)+" 張", ev.clientX, ev.clientY);
-    });
-    hit.addEventListener("mouseleave", function(){
-      cross.setAttribute("opacity",0); dot.setAttribute("opacity",0);
-    });
-    svg.appendChild(hit);
-    host.appendChild(svg);
-
-    // --- volume ---
-    var vhost = document.getElementById("c-vol");
-    var VH = 124, VPB = 24, vih = VH-PT-VPB;
-    var vsvg = el("svg",{viewBox:"0 0 "+W+" "+VH, role:"img","aria-label":"近 120 個交易日成交量"});
-    var vmax = 60000;
-    var vy = function(v){ return PT + vih - Math.min(v,vmax)/vmax*vih; };
-    [0,20000,40000,60000].forEach(function(v){
-      vsvg.appendChild(el("line",{x1:PL,x2:W-PR,y1:vy(v),y2:vy(v),stroke:tok("--grid"),"stroke-width":1}));
-      var t = el("text",{x:PL-9,y:vy(v)+4,"text-anchor":"end","font-size":10.5,
-        fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-      t.textContent = v/1000 + "k"; vsvg.appendChild(t);
-    });
-    var vbw = iw/p.length, vbar = Math.max(1.5, vbw*0.62);
-    var vtips = attachTip(vhost, vsvg);
-    p.forEach(function(d,i){
-      var up = d.c >= d.o;
-      vsvg.appendChild(el("rect",{x:xAt(i,iw)-vbar/2, y:vy(d.v), width:vbar,
-        height:Math.max(1, PT+vih-vy(d.v)), rx:1,
-        fill: up?tok("--up"):tok("--down")}));
-    });
-    var vhit = el("rect",{x:PL,y:PT,width:iw,height:vih,fill:"transparent"});
-    vhit.addEventListener("mousemove", function(ev){
-      var b = vsvg.getBoundingClientRect();
-      var rel = (ev.clientX-b.left)/b.width*W;
-      var i = Math.max(0, Math.min(p.length-1, Math.round((rel-PL)/iw*(p.length-1))));
-      var d = p[i];
-      vtips.show("<b>"+d.date+"</b><i>成交</i>"+fmt(d.v)+" 張<br><i>收盤</i>"+d.c.toFixed(1), ev.clientX, ev.clientY);
-    });
-    vsvg.appendChild(vhit);
-    p.forEach(function(pt,i){
-      if(i%20===0 || i===p.length-1){
-        var t = el("text",{x:xAt(i,iw), y:VH-7,"text-anchor":"middle","font-size":10,
-          fill:tok("--ink-3"),"font-family":"IBM Plex Mono, monospace"});
-        t.textContent = pt.d; vsvg.appendChild(t);
-      }
-    });
-    vhost.appendChild(vsvg);
-  })();
-
-
-  // ---- 5. 合併毛利率 + 營業利益率 --------------------------------------
-  (function(){
-    var host=document.getElementById("c-margin"), d=D.margin;
-    if(!host || !d) return;
-    var W=560,H=200,PL=42,PR=52,PT=16,PB=26,iw=W-PL-PR,ih=H-PT-PB;
-    var lo=-5,hi=30;
-    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"2025Q1 至 2026Q2 合併毛利率與營業利益率"});
-    var y=function(v){return PT+ih-(v-lo)/(hi-lo)*ih;};
-    var x=function(i){return PL+iw*i/(d.length-1);};
-    [30,20,10,0,-5].forEach(function(v){
-      svg.appendChild(el("line",{x1:PL,x2:W-PR,y1:y(v),y2:y(v),
-        stroke:v===0?tok("--rule-strong"):tok("--grid"),"stroke-width":1}));
-      var t=el("text",{x:PL-8,y:y(v)+4,"text-anchor":"end","font-size":10.5,fill:tok("--ink-3"),
-        "font-family":"IBM Plex Mono, monospace"});t.textContent=v;svg.appendChild(t);
-    });
-    [["gm",tok("--s1")],["om",tok("--s2")]].forEach(function(s){
-      var p="";d.forEach(function(r,i){p+=(i?"L":"M")+x(i).toFixed(1)+" "+y(r[s[0]]).toFixed(1)+" ";});
-      svg.appendChild(el("path",{d:p,fill:"none",stroke:s[1],"stroke-width":2,
-        "stroke-linejoin":"round","stroke-linecap":"round"}));
-      d.forEach(function(r,i){
-        svg.appendChild(el("circle",{cx:x(i),cy:y(r[s[0]]),r:4,fill:s[1],
-          stroke:tok("--surface"),"stroke-width":2}));
-      });
-      var last=d[d.length-1][s[0]];
-      var t=el("text",{x:x(d.length-1)+9,y:y(last)+4,"font-size":11,fill:s[1],"font-weight":600,
-        "font-family":"IBM Plex Mono, monospace"});t.textContent=last.toFixed(2)+"%";svg.appendChild(t);
-    });
-    var t0=el("text",{x:x(1),y:y(-1.70)+17,"text-anchor":"middle","font-size":10,fill:tok("--down"),
-      "font-family":"IBM Plex Mono, monospace"});t0.textContent="−1.70% 匯率";svg.appendChild(t0);
-    d.forEach(function(r,i){
-      var t=el("text",{x:x(i),y:H-8,"text-anchor":"middle","font-size":10.5,fill:tok("--ink-3"),
-        "font-family":"IBM Plex Mono, monospace"});t.textContent=r.q;svg.appendChild(t);
-    });
-    var lab=el("text",{x:PL-8,y:PT-2,"text-anchor":"end","font-size":10,fill:tok("--ink-3"),
-      "font-family":"IBM Plex Mono, monospace"});lab.textContent="%";svg.appendChild(lab);
-    var tips=attachTip(host,svg),step=iw/(d.length-1);
-    d.forEach(function(r,i){
-      var left=i===0?PL-step/2:(i===d.length-1?x(i)-step/2:x(i)-step/2);
-      var hit=el("rect",{x:Math.max(PL,left),y:PT,width:i===0||i===d.length-1?step/2:step,height:ih,fill:"transparent"});
-      hit.addEventListener("mousemove",function(ev){
-        tips.show("<b>"+r.q+"</b><i>毛利率</i>"+r.gm.toFixed(2)+"%<br><i>營益率</i>"+r.om.toFixed(2)+"%",ev.clientX,ev.clientY);
-      });
-      svg.appendChild(hit);
-    });
-    host.appendChild(svg);
-  })();
-
-}
-window.redraw4931Charts=draw4931Charts;
-draw4931Charts();
-</script>
-<script>
-(function(){
-  "use strict";
-  var button=document.getElementById("theme-toggle");
-  if(!button) return;
-  var modes=["system","light","dark"],labels={system:"跟隨系統",light:"淺色",dark:"深色"};
-  var mode="system";
-  try{
-    var saved=localStorage.getItem("4931-theme");
-    if(modes.indexOf(saved)!==-1) mode=saved;
-  }catch(e){}
-  function updateButton(){
-    button.textContent="主題："+labels[mode];
-    button.setAttribute("aria-label","目前為"+labels[mode]+"；按下切換主題");
-    button.title="目前為"+labels[mode]+"；按下切換主題";
-  }
-  function apply(next,persist){
-    mode=next;
-    if(mode==="system") document.documentElement.removeAttribute("data-theme");
-    else document.documentElement.setAttribute("data-theme",mode);
-    if(persist){try{localStorage.setItem("4931-theme",mode);}catch(e){}}
-    updateButton();
-    if(window.redraw4931Charts) window.redraw4931Charts();
-  }
-  button.addEventListener("click",function(){
-    apply(modes[(modes.indexOf(mode)+1)%modes.length],true);
-  });
-  var systemDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)");
-  if(systemDark){
-    var onSystemChange=function(){if(mode==="system"&&window.redraw4931Charts) window.redraw4931Charts();};
-    if(systemDark.addEventListener) systemDark.addEventListener("change",onSystemChange);
-    else if(systemDark.addListener) systemDark.addListener(onSystemChange);
-  }
-  updateButton();
-})();
-</script>
-<script>
-(function(){
-  "use strict";
-  // 目前所在區段高亮
-  var links = [].slice.call(document.querySelectorAll("nav.toc a"));
-  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
-  var nav   = document.querySelector(".toc");
-  // Imported viewers may inject a <base> that redirects fragment links off-site.
-  if (window.self !== window.top) {
-    links.forEach(function(a, i){
-      a.addEventListener("click", function(event){
-        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !secs[i]) return;
-        event.preventDefault();
-        secs[i].scrollIntoView({ block: "start" });
-      });
-    });
-  }
-  function spy(){
-    var y = window.pageYOffset + 80, idx = -1;
-    for (var i = 0; i < secs.length; i++){
-      if (secs[i] && secs[i].offsetTop <= y) idx = i;
-    }
-    // 捲到底時一律點亮最後一節，避免短區段永遠亮不起來
-    if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 4) idx = secs.length - 1;
-    links.forEach(function(a, i){
-      var on = (i === idx);
-      a.classList.toggle("on", on);
-      if (on && nav && nav.scrollWidth > nav.clientWidth){
-        var l = a.offsetLeft, r = l + a.offsetWidth;
-        if (l < nav.scrollLeft) nav.scrollLeft = l - 8;
-        else if (r > nav.scrollLeft + nav.clientWidth) nav.scrollLeft = r - nav.clientWidth + 8;
-      }
-    });
-  }
-
-  // 回到頂端
-  var bt = document.getElementById("totop");
-  function toggleBt(){ if (bt) bt.classList.toggle("show", window.pageYOffset > 560); }
-  if (bt) bt.addEventListener("click", function(){
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    try { window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); }
-    catch(e){ window.scrollTo(0, 0); }
-    // 讓鍵盤與螢幕閱讀器的焦點也真的回到頁首，但不要再觸發一次捲動
-    var t = document.getElementById("pagetop");
-    if (t) { try { t.focus({ preventScroll: true }); } catch(e){ t.focus(); } }
-  });
-
-  var ticking = false;
-  function onScroll(){
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(function(){ spy(); toggleBt(); ticking = false; });
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll, { passive: true });
-  spy(); toggleBt();
-})();
-</script>
 </body></html>
